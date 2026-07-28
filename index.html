@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Pointeuse en ligne — Boulangerie des Forges"/>
+  <title>Pointeuse — Boulangerie des Forges Point by AxEl</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,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"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--navy:#0D1B2A;--gold:#C8A84B;--red:#ED2939;--blue:#002395;--green:#1A7A4A;--off:#F5F3EE;--gray:#6B7280;--light:#E5E7EB;--dark:#1F2937;--white:#fff}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--off);color:var(--dark);min-height:100vh}
+
+    nav{background:var(--navy);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:58px;border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:100}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .brand{color:#fff;font-family:Georgia,serif;font-size:1.1rem;font-weight:700;letter-spacing:2px}
+    .brand-sub{color:var(--gold);font-size:.55rem;letter-spacing:3px;display:block;margin-top:-2px}
+    .nav-tabs{display:flex;gap:.3rem}
+    .tab{background:transparent;border:none;color:#94A3B8;padding:.5rem .9rem;border-radius:5px;cursor:pointer;font-size:.78rem;font-weight:600;letter-spacing:.5px;transition:all .2s}
+    .tab.active{background:var(--gold);color:var(--navy)}
+    .tab:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
+    .nav-time{color:var(--gold);font-family:Georgia,serif;font-size:1rem;font-weight:700;letter-spacing:1px}
+
+    .page{display:none;padding:1.5rem;max-width:920px;margin:0 auto}
+    .page.active{display:block}
+
+    /* ── POINTER ── */
+    .clock-header{text-align:center;margin-bottom:1.5rem}
+    .clock-date{color:var(--gray);font-size:.85rem;letter-spacing:1px;margin-bottom:.3rem}
+    .clock-time{color:var(--navy);font-family:Georgia,serif;font-size:3rem;font-weight:700;letter-spacing:2px}
+
+    .emp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:.8rem;margin-bottom:1.5rem}
+    .emp-btn{background:#fff;border:2px solid var(--light);border-radius:10px;padding:1rem .8rem;cursor:pointer;text-align:center;transition:all .2s;user-select:none}
+    .emp-btn:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.09)}
+    .emp-btn.selected{border-color:var(--gold);background:#FFFBF0}
+    .emp-avatar{width:46px;height:46px;border-radius:50%;margin:0 auto .5rem;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#fff}
+    .emp-name{font-size:.8rem;font-weight:700;color:var(--dark);line-height:1.2}
+    .emp-site{font-size:.67rem;color:var(--gray);margin-top:.15rem}
+    .emp-status{font-size:.65rem;margin-top:.3rem;font-weight:600;padding:.15rem .45rem;border-radius:10px;display:inline-block}
+    .status-in{background:#D1FAE5;color:#065F46}
+    .status-out{background:#FEE2E2;color:#991B1B}
+    .status-pause{background:#FEF3C7;color:#92400E}
+
+    .pin-panel{background:#fff;border-radius:14px;padding:1.6rem;border:1.5px solid var(--light);max-width:310px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+    .pin-title{text-align:center;font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:.25rem}
+    .pin-sub{text-align:center;font-size:.78rem;color:var(--gray);margin-bottom:1rem;line-height:1.4}
+    .pin-display{background:var(--navy);border-radius:8px;padding:.85rem 1rem;text-align:center;font-family:Georgia,serif;font-size:1.9rem;letter-spacing:.7rem;color:var(--gold);min-height:56px;margin-bottom:1rem}
+    .pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.6rem}
+    .pin-key{background:var(--off);border:1.5px solid var(--light);border-radius:8px;padding:.9rem;font-size:1.1rem;font-weight:700;cursor:pointer;text-align:center;transition:all .15s;color:var(--dark)}
+    .pin-key:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .pin-key:active{transform:scale(.93)}
+    .pin-del{background:#FEE2E2;border-color:#FECACA;color:var(--red)}
+    .pin-del:hover{background:var(--red);color:#fff;border-color:var(--red)}
+    .btn-confirm{width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:.85rem;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s;margin-top:.3rem;letter-spacing:.5px}
+    .btn-confirm:hover{background:#E8D060}
+    .btn-confirm:disabled{background:var(--light);color:var(--gray);cursor:not-allowed}
+    .btn-cancel{width:100%;background:transparent;border:1.5px solid var(--light);border-radius:8px;padding:.55rem;font-size:.82rem;color:var(--gray);cursor:pointer;margin-top:.4rem}
+    .btn-cancel:hover{border-color:var(--gray)}
+
+    /* ── DASHBOARD ── */
+    .dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;flex-wrap:wrap;gap:.8rem}
+    .dash-title{font-family:Georgia,serif;font-size:1.4rem;color:var(--navy);font-weight:700}
+    .dash-controls{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+    .sel{border:1.5px solid var(--light);border-radius:6px;padding:.4rem .7rem;font-size:.8rem;color:var(--dark);background:#fff;cursor:pointer}
+    .btn-sm{border:none;padding:.42rem .9rem;border-radius:6px;font-size:.76rem;font-weight:700;cursor:pointer;transition:all .2s}
+    .btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--gold);color:var(--navy)}
+    .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#145f38}
+    .btn-red{background:var(--red);color:#fff}
+
+    .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:.8rem;margin-bottom:1.4rem}
+    .stat-card{background:#fff;border-radius:10px;padding:1rem 1.2rem;border:1.5px solid var(--light)}
+    .stat-label{font-size:.7rem;color:var(--gray);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem}
+    .stat-val{font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:var(--navy)}
+    .stat-sub{font-size:.68rem;color:var(--gray);margin-top:.1rem}
+
+    .table-wrap{background:#fff;border-radius:10px;border:1.5px solid var(--light);overflow:auto}
+    table{width:100%;border-collapse:collapse;min-width:520px}
+    thead{background:var(--navy)}
+    th{padding:.65rem 1rem;text-align:left;color:#fff;font-size:.73rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+    td{padding:.58rem 1rem;font-size:.81rem;border-bottom:1px solid var(--light);color:var(--dark)}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:var(--off)}
+    .badge{padding:.16rem .5rem;border-radius:4px;font-size:.67rem;font-weight:700;white-space:nowrap}
+    .b-green{background:#D1FAE5;color:#065F46}
+    .b-red{background:#FEE2E2;color:#991B1B}
+    .b-gold{background:#FEF3C7;color:#92400E}
+
+    /* ── RECAP ── */
+    .recap-emp{background:#fff;border-radius:10px;border:1.5px solid var(--light);margin-bottom:1rem;overflow:hidden}
+    .recap-head{background:var(--navy);padding:.85rem 1.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    .recap-name{color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:.6rem}
+    .recap-total{color:var(--gold);font-family:Georgia,serif;font-size:1.1rem;font-weight:700;text-align:right}
+    .recap-weeks{padding:.8rem 1.2rem}
+    .week-row{display:flex;justify-content:space-between;align-items:center;padding:.38rem 0;border-bottom:1px solid var(--light);font-size:.81rem;gap:.5rem}
+    .week-row:last-child{border-bottom:none}
+    .week-label{color:var(--gray);font-weight:500;flex:1}
+    .week-days{color:var(--gray);font-size:.72rem;white-space:nowrap}
+    .week-h{font-weight:700}
+    .wh-ok{color:var(--green)}.wh-over{color:var(--red)}.wh-low{color:#C0710A}
+
+    /* ── ADMIN ── */
+    .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .admin-card{background:#fff;border-radius:10px;padding:1.2rem;border:1.5px solid var(--light)}
+    .admin-card h3{font-size:.87rem;font-weight:700;color:var(--navy);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid var(--light)}
+    .emp-list-item{display:flex;align-items:center;justify-content:space-between;padding:.48rem 0;border-bottom:1px solid var(--light);font-size:.81rem;gap:.5rem}
+    .emp-list-item:last-child{border-bottom:none}
+    .emp-info{display:flex;align-items:center;gap:.55rem}
+    .mini-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;flex-shrink:0}
+    .btn-del{background:#FEE2E2;color:var(--red);border:none;border-radius:4px;padding:.2rem .5rem;font-size:.7rem;cursor:pointer;font-weight:600;white-space:nowrap}
+    .form-row{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.7rem}
+    .form-row label{font-size:.73rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px}
+    .form-row input,.form-row select{border:1.5px solid var(--light);border-radius:6px;padding:.48rem .7rem;font-size:.84rem;color:var(--dark);width:100%;background:#fff}
+    .form-row input:focus,.form-row select:focus{outline:none;border-color:var(--gold)}
+    .btn-add{width:100%;background:var(--navy);color:#fff;border:none;border-radius:6px;padding:.6rem;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s;margin-top:.2rem}
+    .btn-add:hover{background:var(--gold);color:var(--navy)}
+    .toggle-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem;font-size:.81rem;color:var(--dark)}
+    .toggle-row input{width:auto;cursor:pointer}
+    .toggle-row label{text-transform:none;font-weight:600;font-size:.81rem;color:var(--dark);letter-spacing:0}
+
+    /* ── CONGÉS / CALENDRIER ── */
+    .conges-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem}
+    .conges-daylabel{font-size:.68rem;font-weight:700;color:var(--gray);text-align:center;padding:.3rem 0;text-transform:uppercase}
+    .conges-day{background:var(--off);border-radius:6px;min-height:74px;padding:.3rem;font-size:.7rem;border:1px solid var(--light)}
+    .conges-day.outside{opacity:.3}
+    .conges-day.today{border-color:var(--gold);border-width:2px}
+    .conges-daynum{font-weight:700;color:var(--navy);margin-bottom:.25rem;font-size:.72rem}
+    .conges-tag{border-radius:4px;padding:.08rem .35rem;font-size:.62rem;font-weight:700;color:#fff;margin-bottom:.15rem;display:flex;align-items:center;justify-content:space-between;gap:.2rem}
+    .conges-tag button{background:none;border:none;color:#fff;cursor:pointer;font-size:.68rem;padding:0;line-height:1;opacity:.85}
+    .conges-tag button:hover{opacity:1}
+    .legend-item{display:flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--dark)}
+    .legend-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+    .conges-tag-auto{opacity:.5;border:1px dashed rgba(255,255,255,.8)}
+    .conges-tag-pending{opacity:.7;border:1.5px dashed rgba(255,255,255,.9)}
+    .pending-item{background:#FFFBF0;border:1.5px solid var(--gold);border-radius:10px;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.6rem;flex-wrap:wrap}
+    .pending-info{font-size:.82rem;color:var(--dark)}
+    .pending-info b{color:var(--navy)}
+    .pending-actions{display:flex;gap:.4rem}
+    .btn-approve{background:var(--green);color:#fff;border:none;border-radius:6px;padding:.4rem .7rem;font-size:.74rem;font-weight:700;cursor:pointer}
+    .btn-reject{background:var(--red);color:#fff;border:none;border-radius:6px;padding:.4rem .7rem;font-size:.74rem;font-weight:700;cursor:pointer}
+    .days-check{display:flex;flex-wrap:wrap;gap:.4rem}
+    .day-chip{display:flex;align-items:center;gap:.3rem;background:var(--off);border:1.5px solid var(--light);border-radius:6px;padding:.35rem .55rem;font-size:.72rem;cursor:pointer;user-select:none}
+    .day-chip input{margin:0;cursor:pointer}
+    .day-chip.checked{border-color:var(--gold);background:#FFFBF0}
+
+    @media(max-width:600px){
+      .conges-day{min-height:52px;font-size:.6rem;padding:.2rem}
+      .conges-tag{font-size:.56rem}
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay{position:fixed;inset:0;background:rgba(13,27,42,.6);display:flex;align-items:center;justify-content:center;z-index:1000;padding:1rem}
+    .modal-box{background:#fff;border-radius:14px;padding:1.6rem;max-width:340px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.3)}
+    .modal-title{font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:1rem}
+    .sess-card{background:#fff;border:1.5px solid var(--gold);border-radius:10px;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.6rem;flex-wrap:wrap}
+    .sess-info{font-size:.82rem;color:var(--dark)}
+    .sess-info b{color:var(--navy)}
+    .btn-edit{background:var(--off);border:1.5px solid var(--light);border-radius:6px;padding:.3rem .6rem;font-size:.72rem;font-weight:700;cursor:pointer;color:var(--navy)}
+    .btn-edit:hover{background:var(--gold);border-color:var(--gold)}
+    .site-filter-btn{background:var(--off);border:1.5px solid var(--light);border-radius:20px;padding:.4rem .9rem;font-size:.76rem;font-weight:700;cursor:pointer;color:var(--gray);transition:all .15s}
+    .site-filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+
+    /* ── FEUILLE D'HEURES / SIGNATURE ── */
+    .sig-canvas{border:2px dashed var(--gold);border-radius:10px;background:#fff;cursor:crosshair;touch-action:none;width:100%;max-width:420px;display:block}
+    .sig-zone{background:#FFFBF0;border:1.5px solid var(--gold);border-radius:10px;padding:1rem;margin-top:1rem}
+    .sig-hint{font-size:.75rem;color:var(--gray);margin:.4rem 0 .6rem}
+    .feuille-signed-badge{display:inline-flex;align-items:center;gap:.4rem;background:#D1FAE5;color:#065F46;border-radius:6px;padding:.35rem .7rem;font-size:.78rem;font-weight:700}
+    .sig-thumb{max-height:56px;max-width:170px;border:1px solid var(--light);border-radius:6px;background:#fff;padding:2px}
+
+    /* ── TOAST ── */
+    .toast{position:fixed;top:1rem;right:1rem;padding:.75rem 1.2rem;border-radius:8px;font-weight:700;font-size:.86rem;z-index:9999;transform:translateY(-100px);transition:transform .3s;box-shadow:0 4px 18px rgba(0,0,0,.18);max-width:320px}
+    .toast.show{transform:translateY(0)}
+    .t-success{background:var(--green);color:#fff}
+    .t-error{background:var(--red);color:#fff}
+    .t-info{background:var(--navy);color:#fff}
+
+    @media(max-width:600px){
+      .admin-grid{grid-template-columns:1fr}
+      .emp-grid{grid-template-columns:repeat(2,1fr)}
+      .nav-tabs .tab{padding:.45rem .55rem;font-size:.7rem}
+      .clock-time{font-size:2.2rem}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="data:image/jpeg;base64,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" alt="Logo Boulangerie des Forges" style="width:36px;height:36px;border-radius:50%;object-fit:cover;background:#fff"/>
+    <div><span class="brand">BOULANGERIE DES FORGES</span><span class="brand-sub">POINT BY AXEL</span></div>
+  </div>
+  <div class="nav-tabs">
+    <button class="tab active" onclick="showPage('pointer',this)">⏱ Pointer</button>
+    <button class="tab" onclick="showPage('conges',this)">🏖 Congés</button>
+    <button class="tab" onclick="showPage('feuille',this)">✍ Feuille d'heures</button>
+    <button class="tab" id="tabDashboard" style="display:none" onclick="showPage('dashboard',this)">📊 Dashboard</button>
+    <button class="tab" id="tabRecap" style="display:none" onclick="showPage('recap',this)">📅 Récap</button>
+    <button class="tab" id="tabFeuilles" style="display:none" onclick="showPage('feuilles',this)">🖊 Feuilles signées</button>
+    <button class="tab" id="tabValidConges" style="display:none" onclick="showPage('valid-conges',this)">✅ Valider congés<span id="pendingBadge" style="display:none;background:var(--red);color:#fff;border-radius:10px;padding:.05rem .4rem;font-size:.65rem;margin-left:.3rem"></span></button>
+    <button class="tab" id="tabAdmin" style="display:none" onclick="showPage('admin',this)">⚙️ Admin</button>
+    <button class="tab" id="tabLock" onclick="requestAdminAccess()">🔒 Accès gérant</button>
+  </div>
+  <div class="nav-time" id="navTime">--:--</div>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══════════ PAGE POINTER ══════════ -->
+<div class="page active" id="page-pointer">
+  <div class="clock-header">
+    <div class="clock-date" id="clockDate"></div>
+    <div class="clock-time" id="clockTime">--:--:--</div>
+  </div>
+  <div id="empSelect">
+    <p style="font-size:.83rem;color:var(--gray);margin-bottom:.8rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase">Sélectionnez votre nom :</p>
+    <div class="emp-grid" id="empGrid"></div>
+  </div>
+  <div class="pin-panel" id="pinPanel" style="display:none">
+    <div class="pin-title" id="pinTitle"></div>
+    <div class="pin-sub" id="pinSub"></div>
+    <div class="pin-display" id="pinDisplay">_ _ _ _</div>
+    <div class="pin-grid">
+      <button class="pin-key" onclick="pk('1')">1</button>
+      <button class="pin-key" onclick="pk('2')">2</button>
+      <button class="pin-key" onclick="pk('3')">3</button>
+      <button class="pin-key" onclick="pk('4')">4</button>
+      <button class="pin-key" onclick="pk('5')">5</button>
+      <button class="pin-key" onclick="pk('6')">6</button>
+      <button class="pin-key" onclick="pk('7')">7</button>
+      <button class="pin-key" onclick="pk('8')">8</button>
+      <button class="pin-key" onclick="pk('9')">9</button>
+      <button class="pin-key pin-del" onclick="pdel()">⌫</button>
+      <button class="pin-key" onclick="pk('0')">0</button>
+      <button class="pin-key pin-del" onclick="pclr()">C</button>
+    </div>
+    <button class="btn-confirm" id="btnConfirm" onclick="confirmPin()" disabled>VALIDER</button>
+    <button class="btn-cancel" onclick="cancelPin()">← Retour</button>
+  </div>
+</div>
+
+<!-- ══════════ PAGE CONGÉS ══════════ -->
+<div class="page" id="page-conges">
+  <div class="dash-header"><div class="dash-title">🏖 Congés & Absences</div></div>
+
+  <div class="admin-card" style="margin-bottom:1.2rem">
+    <h3>➕ Poser un congé / signaler une absence</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.8rem">
+      <div class="form-row"><label>Salarié</label><select id="cEmp"></select></div>
+      <div class="form-row"><label>Code PIN</label><input type="password" id="cPin" maxlength="4" placeholder="••••"/></div>
+      <div class="form-row"><label>Type</label>
+        <select id="cType">
+          <option value="Congés payés">🏖 Congés payés</option>
+          <option value="Absence non rémunérée">🚫 Absence non rémunérée</option>
+          <option value="Repos compensateur">🔄 Repos compensateur</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Du</label><input type="date" id="cStart"/></div>
+      <div class="form-row"><label>Au</label><input type="date" id="cEnd"/></div>
+    </div>
+    <button class="btn-add" style="max-width:220px" onclick="addConge()">✅ Enregistrer</button>
+  </div>
+
+  <div class="admin-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem">
+      <h3 style="border:none;margin:0;padding:0">📅 Calendrier</h3>
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <button class="btn-sm btn-navy" onclick="changeCongesMonth(-1)">◀</button>
+        <span id="congesMonthLabel" style="font-weight:700;color:var(--navy);min-width:150px;text-align:center;display:inline-block"></span>
+        <button class="btn-sm btn-navy" onclick="changeCongesMonth(1)">▶</button>
+      </div>
+    </div>
+    <div id="congesSiteFilter" style="display:flex;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap"></div>
+    <div id="congesLegend" style="display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1rem"></div>
+    <div id="congesCalendar" class="conges-grid"></div>
+  </div>
+
+  <div class="admin-card" style="margin-top:1.2rem">
+    <h3>📋 Congés par salarié</h3>
+    <div id="congesParSalarie"></div>
+  </div>
+</div>
+
+<!-- ══════════ PAGE VALIDATION DES CONGÉS (protégée, gérant uniquement) ══════════ -->
+<div class="page" id="page-valid-conges">
+  <div class="dash-header"><div class="dash-title">✅ Validation des congés</div></div>
+  <div class="admin-card" id="pendingCongesCard">
+    <h3>🕐 Demandes en attente de validation</h3>
+    <div id="pendingCongesList"></div>
+  </div>
+
+  <div class="admin-card" style="margin-top:1.2rem">
+    <h3>📝 Gérer les congés validés</h3>
+    <p style="font-size:.78rem;color:var(--gray);margin-bottom:.8rem">Modifiez les dates ou le type d'un congé déjà validé, ou supprimez-le (erreur de saisie, changement de planning...).</p>
+    <div id="validatedCongesList"></div>
+  </div>
+</div>
+
+<!-- ══════════ PAGE FEUILLE D'HEURES (salarié : consultation + signature) ══════════ -->
+<div class="page" id="page-feuille">
+  <div class="dash-header"><div class="dash-title">✍ Ma feuille d'heures</div></div>
+  <div class="admin-card" style="margin-bottom:1.2rem">
+    <h3>📄 Consulter et signer ma feuille d'heures</h3>
+    <p style="font-size:.8rem;color:var(--gray);margin-bottom:.8rem;line-height:1.5">À la fin de chaque mois, vérifiez vos heures puis apposez votre signature pour valider votre feuille d'heures. Une copie est automatiquement envoyée au gérant par email et archivée.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem">
+      <div class="form-row"><label>Salarié</label><select id="fEmp"></select></div>
+      <div class="form-row"><label>Mois</label><select id="fMonth"></select></div>
+      <div class="form-row"><label>Code PIN</label><input type="password" id="fPin" maxlength="4" placeholder="••••"/></div>
+    </div>
+    <button class="btn-add" style="max-width:260px" onclick="showFeuille()">📄 Afficher ma feuille d'heures</button>
+  </div>
+  <div id="feuilleContent"></div>
+</div>
+
+<!-- ══════════ PAGE FEUILLES SIGNÉES (protégée, gérant uniquement) ══════════ -->
+<div class="page" id="page-feuilles">
+  <div class="dash-header">
+    <div class="dash-title">🖊 Feuilles d'heures signées</div>
+    <div class="dash-controls">
+      <select class="sel" id="feuillesMonthFilter" onchange="renderFeuillesSignees()"><option value="all">Tous les mois</option></select>
+    </div>
+  </div>
+  <div class="admin-card">
+    <h3>📚 Archives des feuilles signées</h3>
+    <p style="font-size:.78rem;color:var(--gray);margin-bottom:.8rem">Chaque feuille signée par un salarié apparaît ici. Vous pouvez la télécharger en PDF (feuille complète jour par jour + signature).</p>
+    <div id="feuillesList"></div>
+  </div>
+</div>
+
+<!-- ══════════ PAGE DASHBOARD ══════════ -->
+<div class="page" id="page-dashboard">
+  <div class="dash-header">
+    <div class="dash-title">📊 Tableau de bord</div>
+    <div class="dash-controls">
+      <select class="sel" id="dashEmp" onchange="renderDash()"><option value="all">Tous les salariés</option></select>
+      <select class="sel" id="dashPeriod" onchange="renderDash()">
+        <option value="today">Aujourd'hui</option>
+        <option value="week">Cette semaine</option>
+        <option value="month" selected>Ce mois</option>
+      </select>
+      <button class="btn-sm btn-navy" onclick="openAddModal()">✏️ Pointage manuel</button>
+      <button class="btn-sm btn-navy" onclick="exportCSV()">⬇ Export CSV</button>
+    </div>
+  </div>
+  <div id="activeSessions"></div>
+  <div class="stats-row" id="statsRow"></div>
+  <div class="table-wrap">
+    <table><thead><tr><th>Salarié</th><th>Date</th><th>Arrivée</th><th>Pause</th><th>Départ</th><th>Durée nette</th><th>Statut</th><th>Actions</th></tr></thead>
+    <tbody id="dashTbody"></tbody></table>
+  </div>
+</div>
+
+<!-- ══════════ MODALE VALIDATION/REFUS CONGÉ AVEC MESSAGE ══════════ -->
+<div class="modal-overlay" id="congeDecisionModalOverlay" style="display:none">
+  <div class="modal-box">
+    <div class="modal-title" id="congeDecisionTitle">Valider la demande</div>
+    <div class="form-row">
+      <label>Message pour le salarié <span style="text-transform:none;font-weight:400">(optionnel, envoyé par email et affiché sur sa fiche congés)</span></label>
+      <textarea id="congeDecisionMessage" rows="3" placeholder="Ex : Accordé, bonnes vacances ! / Refusé car période chargée, on en reparle ensemble." style="width:100%;padding:.55rem;border-radius:6px;border:1px solid var(--light);font-family:inherit;resize:vertical"></textarea>
+    </div>
+    <button class="btn-add" id="congeDecisionConfirmBtn" onclick="confirmCongeDecision()">Confirmer</button>
+    <button class="btn-cancel" onclick="closeCongeDecisionModal()">Annuler</button>
+  </div>
+</div>
+
+<!-- ══════════ MODALE ÉDITION POINTAGE ══════════ -->
+<div class="modal-overlay" id="modalOverlay" style="display:none">
+  <div class="modal-box">
+    <div class="modal-title" id="modalTitle">Modifier un pointage</div>
+    <div class="form-row"><label>Salarié</label><select id="mEmp" onchange="updateModalPauseVisibility()"></select></div>
+    <div class="form-row"><label>Date</label><input type="date" id="mDate"/></div>
+    <div class="form-row"><label>Heure d'arrivée</label><input type="time" id="mArrivee"/></div>
+    <div id="mPauseRow" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+      <div class="form-row"><label id="mPauseLabelDebut">Début pause</label><input type="time" id="mPauseDebut"/></div>
+      <div class="form-row"><label id="mPauseLabelFin">Fin pause</label><input type="time" id="mPauseFin"/></div>
+    </div>
+    <div class="form-row"><label>Heure de départ <span style="text-transform:none;font-weight:400">(laisser vide si toujours en poste)</span></label><input type="time" id="mDepart"/></div>
+    <button class="btn-add" onclick="saveModal()">💾 Enregistrer</button>
+    <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+    <button class="btn-del" id="mDeleteBtn" style="width:100%;margin-top:.5rem;padding:.55rem;border-radius:6px" onclick="deleteModal()">🗑 Supprimer ce pointage</button>
+  </div>
+</div>
+
+<!-- ══════════ MODALE ÉDITION SALARIÉ ══════════ -->
+<div class="modal-overlay" id="empModalOverlay" style="display:none">
+  <div class="modal-box">
+    <div class="modal-title">✏️ Modifier le salarié</div>
+    <div class="form-row"><label>Prénom Nom</label><input type="text" id="eName"/></div>
+    <div class="form-row"><label>Code PIN (4 chiffres)</label><input type="password" id="ePin" maxlength="4"/></div>
+    <div class="form-row"><label>Site</label>
+      <select id="eSite"><option value="Saint Ouen des Toits">Saint Ouen des Toits</option><option value="Chailland">Chailland</option></select>
+    </div>
+    <div class="form-row"><label>Email <span style="text-transform:none;font-weight:400">(pour les notifications de congés)</span></label><input type="email" id="eEmail" placeholder="prenom.nom@exemple.fr"/></div>
+    <div class="toggle-row"><input type="checkbox" id="ePause"/><label for="ePause">Pause de 30 min obligatoire (décoché = coupure suivie en durée réelle)</label></div>
+    <div class="form-row"><label>Jours de repos habituels</label>
+      <div class="days-check" id="eRepos"></div>
+    </div>
+    <button class="btn-add" onclick="saveEmpModal()">💾 Enregistrer</button>
+    <button class="btn-cancel" onclick="closeEmpModal()">Annuler</button>
+  </div>
+</div>
+
+<!-- ══════════ PAGE RECAP ══════════ -->
+<div class="page" id="page-recap">
+  <div class="dash-header">
+    <div class="dash-title">📅 Récapitulatif mensuel</div>
+    <div class="dash-controls">
+      <select class="sel" id="recapMonth" onchange="renderRecap()"></select>
+      <button class="btn-sm btn-navy" onclick="exportRecapCSV()">⬇ CSV détaillé (jour par jour)</button>
+      <button class="btn-sm btn-green" onclick="sendEmail()">✉ Email gérant</button>
+      <button class="btn-sm btn-navy" onclick="window.print()">🖨 Imprimer</button>
+    </div>
+  </div>
+  <div id="recapContent"></div>
+</div>
+
+<!-- ══════════ PAGE ADMIN ══════════ -->
+<div class="page" id="page-admin">
+  <div class="dash-header"><div class="dash-title">⚙️ Administration</div></div>
+  <div class="admin-grid">
+    <div class="admin-card">
+      <h3>👥 Salariés</h3>
+      <div id="adminList"></div>
+    </div>
+    <div class="admin-card">
+      <h3>➕ Ajouter un salarié</h3>
+      <div class="form-row"><label>Prénom Nom</label><input type="text" id="nName" placeholder="Ex: Marie Dupont"/></div>
+      <div class="form-row"><label>Code PIN (4 chiffres)</label><input type="password" id="nPin" maxlength="4" placeholder="••••"/></div>
+      <div class="form-row"><label>Site</label>
+        <select id="nSite"><option value="Saint Ouen des Toits">Saint Ouen des Toits</option><option value="Chailland">Chailland</option></select>
+      </div>
+      <div class="form-row"><label>Email <span style="text-transform:none;font-weight:400">(pour les notifications de congés)</span></label><input type="email" id="nEmail" placeholder="prenom.nom@exemple.fr"/></div>
+      <div class="toggle-row"><input type="checkbox" id="nPause" checked/><label for="nPause">Pause de 30 min obligatoire (décoché = coupure suivie en durée réelle)</label></div>
+      <div class="form-row"><label>Jours de repos habituels <span style="text-transform:none;font-weight:400">(non travaillés)</span></label>
+        <div class="days-check" id="nRepos"></div>
+      </div>
+      <button class="btn-add" onclick="addEmp()">Ajouter</button>
+    </div>
+    <div class="admin-card" style="grid-column:1/-1">
+      <h3>⚙️ Paramètres</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="form-row"><label>Email récapitulatif</label><input type="email" id="sEmail" value="gerant@boulangerie-desforges.fr"/></div>
+        <div class="form-row"><label>Heures légales / semaine</label><input type="number" id="sHours" value="35" min="1" max="60"/></div>
+        <div class="form-row"><label>Code d'accès gérant (4 chiffres)</label><input type="password" id="sAdminPin" maxlength="4" placeholder="••••"/></div>
+        <div class="form-row"><label>Seuil alerte heures sup. (h/jour)</label><input type="number" id="sSeuilSup" min="1" max="24" step="0.5" value="10"/></div>
+        <div class="form-row"><label>Pause minimum déduite (min)</label><input type="number" id="sPauseMin" min="0" max="120" step="5" value="30"/></div>
+        <div class="form-row"><label>Horaire mini le matin <span style="text-transform:none;font-weight:400">(salariés en coupure, sans pause obligatoire)</span></label><input type="time" id="sHoraireMin" value="06:45"/></div>
+        <div class="form-row"><label>Horaire maxi le soir <span style="text-transform:none;font-weight:400">(salariés en coupure, sans pause obligatoire)</span></label><input type="time" id="sHoraireMax" value="19:45"/></div>
+      </div>
+      <div style="font-size:.72rem;color:var(--gray);margin-top:.4rem">ℹ️ Pour les salariés dont la case « Pause de 30 min obligatoire » est décochée, un pointage d'arrivée avant l'horaire mini sera automatiquement ramené à cet horaire, et un départ après l'horaire maxi sera ramené à celui-ci. Vous pouvez toujours corriger un pointage manuellement via « ✏️ Modifier » sur le tableau de bord si un jour un horaire différent est nécessaire.</div>
+      <button class="btn-add" style="max-width:180px" onclick="saveSettings()">💾 Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+emailjs.init({ publicKey: "Hx45flDjyjWz_haqo" });
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script>
+// ══════════════════════════════════════════
+//  CONNEXION FIREBASE (base de données partagée + sécurisée)
+// ══════════════════════════════════════════
+const firebaseConfig = {
+  apiKey: "AIzaSyBAiHL7lkh9bRbpUbME8y1i75FoWeWAROM",
+  authDomain: "pointeuse-jacques.firebaseapp.com",
+  databaseURL: "https://pointeuse-jacques-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "pointeuse-jacques",
+  storageBucket: "pointeuse-jacques.firebasestorage.app",
+  messagingSenderId: "941882315298",
+  appId: "1:941882315298:web:3388b11337146021d3f07b"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// Connexion anonyme automatique et silencieuse (aucune action requise de l'utilisateur)
+firebase.auth().signInAnonymously().catch(err=>{
+  console.error('Erreur de connexion Firebase :', err);
+});
+</script>
+<script>
+// ══════════════════════════════════════════
+//  DONNÉES & ÉTAT (synchronisées en temps réel via Firebase)
+// ══════════════════════════════════════════
+const COLORS=['#002395','#1A7A4A','#C0710A','#6B21A8','#0369A1','#B91C1C','#0D5E5E','#7C4010'];
+
+const defaultEmployees = [
+  {id:1,name:'Sophie Martin',pin:'1234',site:'Saint Ouen des Toits',color:COLORS[0],pause:true},
+  {id:2,name:'Lucas Bernard',pin:'2345',site:'Saint Ouen des Toits',color:COLORS[1],pause:true},
+  {id:3,name:'Emma Leroy',pin:'3456',site:'Chailland',color:COLORS[2],pause:false},
+  {id:4,name:'Thomas Dubois',pin:'4567',site:'Chailland',color:COLORS[3],pause:true},
+  {id:5,name:'Chloé Moreau',pin:'5678',site:'Saint Ouen des Toits',color:COLORS[4],pause:false},
+];
+
+let employees = [];
+let pointages = [];
+let sessions  = {};   // {empId: {arrivee, date}}
+let settings  = {email:'gerant@boulangerie-desforges.fr', heures:35, adminPin:'0000', seuilHeureSup:10, pauseMin:30, horaireMin:'06:45', horaireMax:'19:45'};
+let conges    = [];   // {id, empId, type, start, end}
+let signatures = [];  // {id, empId, month:'YYYY-MM', signedAt, signature(dataURL), totalH}
+let congesMonthDate = new Date();
+let congesSiteFilter = 'all'; // 'all' | 'Saint Ouen des Toits' | 'Chailland'
+
+let adminUnlocked = false;
+
+let selEmp=null, pinBuf='';
+
+// Références vers la base de données
+const employeesRef = db.ref('employees');
+const pointagesRef = db.ref('pointages');
+const sessionsRef  = db.ref('sessions');
+const settingsRef  = db.ref('settings');
+const congesRef    = db.ref('conges');
+const signaturesRef = db.ref('signatures');
+
+function saveEmployees(){ employeesRef.set(employees); }
+function saveSignatures(){ signaturesRef.set(signatures); }
+function savePointages(){ pointagesRef.set(pointages); }
+function saveSessions(){ sessionsRef.set(sessions); }
+function saveSettingsData(){ settingsRef.set(settings); }
+function saveConges(){ congesRef.set(conges); }
+
+// On attend d'être authentifié (connexion anonyme) avant de lire/écrire la base
+firebase.auth().onAuthStateChanged(user=>{
+  if(!user) return; // pas encore connecté, on attend
+
+  // Si la base est vide (premier lancement), on la remplit avec des données de démo
+  employeesRef.once('value').then(snap=>{ if(!snap.exists()) employeesRef.set(defaultEmployees); });
+  pointagesRef.once('value').then(snap=>{ if(!snap.exists()) pointagesRef.set(genDemo()); });
+  settingsRef.once('value').then(snap=>{ if(!snap.exists()) settingsRef.set(settings); });
+  congesRef.once('value').then(snap=>{ if(!snap.exists()) congesRef.set([]); });
+
+  // Écoute en temps réel : dès qu'un appareil modifie une donnée, tous les autres se mettent à jour automatiquement
+  employeesRef.on('value', snap=>{
+    employees = snap.val() ? Object.values(snap.val()) : [];
+    renderEmpGrid();
+    if(document.getElementById('page-admin').classList.contains('active')) renderAdmin();
+    if(document.getElementById('page-dashboard').classList.contains('active')) renderDash();
+    if(document.getElementById('page-conges').classList.contains('active')){ populateCongesForm(); renderCongesCalendar(); }
+    if(document.getElementById('page-valid-conges').classList.contains('active')) renderPendingConges();
+  });
+  pointagesRef.on('value', snap=>{
+    pointages = snap.val() ? Object.values(snap.val()) : [];
+    if(document.getElementById('page-dashboard').classList.contains('active')) renderDash();
+    if(document.getElementById('page-recap').classList.contains('active')) renderRecap();
+    if(document.getElementById('page-conges').classList.contains('active')) renderCongesCalendar();
+  });
+  sessionsRef.on('value', snap=>{
+    sessions = snap.val() || {};
+    renderEmpGrid();
+    if(document.getElementById('page-dashboard').classList.contains('active')) renderDash();
+    if(document.getElementById('page-conges').classList.contains('active')) renderCongesCalendar();
+  });
+  settingsRef.on('value', snap=>{
+    if(snap.val()) settings = snap.val();
+    if(document.getElementById('page-admin').classList.contains('active')) renderAdmin();
+  });
+  congesRef.on('value', snap=>{
+    conges = snap.val() ? Object.values(snap.val()) : [];
+    if(document.getElementById('page-conges').classList.contains('active')) renderCongesCalendar();
+    if(document.getElementById('page-valid-conges').classList.contains('active')) renderPendingConges();
+    updatePendingBadge();
+  });
+  signaturesRef.on('value', snap=>{
+    signatures = snap.val() ? Object.values(snap.val()) : [];
+    if(document.getElementById('page-feuilles').classList.contains('active')) renderFeuillesSignees();
+  });
+});
+
+// ──────────────────────────────────────────
+//  DÉMO : génère des pointages du mois
+// ──────────────────────────────────────────
+function genDemo(){
+  const now=new Date(), y=now.getFullYear(), m=now.getMonth();
+  const days=new Date(y,m+1,0).getDate();
+  const list=[];
+  const emps=[
+    {id:1},{id:2},{id:3},{id:4},{id:5}
+  ];
+  emps.forEach(emp=>{
+    for(let d=1;d<=Math.min(days,now.getDate()-1);d++){
+      const day=new Date(y,m,d);
+      if(day.getDay()===0||day.getDay()===6) continue;
+      if(Math.random()<0.08) continue;
+      const hStart=5+Math.floor(Math.random()*2);
+      const mStart=Math.floor(Math.random()*60);
+      const dur=7+Math.random()*2;
+      const totalStart=hStart*60+mStart;
+      const totalEnd=totalStart+Math.round(dur*60);
+      const pad=n=>String(n).padStart(2,'0');
+      list.push({
+        id:Date.now()+Math.random(),
+        empId:emp.id,
+        date:`${y}-${pad(m+1)}-${pad(d)}`,
+        arrivee:`${pad(Math.floor(totalStart/60))}:${pad(totalStart%60)}`,
+        depart:`${pad(Math.floor(totalEnd/60))}:${pad(totalEnd%60)}`,
+        duree:+dur.toFixed(2)
+      });
+    }
+  });
+  return list;
+}
+
+// ══════════════════════════════════════════
+//  HORLOGE
+// ══════════════════════════════════════════
+function tick(){
+  const now=new Date();
+  const t=now.toLocaleTimeString('fr-FR');
+  const d=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('clockTime').textContent=t;
+  document.getElementById('clockDate').textContent=d.charAt(0).toUpperCase()+d.slice(1);
+  document.getElementById('navTime').textContent=now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+}
+setInterval(tick,1000); tick();
+
+// ══════════════════════════════════════════
+//  NAVIGATION
+// ══════════════════════════════════════════
+const PROTECTED_PAGES=['dashboard','recap','admin','valid-conges','feuilles'];
+
+function showPage(id, btn){
+  if(PROTECTED_PAGES.includes(id) && !adminUnlocked){
+    toast('🔒 Accès réservé au gérant','t-error');
+    return;
+  }
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(id==='dashboard') renderDash();
+  if(id==='recap') renderRecap();
+  if(id==='admin') renderAdmin();
+  if(id==='conges'){ populateCongesForm(); renderCongesCalendar(); }
+  if(id==='valid-conges') renderPendingConges();
+  if(id==='feuille') initFeuillePage();
+  if(id==='feuilles') renderFeuillesSignees();
+}
+
+// ══════════════════════════════════════════
+//  ACCÈS GÉRANT (protection par code)
+// ══════════════════════════════════════════
+function requestAdminAccess(){
+  if(adminUnlocked){ showPage('dashboard', document.getElementById('tabDashboard')); return; }
+  const pin=prompt('Code administrateur (4 chiffres) :');
+  if(pin===null) return; // annulé par l'utilisateur
+  if(pin===(settings.adminPin||'0000')){
+    adminUnlocked=true;
+    document.getElementById('tabDashboard').style.display='inline-block';
+    document.getElementById('tabRecap').style.display='inline-block';
+    document.getElementById('tabValidConges').style.display='inline-block';
+    document.getElementById('tabFeuilles').style.display='inline-block';
+    document.getElementById('tabAdmin').style.display='inline-block';
+    document.getElementById('tabLock').textContent='🔓 Gérant connecté';
+    toast('🔓 Accès gérant débloqué','t-success');
+    showPage('dashboard', document.getElementById('tabDashboard'));
+  } else {
+    toast('❌ Code incorrect','t-error');
+  }
+}
+
+// ══════════════════════════════════════════
+//  GRILLE EMPLOYÉS
+// ══════════════════════════════════════════
+function empStatusInfo(emp){
+  const sess=sessions[emp.id];
+  if(!sess) return {cls:'status-out', label:'● Absent'};
+  if(sess.state==='pause'){
+    const hasPause=emp.pause!==false;
+    return {cls:'status-pause', label: hasPause?'☕ En pause':'🍽 En coupure'};
+  }
+  return {cls:'status-in', label:'✓ Présent'};
+}
+
+function renderEmpGrid(){
+  const g=document.getElementById('empGrid');
+  g.innerHTML='';
+  employees.forEach(emp=>{
+    const info=empStatusInfo(emp);
+    const initials=emp.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+    const div=document.createElement('div');
+    div.className='emp-btn'+(selEmp?.id===emp.id?' selected':'');
+    div.innerHTML=`
+      <div class="emp-avatar" style="background:${emp.color}">${initials}</div>
+      <div class="emp-name">${emp.name}</div>
+      <div class="emp-site">${emp.site}</div>
+      <span class="emp-status ${info.cls}">${info.label}</span>`;
+    div.onclick=()=>selectEmp(emp);
+    g.appendChild(div);
+  });
+}
+renderEmpGrid();
+
+// ══════════════════════════════════════════
+//  SÉLECTION & PIN (4 étapes : arrivée → début pause/coupure → fin pause/coupure → départ)
+//  Les salariés en production ont une PAUSE obligatoire de 30 min minimum (emp.pause !== false) :
+//  la durée minimum réglée dans les paramètres est toujours déduite, même si la pause réelle est plus courte.
+//  Les salariés en COUPURE (ex: vendeuses, emp.pause === false) pointent aussi un début et une fin,
+//  mais c'est la durée RÉELLE de la coupure qui est déduite, sans minimum forcé (la coupure peut durer
+//  plusieurs heures et n'est jamais rémunérée).
+// ══════════════════════════════════════════
+function pinStepInfo(emp){
+  const sess=sessions[emp.id];
+  const hasPause=emp.pause!==false;
+  if(!sess) return {label:'ENREGISTRER MON ARRIVÉE', sub:'➡️ Enregistrez votre ARRIVÉE', bg:'var(--gold)', fg:'var(--navy)'};
+  if(sess.state==='in'){
+    return hasPause
+      ? {label:'DÉBUT DE PAUSE', sub:'☕ Enregistrez le début de votre pause', bg:'#C0710A', fg:'#fff'}
+      : {label:'DÉPART EN COUPURE', sub:'🍽 Enregistrez le début de votre coupure', bg:'#C0710A', fg:'#fff'};
+  }
+  if(sess.state==='pause'){
+    return hasPause
+      ? {label:'FIN DE PAUSE', sub:'🔄 Enregistrez la fin de votre pause', bg:'var(--green)', fg:'#fff'}
+      : {label:'RETOUR DE COUPURE', sub:'🔄 Enregistrez votre retour de coupure', bg:'var(--green)', fg:'#fff'};
+  }
+  return {label:'ENREGISTRER MON DÉPART', sub:'⬅️ Enregistrez votre DÉPART (fin de journée)', bg:'var(--red)', fg:'#fff'};
+}
+
+function selectEmp(emp){
+  selEmp=emp; pinBuf='';
+  const info=pinStepInfo(emp);
+  document.getElementById('pinTitle').textContent=emp.name;
+  document.getElementById('pinSub').textContent=info.sub;
+  document.getElementById('pinDisplay').textContent='_ _ _ _';
+  const btn=document.getElementById('btnConfirm');
+  btn.textContent=info.label;
+  btn.style.background=info.bg;
+  btn.style.color=info.fg;
+  btn.disabled=true;
+  document.getElementById('empSelect').style.display='none';
+  document.getElementById('pinPanel').style.display='block';
+}
+function cancelPin(){
+  selEmp=null; pinBuf='';
+  document.getElementById('empSelect').style.display='block';
+  document.getElementById('pinPanel').style.display='none';
+  renderEmpGrid();
+}
+function pk(k){
+  if(pinBuf.length>=4) return;
+  pinBuf+=k;
+  document.getElementById('pinDisplay').textContent=
+    '● '.repeat(pinBuf.length)+'_ '.repeat(4-pinBuf.length);
+  document.getElementById('btnConfirm').disabled=pinBuf.length<4;
+}
+function pdel(){
+  pinBuf=pinBuf.slice(0,-1);
+  document.getElementById('pinDisplay').textContent=
+    '● '.repeat(pinBuf.length)+'_ '.repeat(4-pinBuf.length);
+  document.getElementById('btnConfirm').disabled=true;
+}
+function pclr(){
+  pinBuf='';
+  document.getElementById('pinDisplay').textContent='_ _ _ _';
+  document.getElementById('btnConfirm').disabled=true;
+}
+
+// Minutes entre deux heures HH:MM (gère le passage de minuit)
+function minutesEntre(t1,t2){
+  const [h1,m1]=t1.split(':').map(Number);
+  const [h2,m2]=t2.split(':').map(Number);
+  let diff=(h2*60+m2)-(h1*60+m1);
+  if(diff<0) diff+=24*60;
+  return diff;
+}
+
+// ── Horaires bloqués (contractuels) pour les salariés SANS pause obligatoire (coupure, ex: vendeuses) ──
+// Une arrivée pointée avant l'horaire mini (settings.horaireMin, ex 06:45) est automatiquement
+// ramenée à cet horaire. Un départ pointé après l'horaire maxi (settings.horaireMax, ex 19:45)
+// est automatiquement ramené à celui-ci. Le gérant garde la main : il peut toujours corriger
+// un pointage manuellement via la modale d'édition sur le tableau de bord.
+function toMinutes(t){ const [h,m]=t.split(':').map(Number); return h*60+m; }
+function clampHoraireCoupure(time, isArrivee){
+  if(isArrivee){
+    const min=settings.horaireMin||'06:45';
+    if(toMinutes(time)<toMinutes(min)) return min;
+  } else {
+    const max=settings.horaireMax||'19:45';
+    if(toMinutes(time)>toMinutes(max)) return max;
+  }
+  return time;
+}
+
+// Construit une entrée de pointage complète et calcule la durée nette.
+// Si le salarié a une pause obligatoire (hasPause=true), la pause est toujours déduite au minimum
+// settings.pauseMin (30 min par défaut), même si la pause réelle pointée est plus courte.
+// Si elle est plus longue, c'est la durée réelle qui est déduite.
+// Si le salarié n'a pas de pause (ex: vendeuse en coupure), aucune déduction minimum n'est appliquée :
+// seule une éventuelle pause réellement pointée est déduite.
+function buildPointageEntry(empId, date, arrivee, pauseDebut, pauseFin, depart, hasPause=true){
+  const seuilPause=hasPause ? ((settings.pauseMin!=null)?settings.pauseMin:30) : 0;
+  const brutMin=minutesEntre(arrivee, depart);
+  let pauseMin=0;
+  if(pauseDebut && pauseFin) pauseMin=minutesEntre(pauseDebut, pauseFin);
+  const pauseDeduite=hasPause ? Math.max(seuilPause, pauseMin) : pauseMin;
+  const netMin=Math.max(0, brutMin-pauseDeduite);
+  return {
+    id:Date.now(),
+    empId, date, arrivee,
+    pauseDebut: pauseDebut||null,
+    pauseFin: pauseFin||null,
+    depart,
+    duree:+(netMin/60).toFixed(2),
+    dureePause:+(pauseDeduite/60).toFixed(2)
+  };
+}
+
+function confirmPin(){
+  if(!selEmp) return;
+  if(pinBuf!==selEmp.pin){ toast('❌ Code PIN incorrect','t-error'); pclr(); return; }
+  const now=new Date();
+  const pad=n=>String(n).padStart(2,'0');
+  let time=`${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const date=now.toISOString().split('T')[0];
+  const sess=sessions[selEmp.id];
+  const hasPause=selEmp.pause!==false;
+  let horaireAjuste=false;
+
+  if(!sess){
+    if(!hasPause){
+      const clamped=clampHoraireCoupure(time,true);
+      if(clamped!==time){ time=clamped; horaireAjuste=true; }
+    }
+    sessions[selEmp.id]={date, arrivee:time, pauseDebut:null, pauseFin:null, state:'in'};
+    saveSessions();
+    toast(horaireAjuste?`✅ Arrivée ${selEmp.name} — ${time} (horaire contractuel mini appliqué)`:`✅ Arrivée ${selEmp.name} — ${time}`,'t-success');
+  } else if(sess.state==='in'){
+    sess.pauseDebut=time; sess.state='pause';
+    saveSessions();
+    toast(hasPause?`☕ Début de pause ${selEmp.name} — ${time}`:`🍽 Départ en coupure ${selEmp.name} — ${time}`,'t-info');
+  } else if(sess.state==='pause'){
+    sess.pauseFin=time; sess.state='in2';
+    saveSessions();
+    toast(hasPause?`🔄 Fin de pause ${selEmp.name} — ${time}`:`🔄 Retour de coupure ${selEmp.name} — ${time}`,'t-info');
+  } else {
+    if(!hasPause){
+      const clamped=clampHoraireCoupure(time,false);
+      if(clamped!==time){ time=clamped; horaireAjuste=true; }
+    }
+    const entry=buildPointageEntry(selEmp.id, sess.date, sess.arrivee, sess.pauseDebut, sess.pauseFin, time, hasPause);
+    pointages.push(entry);
+    delete sessions[selEmp.id];
+    savePointages();
+    saveSessions();
+    toast(`✅ Départ ${selEmp.name} — ${time}${horaireAjuste?' (horaire contractuel maxi appliqué)':''} (${entry.duree.toFixed(1)}h travaillées)`,'t-success');
+    checkOvertimeAndAlert(entry);
+  }
+  cancelPin();
+}
+
+// ══════════════════════════════════════════
+//  MODALE ÉDITION / AJOUT / CORRECTION POINTAGE
+// ══════════════════════════════════════════
+let modalMode=null, modalTarget=null;
+
+function calcDuree(arrivee,depart){
+  const [ah,am]=arrivee.split(':').map(Number);
+  const [dh,dm]=depart.split(':').map(Number);
+  let dur=((dh*60+dm)-(ah*60+am))/60;
+  if(dur<0) dur+=24;
+  return +dur.toFixed(2);
+}
+
+function populateModalEmpSelect(selectedId){
+  const sel=document.getElementById('mEmp');
+  sel.innerHTML='';
+  employees.forEach(e=>sel.appendChild(new Option(e.name,e.id)));
+  if(selectedId!==undefined) sel.value=selectedId;
+  sel.disabled=false;
+}
+
+// Change le libellé des champs "pause" de la modale selon que le salarié sélectionné
+// a une pause obligatoire (30 min min.) ou une coupure (durée réelle, sans minimum).
+function updateModalPauseVisibility(){
+  const empId=+document.getElementById('mEmp').value;
+  const emp=employees.find(e=>e.id===empId);
+  const hasPause=!emp || emp.pause!==false;
+  document.getElementById('mPauseLabelDebut').textContent=hasPause?'Début pause':'Départ en coupure';
+  document.getElementById('mPauseLabelFin').textContent=hasPause?'Fin pause':'Retour de coupure';
+}
+
+function openEditModal(pointageId){
+  const p=pointages.find(x=>x.id===pointageId);
+  if(!p) return;
+  modalMode='edit-pointage'; modalTarget=pointageId;
+  document.getElementById('modalTitle').textContent='✏️ Modifier un pointage';
+  populateModalEmpSelect(p.empId);
+  document.getElementById('mDate').value=p.date;
+  document.getElementById('mArrivee').value=p.arrivee;
+  document.getElementById('mPauseDebut').value=p.pauseDebut||'';
+  document.getElementById('mPauseFin').value=p.pauseFin||'';
+  document.getElementById('mDepart').value=p.depart||'';
+  document.getElementById('mDeleteBtn').style.display='block';
+  document.getElementById('modalOverlay').style.display='flex';
+  updateModalPauseVisibility();
+}
+
+function openAddModal(){
+  modalMode='add-pointage'; modalTarget=null;
+  document.getElementById('modalTitle').textContent='➕ Ajouter un pointage manuel';
+  populateModalEmpSelect();
+  document.getElementById('mDate').value=new Date().toISOString().split('T')[0];
+  document.getElementById('mArrivee').value='';
+  document.getElementById('mPauseDebut').value='';
+  document.getElementById('mPauseFin').value='';
+  document.getElementById('mDepart').value='';
+  document.getElementById('mDeleteBtn').style.display='none';
+  document.getElementById('modalOverlay').style.display='flex';
+  updateModalPauseVisibility();
+}
+
+function openSessionEditModal(empId){
+  const sess=sessions[empId];
+  if(!sess) return;
+  modalMode='edit-session'; modalTarget=empId;
+  document.getElementById('modalTitle').textContent='✏️ Corriger / clôturer une présence';
+  populateModalEmpSelect(empId);
+  document.getElementById('mEmp').disabled=true;
+  document.getElementById('mDate').value=sess.date;
+  document.getElementById('mArrivee').value=sess.arrivee;
+  document.getElementById('mPauseDebut').value=sess.pauseDebut||'';
+  document.getElementById('mPauseFin').value=sess.pauseFin||'';
+  document.getElementById('mDepart').value='';
+  document.getElementById('mDeleteBtn').style.display='block';
+  document.getElementById('modalOverlay').style.display='flex';
+  updateModalPauseVisibility();
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').style.display='none';
+  document.getElementById('mEmp').disabled=false;
+  modalMode=null; modalTarget=null;
+}
+
+function saveModal(){
+  const empId=+document.getElementById('mEmp').value;
+  const emp=employees.find(e=>e.id===empId);
+  const hasPause=!emp || emp.pause!==false;
+  const date=document.getElementById('mDate').value;
+  const arrivee=document.getElementById('mArrivee').value;
+  const pauseDebut=document.getElementById('mPauseDebut').value;
+  const pauseFin=document.getElementById('mPauseFin').value;
+  const depart=document.getElementById('mDepart').value;
+
+  if(!date||!arrivee){ toast("❌ Date et heure d'arrivée requises",'t-error'); return; }
+  if((pauseDebut && !pauseFin) || (!pauseDebut && pauseFin)){ toast('❌ Renseigne le début ET la fin de pause (ou aucun des deux)','t-error'); return; }
+
+  if(modalMode==='edit-session'){
+    if(depart){
+      const entry=buildPointageEntry(empId,date,arrivee,pauseDebut,pauseFin,depart,hasPause);
+      pointages.push(entry);
+      delete sessions[empId];
+      savePointages(); saveSessions();
+      toast('✅ Présence clôturée','t-success');
+      checkOvertimeAndAlert(entry);
+    } else {
+      const state=(pauseDebut && pauseFin)?'in2':(pauseDebut?'pause':'in');
+      sessions[empId]={date,arrivee,pauseDebut:pauseDebut||null,pauseFin:pauseFin||null,state};
+      saveSessions();
+      toast('✅ Présence mise à jour','t-success');
+    }
+  } else if(modalMode==='edit-pointage'){
+    if(!depart){ toast('❌ Heure de départ requise','t-error'); return; }
+    const p=pointages.find(x=>x.id===modalTarget);
+    if(p){
+      const rebuilt=buildPointageEntry(empId,date,arrivee,pauseDebut,pauseFin,depart,hasPause);
+      p.empId=empId; p.date=date; p.arrivee=arrivee;
+      p.pauseDebut=rebuilt.pauseDebut; p.pauseFin=rebuilt.pauseFin;
+      p.depart=depart; p.duree=rebuilt.duree; p.dureePause=rebuilt.dureePause;
+    }
+    savePointages();
+    toast('✅ Pointage modifié','t-success');
+    if(p) checkOvertimeAndAlert(p);
+  } else if(modalMode==='add-pointage'){
+    if(!depart){ toast('❌ Heure de départ requise','t-error'); return; }
+    const entry=buildPointageEntry(empId,date,arrivee,pauseDebut,pauseFin,depart,hasPause);
+    pointages.push(entry);
+    savePointages();
+    toast('✅ Pointage ajouté','t-success');
+    checkOvertimeAndAlert(entry);
+  }
+  closeModal();
+  renderDash(); renderEmpGrid();
+}
+
+function deleteModal(){
+  if(!confirm('Supprimer cette entrée ?')) return;
+  if(modalMode==='edit-session'){
+    delete sessions[modalTarget];
+    saveSessions();
+    toast('🗑 Présence supprimée','t-info');
+  } else if(modalMode==='edit-pointage'){
+    pointages=pointages.filter(x=>x.id!==modalTarget);
+    savePointages();
+    toast('🗑 Pointage supprimé','t-info');
+  }
+  closeModal();
+  renderDash(); renderEmpGrid();
+}
+
+// ══════════════════════════════════════════
+//  CONGÉS & CALENDRIER
+// ══════════════════════════════════════════
+function populateCongesForm(){
+  const sel=document.getElementById('cEmp');
+  const prev=sel.value;
+  sel.innerHTML='';
+  employees.forEach(e=>sel.appendChild(new Option(e.name,e.id)));
+  if(prev) sel.value=prev;
+}
+
+function addConge(){
+  const empId=+document.getElementById('cEmp').value;
+  const pin=document.getElementById('cPin').value.trim();
+  const type=document.getElementById('cType').value;
+  const start=document.getElementById('cStart').value;
+  const end=document.getElementById('cEnd').value;
+  const emp=employees.find(e=>e.id===empId);
+
+  if(!emp){ toast('❌ Sélectionnez un salarié','t-error'); return; }
+  if(!adminUnlocked && pin!==emp.pin){ toast('❌ Code PIN incorrect','t-error'); return; }
+  if(!start||!end){ toast('❌ Dates requises','t-error'); return; }
+  if(end<start){ toast('❌ La date de fin doit être après la date de début','t-error'); return; }
+
+  // Si c'est le gérant qui saisit directement (déverrouillé), la demande est validée automatiquement.
+  // Sinon (salarié via son PIN), elle reste en attente de validation.
+  const status=adminUnlocked?'validee':'attente';
+  conges.push({id:Date.now(),empId,type,start,end,status});
+  saveConges();
+
+  document.getElementById('cPin').value='';
+  document.getElementById('cStart').value='';
+  document.getElementById('cEnd').value='';
+  if(status==='attente'){
+    toast(`✅ Demande envoyée pour ${emp.name} — en attente de validation par le gérant`,'t-success');
+    notifyManagerNewConge(emp, conges[conges.length-1]);
+  } else {
+    toast(`✅ ${type} enregistré et validé pour ${emp.name}`,'t-success');
+  }
+  renderCongesCalendar();
+  updatePendingBadge();
+}
+
+// Envoie un email au gérant pour le prévenir dès qu'un salarié dépose une nouvelle demande de congé
+// (quel que soit le type : congés payés, absence non rémunérée, repos compensateur...)
+function notifyManagerNewConge(emp, conge){
+  if(!emp) return;
+  const periode=conge.start===conge.end
+    ? new Date(conge.start+'T12:00:00').toLocaleDateString('fr-FR')
+    : `du ${new Date(conge.start+'T12:00:00').toLocaleDateString('fr-FR')} au ${new Date(conge.end+'T12:00:00').toLocaleDateString('fr-FR')}`;
+  const subject=`🔔 Nouvelle demande de congé — ${emp.name}`;
+  const message=`Bonjour,\n\n${emp.name} (${emp.site}) vient de déposer une demande de type "${conge.type}" ${periode}.\n\nRendez-vous dans l'onglet "✅ Valider congés" de la pointeuse pour l'approuver ou la refuser.`;
+  const email=settings.email||'gerant@boulangerie-desforges.fr';
+
+  emailjs.send('service_i0lfwfg','template_s58kq34',{
+    to_email: email,
+    subject: subject,
+    message: message
+  }).then(()=>{
+    console.log('Notification de nouvelle demande de congé envoyée au gérant');
+  }).catch(err=>{
+    console.error('Erreur envoi notification gérant (nouvelle demande) :', err);
+  });
+}
+
+// Envoie un email au salarié pour l'informer de la décision sur sa demande de congé
+function notifyEmployeeConge(emp, conge, approuve){
+  if(!emp || !emp.email){
+    if(emp) console.log(`Pas d'email renseigné pour ${emp.name}, notification non envoyée`);
+    return;
+  }
+  const periode=conge.start===conge.end
+    ? new Date(conge.start+'T12:00:00').toLocaleDateString('fr-FR')
+    : `du ${new Date(conge.start+'T12:00:00').toLocaleDateString('fr-FR')} au ${new Date(conge.end+'T12:00:00').toLocaleDateString('fr-FR')}`;
+  const subject=approuve
+    ? `✅ Votre demande de congé a été validée`
+    : `❌ Votre demande de congé a été refusée`;
+  const messageLine = conge.message ? `\n\nMessage du gérant : ${conge.message}` : '';
+  const message=approuve
+    ? `Bonjour ${emp.name},\n\nVotre demande (${conge.type}) ${periode} a été validée par le gérant.${messageLine}\n\nBonnes vacances !`
+    : `Bonjour ${emp.name},\n\nVotre demande (${conge.type}) ${periode} a été refusée par le gérant.${messageLine}\n\nN'hésite pas à te rapprocher de lui pour en discuter.`;
+
+  emailjs.send('service_i0lfwfg','template_s58kq34',{
+    to_email: emp.email,
+    subject: subject,
+    message: message
+  }).then(()=>{
+    console.log(`Notification congé envoyée à ${emp.email}`);
+  }).catch(err=>{
+    console.error('Erreur envoi notification congé :', err);
+  });
+}
+
+// ── Modale de décision (validation/refus) avec message optionnel pour le salarié ──
+let congeDecisionTarget=null, congeDecisionApprouve=null;
+
+function openCongeDecisionModal(id, approuve){
+  if(!adminUnlocked){ toast('🔒 Seul le gérant peut valider une demande','t-error'); return; }
+  congeDecisionTarget=id;
+  congeDecisionApprouve=approuve;
+  document.getElementById('congeDecisionTitle').textContent = approuve ? '✅ Valider la demande de congé' : '❌ Refuser la demande de congé';
+  document.getElementById('congeDecisionMessage').value='';
+  const btn=document.getElementById('congeDecisionConfirmBtn');
+  btn.textContent = approuve ? '✅ Valider' : '❌ Refuser';
+  btn.className = approuve ? 'btn-add' : 'btn-del';
+  document.getElementById('congeDecisionModalOverlay').style.display='flex';
+}
+
+function closeCongeDecisionModal(){
+  document.getElementById('congeDecisionModalOverlay').style.display='none';
+  congeDecisionTarget=null;
+  congeDecisionApprouve=null;
+}
+
+function confirmCongeDecision(){
+  const message=document.getElementById('congeDecisionMessage').value.trim();
+  validateConge(congeDecisionTarget, congeDecisionApprouve, message);
+  closeCongeDecisionModal();
+}
+
+function validateConge(id, approuve, message){
+  if(!adminUnlocked){ toast('🔒 Seul le gérant peut valider une demande','t-error'); return; }
+  const c=conges.find(x=>x.id===id);
+  if(!c) return;
+  c.status=approuve?'validee':'refusee';
+  c.message = message ? message : null;
+  saveConges();
+  const emp=employees.find(e=>e.id===c.empId);
+  toast(approuve?`✅ Congé validé pour ${emp?emp.name:''}`:`❌ Congé refusé pour ${emp?emp.name:''}`, approuve?'t-success':'t-info');
+  notifyEmployeeConge(emp, c, approuve);
+  renderPendingConges();
+  renderCongesCalendar();
+  updatePendingBadge();
+}
+
+function updatePendingBadge(){
+  const count=conges.filter(c=>c.status==='attente').length;
+  const badge=document.getElementById('pendingBadge');
+  if(!badge) return;
+  if(count>0){ badge.textContent=count; badge.style.display='inline-block'; }
+  else { badge.style.display='none'; }
+}
+
+function renderPendingConges(){
+  if(!adminUnlocked) return; // sécurité : cette page ne devrait jamais être accessible sans le code gérant
+  renderValidatedConges(); // rafraîchit aussi la liste des congés validés (même page)
+  const list=document.getElementById('pendingCongesList');
+  const pending=conges.filter(c=>c.status==='attente');
+
+  if(!pending.length){
+    list.innerHTML='<p style="color:var(--gray);font-size:.85rem">Aucune demande en attente pour le moment. ✅</p>';
+    return;
+  }
+
+  list.innerHTML=pending.map(c=>{
+    const emp=employees.find(e=>e.id===c.empId);
+    if(!emp) return '';
+    const periode=c.start===c.end
+      ? new Date(c.start+'T12:00:00').toLocaleDateString('fr-FR')
+      : `${new Date(c.start+'T12:00:00').toLocaleDateString('fr-FR')} → ${new Date(c.end+'T12:00:00').toLocaleDateString('fr-FR')}`;
+    return `<div class="pending-item">
+      <div class="pending-info"><b>${emp.name}</b> — ${c.type} — ${periode}</div>
+      <div class="pending-actions">
+        <button class="btn-approve" onclick="openCongeDecisionModal(${c.id},true)">✅ Valider</button>
+        <button class="btn-reject" onclick="openCongeDecisionModal(${c.id},false)">❌ Refuser</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function deleteConge(id){
+  if(!adminUnlocked){ toast('🔒 Seul le gérant peut supprimer un congé','t-error'); return; }
+  if(!confirm('Supprimer ce congé ?')) return;
+  if(editingCongeId===id) editingCongeId=null;
+  conges=conges.filter(c=>c.id!==id);
+  saveConges();
+  renderCongesCalendar();
+  renderPendingConges();
+  updatePendingBadge();
+  toast('🗑 Congé supprimé','t-info');
+}
+
+// ══════════════════════════════════════════
+//  GESTION DES CONGÉS VALIDÉS (gérant)
+// ══════════════════════════════════════════
+let editingCongeId=null;
+
+const CONGE_TYPES=['Congés payés','Absence non rémunérée','Repos compensateur'];
+
+function renderValidatedConges(){
+  const box=document.getElementById('validatedCongesList');
+  if(!box) return;
+  if(!adminUnlocked){ box.innerHTML=''; return; }
+
+  const valides=conges.filter(c=>c.status==='validee').sort((a,b)=>b.start.localeCompare(a.start));
+
+  if(!valides.length){
+    box.innerHTML='<p style="color:var(--gray);font-size:.85rem">Aucun congé validé pour le moment.</p>';
+    return;
+  }
+
+  box.innerHTML=valides.map(c=>{
+    const emp=employees.find(e=>e.id===c.empId);
+    if(!emp) return '';
+    const initials=emp.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+
+    // ── Mode édition : formulaire en ligne ──
+    if(editingCongeId===c.id){
+      const typeOptions=CONGE_TYPES.map(t=>`<option value="${t}" ${c.type===t?'selected':''}>${t}</option>`).join('');
+      return `<div class="pending-item" style="background:#F0F7FF;border-color:var(--blue);flex-direction:column;align-items:stretch">
+        <div class="pending-info" style="margin-bottom:.6rem"><b>${emp.name}</b> <span style="color:var(--gray);font-size:.75rem">(${emp.site})</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-bottom:.6rem">
+          <div class="form-row" style="margin-bottom:0"><label>Type</label><select id="editType">${typeOptions}</select></div>
+          <div class="form-row" style="margin-bottom:0"><label>Du</label><input type="date" id="editStart" value="${c.start}"/></div>
+          <div class="form-row" style="margin-bottom:0"><label>Au</label><input type="date" id="editEnd" value="${c.end}"/></div>
+        </div>
+        <div class="pending-actions" style="justify-content:flex-end">
+          <button class="btn-approve" onclick="saveEditConge(${c.id})">💾 Enregistrer</button>
+          <button class="btn-sm btn-navy" onclick="cancelEditConge()">Annuler</button>
+        </div>
+      </div>`;
+    }
+
+    // ── Mode affichage normal ──
+    const periode=c.start===c.end
+      ? new Date(c.start+'T12:00:00').toLocaleDateString('fr-FR')
+      : `${new Date(c.start+'T12:00:00').toLocaleDateString('fr-FR')} → ${new Date(c.end+'T12:00:00').toLocaleDateString('fr-FR')}`;
+    const jours=Math.round((new Date(c.end)-new Date(c.start))/86400000)+1;
+    const messageHtml = c.message ? `<div style="font-size:.72rem;color:var(--gray);margin-top:.3rem;padding:.3rem .5rem;background:#fff;border-left:2px solid var(--green);border-radius:3px">💬 ${escHtml(c.message)}</div>` : '';
+    return `<div class="pending-item" style="background:#F0FDF4;border-color:var(--green);flex-direction:column;align-items:stretch">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem">
+        <div class="pending-info" style="display:flex;align-items:center;gap:.6rem">
+          <div style="width:26px;height:26px;border-radius:50%;background:${emp.color};display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>
+          <span><b>${emp.name}</b> — ${c.type} — ${periode} <span style="color:var(--gray);font-size:.73rem">(${jours}j)</span></span>
+        </div>
+        <div class="pending-actions">
+          <button class="btn-sm btn-navy" onclick="startEditConge(${c.id})">✏️ Modifier</button>
+          <button class="btn-reject" onclick="deleteConge(${c.id})">🗑 Supprimer</button>
+        </div>
+      </div>
+      ${messageHtml}
+    </div>`;
+  }).join('');
+}
+
+function startEditConge(id){
+  if(!adminUnlocked){ toast('🔒 Seul le gérant peut modifier un congé','t-error'); return; }
+  editingCongeId=id;
+  renderValidatedConges();
+}
+
+function cancelEditConge(){
+  editingCongeId=null;
+  renderValidatedConges();
+}
+
+function saveEditConge(id){
+  if(!adminUnlocked){ toast('🔒 Seul le gérant peut modifier un congé','t-error'); return; }
+  const c=conges.find(x=>x.id===id);
+  if(!c) return;
+  const type=document.getElementById('editType').value;
+  const start=document.getElementById('editStart').value;
+  const end=document.getElementById('editEnd').value;
+
+  if(!start||!end){ toast('❌ Dates requises','t-error'); return; }
+  if(end<start){ toast('❌ La date de fin doit être après la date de début','t-error'); return; }
+
+  const modifie = c.type!==type || c.start!==start || c.end!==end;
+  c.type=type; c.start=start; c.end=end;
+  saveConges();
+  editingCongeId=null;
+
+  const emp=employees.find(e=>e.id===c.empId);
+  toast(`✏️ Congé modifié pour ${emp?emp.name:''}`,'t-success');
+  if(modifie && emp) notifyEmployeeCongeModified(emp, c);
+
+  renderValidatedConges();
+  renderCongesCalendar();
+  updatePendingBadge();
+}
+
+// Prévient le salarié par email que son congé validé a été modifié par le gérant
+function notifyEmployeeCongeModified(emp, conge){
+  if(!emp.email){ console.log(`Pas d'email renseigné pour ${emp.name}, notification non envoyée`); return; }
+  const periode=conge.start===conge.end
+    ? new Date(conge.start+'T12:00:00').toLocaleDateString('fr-FR')
+    : `du ${new Date(conge.start+'T12:00:00').toLocaleDateString('fr-FR')} au ${new Date(conge.end+'T12:00:00').toLocaleDateString('fr-FR')}`;
+  emailjs.send('service_i0lfwfg','template_s58kq34',{
+    to_email: emp.email,
+    subject: `✏️ Votre congé a été modifié`,
+    message: `Bonjour ${emp.name},\n\nVotre congé a été modifié par le gérant.\n\nNouvelles informations : ${conge.type} ${periode}.\n\nN'hésite pas à te rapprocher de lui pour toute question.`
+  }).then(()=>{
+    console.log(`Notification de modification envoyée à ${emp.email}`);
+  }).catch(err=>{
+    console.error('Erreur envoi notification modification :', err);
+  });
+}
+
+function changeCongesMonth(delta){
+  congesMonthDate.setMonth(congesMonthDate.getMonth()+delta);
+  renderCongesCalendar();
+}
+
+// Échappe le HTML d'un texte libre (message du gérant) avant de l'insérer dans le DOM
+function escHtml(str){
+  const d=document.createElement('div');
+  d.textContent=str;
+  return d.innerHTML;
+}
+
+function setCongesSiteFilter(site){
+  congesSiteFilter=site;
+  renderCongesCalendar();
+}
+
+function renderCongesCalendar(){
+  const label=document.getElementById('congesMonthLabel');
+  const lbl=congesMonthDate.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  label.textContent=lbl.charAt(0).toUpperCase()+lbl.slice(1);
+
+  // Liste des sites disponibles (déduite des salariés existants) + boutons de filtre
+  const sites=[...new Set(employees.map(e=>e.site).filter(Boolean))];
+  const filterBox=document.getElementById('congesSiteFilter');
+  const filters=[{v:'all',l:'🏢 Tous les sites'}, ...sites.map(s=>({v:s,l:s}))];
+  filterBox.innerHTML=filters.map(f=>
+    `<button class="site-filter-btn ${congesSiteFilter===f.v?'active':''}" onclick="setCongesSiteFilter('${f.v.replace(/'/g,"\\'")}')">${f.l}</button>`
+  ).join('');
+
+  // Salariés visibles selon le filtre sélectionné
+  const visibleEmployees=congesSiteFilter==='all'?employees:employees.filter(e=>e.site===congesSiteFilter);
+  const visibleIds=new Set(visibleEmployees.map(e=>e.id));
+
+  // Légende des couleurs par salarié (uniquement ceux du site filtré)
+  const legend=document.getElementById('congesLegend');
+  legend.innerHTML=(visibleEmployees.map(e=>
+    `<div class="legend-item"><span class="legend-dot" style="background:${e.color}"></span>${e.name}</div>`
+  ).join('') || '<span style="font-size:.78rem;color:var(--gray)">Aucun salarié sur ce site</span>')
+    +'<div style="font-size:.7rem;color:var(--gray);width:100%;margin-top:.3rem">🟢 Couleur pleine = congé validé &nbsp;·&nbsp; 🕐 Pointillés = en attente de validation &nbsp;·&nbsp; 🔳 Couleur atténuée = jour de repos habituel</div>';
+
+  const y=congesMonthDate.getFullYear(), m=congesMonthDate.getMonth();
+  const firstDay=new Date(y,m,1);
+  const startOffset=(firstDay.getDay()+6)%7; // lundi = 0
+  const daysInMonth=new Date(y,m+1,0).getDate();
+  const todayStr=new Date().toISOString().split('T')[0];
+  const pad=n=>String(n).padStart(2,'0');
+
+  const cal=document.getElementById('congesCalendar');
+  let html='';
+  ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].forEach(d=>html+=`<div class="conges-daylabel">${d}</div>`);
+
+  const totalCells=Math.ceil((startOffset+daysInMonth)/7)*7;
+  for(let i=0;i<totalCells;i++){
+    const dayNum=i-startOffset+1;
+    const inMonth=dayNum>=1 && dayNum<=daysInMonth;
+    let tagsHtml='', dateStr='', isToday=false;
+    if(inMonth){
+      dateStr=`${y}-${pad(m+1)}-${pad(dayNum)}`;
+      isToday=dateStr===todayStr;
+      const weekday=new Date(dateStr+'T12:00:00').getDay();
+
+      // Congés posés manuellement (les refusés ne s'affichent pas sur le calendrier), filtrés par site
+      const dayConges=conges.filter(c=>dateStr>=c.start && dateStr<=c.end && c.status!=='refusee' && visibleIds.has(c.empId));
+      const congeEmpIds=new Set(dayConges.map(c=>c.empId));
+      tagsHtml=dayConges.map(c=>{
+        const emp=employees.find(e=>e.id===c.empId);
+        if(!emp) return '';
+        const initials=emp.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+        const delBtn=adminUnlocked?`<button onclick="deleteConge(${c.id})" title="Supprimer">✕</button>`:'';
+        const pending=c.status==='attente';
+        const cls=pending?'conges-tag conges-tag-pending':'conges-tag';
+        const icon=pending?'🕐 ':'';
+        const titre=`${emp.name} — ${c.type}${pending?' (en attente de validation)':''}`;
+        return `<div class="${cls}" style="background:${emp.color}" title="${titre}"><span>${icon}${initials}</span>${delBtn}</div>`;
+      }).join('');
+
+      // Jours de repos habituels (absence par défaut, sauf s'il pointe exceptionnellement ce jour-là), filtrés par site
+      visibleEmployees.forEach(emp=>{
+        if(congeEmpIds.has(emp.id)) return; // déjà un congé (validé ou en attente) ce jour, pas de doublon
+        const repos=emp.repos||[];
+        if(!repos.includes(weekday)) return;
+        const aTravaille = pointages.some(p=>p.empId===emp.id && p.date===dateStr)
+          || (sessions[emp.id] && sessions[emp.id].date===dateStr);
+        if(aTravaille) return; // il a exceptionnellement pointé ce jour-là : pas d'absence affichée
+        const initials=emp.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+        tagsHtml+=`<div class="conges-tag conges-tag-auto" style="background:${emp.color}" title="${emp.name} — Jour de repos habituel"><span>${initials}</span></div>`;
+      });
+    }
+    html+=`<div class="conges-day ${inMonth?'':'outside'} ${isToday?'today':''}">
+      ${inMonth?`<div class="conges-daynum">${dayNum}</div>`:''}
+      ${tagsHtml}
+    </div>`;
+  }
+  cal.innerHTML=html;
+
+  renderCongesParSalarie();
+}
+
+// Vue "congés par salarié" : pour chaque salarié visible (selon le filtre de site),
+// affiche le total de jours validés par type de congé, puis le détail de ses demandes.
+function renderCongesParSalarie(){
+  const box=document.getElementById('congesParSalarie');
+  if(!box) return;
+  const visibleEmployees=congesSiteFilter==='all'?employees:employees.filter(e=>e.site===congesSiteFilter);
+
+  if(!visibleEmployees.length){
+    box.innerHTML='<p style="color:var(--gray);font-size:.82rem">Aucun salarié sur ce site</p>';
+    return;
+  }
+
+  box.innerHTML=visibleEmployees.map(emp=>{
+    const empConges=conges.filter(c=>c.empId===emp.id).sort((a,b)=>b.start.localeCompare(a.start));
+    const initials=emp.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+
+    const totals={};
+    empConges.filter(c=>c.status==='validee').forEach(c=>{
+      const jours=Math.round((new Date(c.end)-new Date(c.start))/86400000)+1;
+      totals[c.type]=(totals[c.type]||0)+jours;
+    });
+    const totalsHtml=Object.entries(totals).length
+      ? Object.entries(totals).map(([t,j])=>`<span class="badge b-green" style="margin-right:.35rem;margin-bottom:.3rem;display:inline-block">${t} : ${j}j</span>`).join('')
+      : '<span style="font-size:.75rem;color:var(--gray)">Aucun congé validé pour l\'instant</span>';
+
+    const listHtml = empConges.length ? empConges.slice(0,10).map(c=>{
+      const periode = c.start===c.end
+        ? new Date(c.start+'T12:00:00').toLocaleDateString('fr-FR')
+        : `${new Date(c.start+'T12:00:00').toLocaleDateString('fr-FR')} → ${new Date(c.end+'T12:00:00').toLocaleDateString('fr-FR')}`;
+      const statusCls = c.status==='validee'?'b-green':c.status==='refusee'?'b-red':'b-gold';
+      const statusLbl = c.status==='validee'?'Validé':c.status==='refusee'?'Refusé':'En attente';
+      return `<div class="week-row"><span class="week-label">${c.type} — ${periode}</span><span class="badge ${statusCls}">${statusLbl}</span></div>`;
+    }).join('') : '<p style="font-size:.78rem;color:var(--gray);margin-top:.4rem">Aucune demande enregistrée</p>';
+
+    return `<div class="recap-emp">
+      <div class="recap-head">
+        <div class="recap-name">
+          <div style="width:28px;height:28px;border-radius:50%;background:${emp.color};display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>
+          ${emp.name}
+          <span style="color:#94A3B8;font-size:.7rem;font-weight:400">${emp.site}</span>
+        </div>
+      </div>
+      <div class="recap-weeks">
+        <div style="margin-bottom:.5rem">${totalsHtml}</div>
+        ${listHtml}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════════
+function toast(msg,cls='t-info'){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.className=`toast ${cls} show`;
+  setTimeout(()=>el.classList.remove('show'),3500);
+}
+
+// ══════════════════════════════════════════
+//  DASHBOARD
+// ══════════════════════════════════════════
+function renderDash(){
+  const empF=document.getElementById('dashEmp').value;
+  const period=document.getElementById('dashPeriod').value;
+  const now=new Date();
+  const today=now.toISOString().split('T')[0];
+
+  // Populate dropdown once
+  const sel=document.getElementById('dashEmp');
+  if(sel.options.length===1){
+    employees.forEach(e=>{
+      const o=new Option(e.name,e.id);
+      sel.appendChild(o);
+    });
+  }
+
+  let data=pointages.filter(p=>{
+    if(empF!=='all' && String(p.empId)!==String(empF)) return false;
+    const d=new Date(p.date+'T12:00:00');
+    if(period==='today') return p.date===today;
+    if(period==='week'){
+      const ws=new Date(now); ws.setDate(now.getDate()-((now.getDay()+6)%7));
+      ws.setHours(0,0,0,0);
+      const we=new Date(ws); we.setDate(ws.getDate()+6); we.setHours(23,59,59);
+      return d>=ws && d<=we;
+    }
+    return d.getMonth()===now.getMonth() && d.getFullYear()===now.getFullYear();
+  });
+
+  const totalH=data.reduce((a,p)=>a+p.duree,0);
+  const empSet=new Set(data.map(p=>p.empId));
+  const moy=empSet.size>0?(totalH/empSet.size).toFixed(1):0;
+
+  document.getElementById('statsRow').innerHTML=`
+    <div class="stat-card"><div class="stat-label">Heures totales</div><div class="stat-val">${totalH.toFixed(1)}h</div><div class="stat-sub">${data.length} pointages</div></div>
+    <div class="stat-card"><div class="stat-label">Salariés actifs</div><div class="stat-val">${empSet.size}</div><div class="stat-sub">sur ${employees.length}</div></div>
+    <div class="stat-card"><div class="stat-label">Moyenne / salarié</div><div class="stat-val">${moy}h</div><div class="stat-sub">sur la période</div></div>
+    <div class="stat-card"><div class="stat-label">En service</div><div class="stat-val">${Object.keys(sessions).length}</div><div class="stat-sub">présents actuellement</div></div>`;
+
+  // Présences en cours (utile pour corriger un oubli de pointage de départ)
+  const activeBox=document.getElementById('activeSessions');
+  const activeIds=Object.keys(sessions);
+  if(activeIds.length){
+    activeBox.innerHTML=`<p style="font-size:.78rem;color:var(--gray);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.5rem">⏱ Présences en cours</p>`+
+      activeIds.map(id=>{
+        const emp=employees.find(e=>String(e.id)===String(id));
+        if(!emp) return '';
+        const sess=sessions[id];
+        const hasPause=emp.pause!==false;
+        let statutTxt=`arrivé(e) à ${sess.arrivee}`;
+        if(sess.state==='pause') statutTxt+= hasPause?` — en pause depuis ${sess.pauseDebut}`:` — en coupure depuis ${sess.pauseDebut}`;
+        else if(sess.state==='in2') statutTxt+= hasPause?` — pause ${sess.pauseDebut}–${sess.pauseFin}, de retour`:` — coupure ${sess.pauseDebut}–${sess.pauseFin}, de retour`;
+        return `<div class="sess-card">
+          <div class="sess-info"><b>${emp.name}</b> — ${statutTxt} (${new Date(sess.date+'T12:00:00').toLocaleDateString('fr-FR')})</div>
+          <button class="btn-edit" onclick="openSessionEditModal('${id}')">✏️ Corriger / clôturer</button>
+        </div>`;
+      }).join('');
+  } else {
+    activeBox.innerHTML='';
+  }
+
+  const tbody=document.getElementById('dashTbody');
+  tbody.innerHTML='';
+  [...data].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,60).forEach(p=>{
+    const emp=employees.find(e=>e.id===p.empId)||{name:'?',site:''};
+    const dd=new Date(p.date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
+    const cls=p.duree>10?'b-red':p.duree>=7?'b-green':'b-gold';
+    const lbl=p.duree>10?'Heure sup.':p.duree>=7?'Normal':'Court';
+    const pauseTxt=(p.pauseDebut&&p.pauseFin)?`${p.pauseDebut}–${p.pauseFin}`:`—`;
+    const pauseSub=p.dureePause?`<br><span style="font-size:.65rem;color:var(--gray)">(${Math.round(p.dureePause*60)} min déduites)</span>`:'';
+    tbody.innerHTML+=`<tr>
+      <td><strong>${emp.name}</strong><br><span style="font-size:.7rem;color:var(--gray)">${emp.site}</span></td>
+      <td>${dd}</td><td>${p.arrivee}</td>
+      <td>${pauseTxt}${pauseSub}</td>
+      <td>${p.depart||'—'}</td>
+      <td><strong>${p.duree.toFixed(1)}h</strong></td>
+      <td><span class="badge ${cls}">${lbl}</span></td>
+      <td><button class="btn-edit" onclick="openEditModal(${p.id})">✏️ Modifier</button></td></tr>`;
+  });
+  if(!data.length) tbody.innerHTML='<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--gray)">Aucun pointage sur cette période</td></tr>';
+}
+
+// ══════════════════════════════════════════
+//  RÉCAP MENSUEL
+// ══════════════════════════════════════════
+function initMonths(){
+  const sel=document.getElementById('recapMonth');
+  const now=new Date();
+  for(let i=0;i<6;i++){
+    const d=new Date(now.getFullYear(),now.getMonth()-i,1);
+    const val=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+    const lbl=d.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+    const o=new Option(lbl.charAt(0).toUpperCase()+lbl.slice(1),val);
+    if(i===0) o.selected=true;
+    sel.appendChild(o);
+  }
+}
+initMonths();
+
+function weekNum(dateStr){
+  const d=new Date(dateStr+'T12:00:00');
+  const jan1=new Date(d.getFullYear(),0,1);
+  return Math.ceil(((d-jan1)/86400000+jan1.getDay()+1)/7);
+}
+function weekLabel(dateStr){
+  const d=new Date(dateStr+'T12:00:00');
+  const mon=new Date(d); mon.setDate(d.getDate()-((d.getDay()+6)%7));
+  const fri=new Date(mon); fri.setDate(mon.getDate()+4);
+  const fmt=dt=>dt.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+  return `Sem. ${weekNum(dateStr)} — ${fmt(mon)} au ${fmt(fri)}`;
+}
+
+// Calcule le nombre de jours d'un congé (start→end) qui tombent dans le mois (y, m 1-based)
+function joursCongeDansMois(start,end,y,m){
+  const monthStart=new Date(y,m-1,1);
+  const monthEnd=new Date(y,m,0);
+  const cStart=new Date(start+'T00:00:00');
+  const cEnd=new Date(end+'T00:00:00');
+  const os=cStart>monthStart?cStart:monthStart;
+  const oe=cEnd<monthEnd?cEnd:monthEnd;
+  if(oe<os) return 0;
+  return Math.round((oe-os)/86400000)+1;
+}
+
+function renderRecap(){
+  const val=document.getElementById('recapMonth').value;
+  const [y,m]=val.split('-').map(Number);
+  const data=pointages.filter(p=>{
+    const d=new Date(p.date+'T12:00:00');
+    return d.getFullYear()===y && d.getMonth()===m-1;
+  });
+
+  // Congés validés qui chevauchent ce mois (au moins un jour dedans)
+  const congesThisMonth=conges.filter(c=>c.status==='validee' && joursCongeDansMois(c.start,c.end,y,m)>0);
+
+  const container=document.getElementById('recapContent');
+  const empsAvecActivite=employees.filter(emp=>
+    data.some(p=>p.empId===emp.id) || congesThisMonth.some(c=>c.empId===emp.id)
+  );
+
+  if(!empsAvecActivite.length){
+    container.innerHTML='<div style="text-align:center;padding:3rem;color:var(--gray)">Aucune activité ce mois-ci</div>';
+    return;
+  }
+
+  let html='';
+  empsAvecActivite.forEach(emp=>{
+    const eps=data.filter(p=>p.empId===emp.id);
+    const totalH=eps.reduce((a,p)=>a+p.duree,0);
+    const initials=emp.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+    const legal=settings.heures||35;
+    const diffH=totalH-legal*4.33;
+
+    const byWeek={};
+    eps.forEach(p=>{
+      const w=weekNum(p.date);
+      if(!byWeek[w]) byWeek[w]={h:0,days:0,label:weekLabel(p.date)};
+      byWeek[w].h+=p.duree; byWeek[w].days++;
+    });
+
+    // Totaux de congés/absences du salarié pour ce mois, par type
+    const congesTotals={};
+    congesThisMonth.filter(c=>c.empId===emp.id).forEach(c=>{
+      congesTotals[c.type]=(congesTotals[c.type]||0)+joursCongeDansMois(c.start,c.end,y,m);
+    });
+    const congesHtml=Object.entries(congesTotals).map(([t,j])=>
+      `<span class="badge b-gold" style="margin-right:.35rem;margin-bottom:.3rem;display:inline-block">${t} : ${j}j</span>`
+    ).join('');
+
+    html+=`<div class="recap-emp">
+      <div class="recap-head">
+        <div class="recap-name">
+          <div style="width:32px;height:32px;border-radius:50%;background:${emp.color};display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>
+          ${emp.name}
+          <span style="color:#94A3B8;font-size:.73rem;font-weight:400">${emp.site}</span>
+        </div>
+        <div class="recap-total">
+          ${totalH.toFixed(1)}h
+          <div style="font-size:.68rem;color:${diffH>=0?'#86EFAC':'#FCA5A5'};margin-top:.1rem">${diffH>=0?'+':''}${diffH.toFixed(1)}h vs base ${legal}h</div>
+        </div>
+      </div>
+      <div class="recap-weeks">
+        ${Object.entries(byWeek).sort((a,b)=>+a[0]-+b[0]).map(([,w])=>`
+          <div class="week-row">
+            <span class="week-label">${w.label}</span>
+            <span class="week-days">${w.days}j</span>
+            <span class="week-h ${w.h>legal?'wh-over':w.h>=legal*.9?'wh-ok':'wh-low'}">${w.h.toFixed(1)}h</span>
+          </div>`).join('')}
+        ${eps.length?`<div class="week-row" style="border-top:2px solid var(--navy);margin-top:.4rem;padding-top:.5rem;font-weight:700">
+          <span style="color:var(--navy)">TOTAL MENSUEL</span><span></span>
+          <span style="color:var(--navy);font-size:.95rem">${totalH.toFixed(1)}h</span>
+        </div>`:''}
+        ${congesHtml?`<div style="border-top:1px dashed var(--light);margin-top:.6rem;padding-top:.6rem">
+          <div style="font-size:.7rem;color:var(--gray);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.35rem">🏖 Congés & absences ce mois</div>
+          ${congesHtml}
+        </div>`:''}
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+}
+
+// ══════════════════════════════════════════
+//  EXPORT CSV
+// ══════════════════════════════════════════
+function exportCSV(){
+  let csv='\uFEFFSalarié;Site;Date;Arrivée;Début pause;Fin pause;Départ;Pause déduite (h);Durée nette (h)\n';
+  [...pointages].sort((a,b)=>a.date.localeCompare(b.date)).forEach(p=>{
+    const emp=employees.find(e=>e.id===p.empId);
+    if(!emp) return;
+    csv+=`${emp.name};${emp.site};${p.date};${p.arrivee};${p.pauseDebut||''};${p.pauseFin||''};${p.depart||''};${(p.dureePause||0).toFixed(2)};${p.duree.toFixed(2)}\n`;
+  });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(blob),download:`pointages_${new Date().toISOString().split('T')[0]}.csv`});
+  a.click();
+  toast('✅ Export CSV téléchargé','t-success');
+}
+
+// Export CSV du récap mensuel : un tableau par salarié, jour par jour (du 1er au dernier jour du mois),
+// avec ce qui a été pointé ce jour-là ou le motif d'absence (congé, repos habituel, absence non justifiée).
+function exportRecapCSV(){
+  const val=document.getElementById('recapMonth').value;
+  const [y,m]=val.split('-').map(Number); // m est 1-based (01-12)
+  const daysInMonth=new Date(y,m,0).getDate();
+  const pad=n=>String(n).padStart(2,'0');
+  const moisPrefix=`${y}-${pad(m)}`;
+
+  let csv='\uFEFF';
+
+  employees.forEach(emp=>{
+    const empPointages=pointages.filter(p=>p.empId===emp.id && p.date.startsWith(moisPrefix));
+    const empConges=conges.filter(c=>c.empId===emp.id && c.status==='validee' && joursCongeDansMois(c.start,c.end,y,m)>0);
+    if(!empPointages.length && !empConges.length) return; // salarié sans aucune activité ce mois-ci : on l'ignore
+
+    csv+=`${emp.name};${emp.site}\n`;
+    csv+='Date;Jour;Arrivée;Pause;Départ;Durée nette (h);Statut\n';
+
+    let totalH=0;
+    for(let d=1; d<=daysInMonth; d++){
+      const dateStr=`${y}-${pad(m)}-${pad(d)}`;
+      const dateObj=new Date(dateStr+'T12:00:00');
+      const jourLbl=dateObj.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
+      const weekday=dateObj.getDay();
+
+      const dayPointages=empPointages.filter(p=>p.date===dateStr);
+      const dayConge=empConges.find(c=>dateStr>=c.start && dateStr<=c.end);
+      const reposHabituel=(emp.repos||[]).includes(weekday);
+
+      let arrivee='', pause='', depart='', duree='', statut='';
+      if(dayPointages.length){
+        const dureeJour=dayPointages.reduce((a,p)=>a+p.duree,0);
+        arrivee=dayPointages.map(p=>p.arrivee).join(' / ');
+        depart=dayPointages.map(p=>p.depart||'').join(' / ');
+        pause=dayPointages.map(p=>(p.pauseDebut&&p.pauseFin)?`${p.pauseDebut}-${p.pauseFin}`:'').filter(Boolean).join(' / ');
+        duree=dureeJour.toFixed(2);
+        totalH+=dureeJour;
+        statut='Travaillé';
+      } else if(dayConge){
+        statut=dayConge.type;
+      } else if(reposHabituel){
+        statut='Repos habituel';
+      } else {
+        statut='Absence non justifiée';
+      }
+      csv+=`${dateStr};${jourLbl};${arrivee};${pause};${depart};${duree};${statut}\n`;
+    }
+    csv+=`;;;;TOTAL;${totalH.toFixed(2)};\n\n`;
+  });
+
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(blob),download:`recap_detaille_${y}-${pad(m)}.csv`});
+  a.click();
+  toast('✅ Récapitulatif détaillé exporté','t-success');
+}
+
+// ══════════════════════════════════════════
+//  EMAIL (envoi direct en 1 clic via EmailJS)
+// ══════════════════════════════════════════
+function sendEmail(){
+  const val=document.getElementById('recapMonth').value;
+  const [y,m]=val.split('-').map(Number);
+  const moisLabel=new Date(y,m-1,1).toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  const data=pointages.filter(p=>{const d=new Date(p.date+'T12:00:00');return d.getFullYear()===y&&d.getMonth()===m-1;});
+
+  let body=`Récapitulatif des heures — ${moisLabel}\nBoulangerie des Forges\n\n`;
+  employees.forEach(emp=>{
+    const eps=data.filter(p=>p.empId===emp.id);
+    if(!eps.length) return;
+    const total=eps.reduce((a,p)=>a+p.duree,0);
+    body+=`${emp.name} (${emp.site}) : ${total.toFixed(1)}h\n`;
+    const byWeek={};
+    eps.forEach(p=>{const w=weekNum(p.date);if(!byWeek[w])byWeek[w]=0;byWeek[w]+=p.duree;});
+    Object.entries(byWeek).sort((a,b)=>+a[0]-+b[0]).forEach(([w,h])=>body+=`  Semaine ${w} : ${h.toFixed(1)}h\n`);
+    body+='\n';
+  });
+
+  const subject=`Récapitulatif heures — ${moisLabel} — Boulangerie des Forges`;
+  const email=settings.email||'gerant@boulangerie-desforges.fr';
+
+  toast('📧 Envoi en cours...','t-info');
+
+  emailjs.send('service_i0lfwfg','template_s58kq34',{
+    to_email: email,
+    subject: subject,
+    message: body
+  }).then(()=>{
+    toast(`✅ Email envoyé à ${email}`,'t-success');
+  }).catch(err=>{
+    console.error('Erreur EmailJS :', err);
+    toast('❌ Échec de l\'envoi — vérifie la console','t-error');
+  });
+}
+
+// ══════════════════════════════════════════
+//  FEUILLES D'HEURES SIGNÉES
+//  Le salarié consulte sa feuille du mois, la signe (canvas) ; la feuille est
+//  archivée dans Firebase, le gérant reçoit un email détaillé et peut télécharger le PDF.
+// ══════════════════════════════════════════
+const MOIS_FR=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+function moisLabelOf(monthStr){ // 'YYYY-MM' → 'Juillet 2026'
+  const [y,m]=monthStr.split('-').map(Number);
+  const l=MOIS_FR[m-1];
+  return l.charAt(0).toUpperCase()+l.slice(1)+' '+y;
+}
+
+// Construit la feuille d'heures d'un salarié pour un mois donné (m 1-based)
+function buildFeuilleData(empId,y,m){
+  const pad=n=>String(n).padStart(2,'0');
+  const moisPrefix=`${y}-${pad(m)}`;
+  const daysInMonth=new Date(y,m,0).getDate();
+  const emp=employees.find(e=>String(e.id)===String(empId));
+  const empPointages=pointages.filter(p=>String(p.empId)===String(empId) && p.date.startsWith(moisPrefix));
+  const empConges=conges.filter(c=>String(c.empId)===String(empId) && c.status==='validee' && joursCongeDansMois(c.start,c.end,y,m)>0);
+  const rows=[]; let totalH=0;
+  for(let d=1; d<=daysInMonth; d++){
+    const dateStr=`${y}-${pad(m)}-${pad(d)}`;
+    const dateObj=new Date(dateStr+'T12:00:00');
+    const jourLbl=dateObj.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
+    const weekday=dateObj.getDay();
+    const dayPointages=empPointages.filter(p=>p.date===dateStr);
+    const dayConge=empConges.find(c=>dateStr>=c.start && dateStr<=c.end);
+    const reposHabituel=(emp && emp.repos||[]).includes(weekday);
+    let arrivee='',pause='',depart='',duree='',statut='';
+    if(dayPointages.length){
+      const dureeJour=dayPointages.reduce((a,p)=>a+p.duree,0);
+      arrivee=dayPointages.map(p=>p.arrivee).join(' / ');
+      depart=dayPointages.map(p=>p.depart||'').join(' / ');
+      pause=dayPointages.map(p=>(p.pauseDebut&&p.pauseFin)?`${p.pauseDebut}-${p.pauseFin}`:'').filter(Boolean).join(' / ');
+      duree=dureeJour.toFixed(2);
+      totalH+=dureeJour;
+      statut='Travaillé';
+    } else if(dayConge){ statut=dayConge.type; }
+    else if(reposHabituel){ statut='Repos habituel'; }
+    else { statut='—'; }
+    rows.push({dateStr,jourLbl,arrivee,pause,depart,duree,statut});
+  }
+  return {rows,totalH,emp};
+}
+
+// ── Page salarié : formulaire ──
+let feuilleCurrent=null; // {empId, month:'YYYY-MM'} après vérification du PIN
+
+function initFeuillePage(){
+  const selE=document.getElementById('fEmp');
+  const prev=selE.value;
+  selE.innerHTML='';
+  employees.forEach(e=>selE.appendChild(new Option(e.name,e.id)));
+  if(prev) selE.value=prev;
+
+  const selM=document.getElementById('fMonth');
+  if(!selM.options.length){
+    const now=new Date();
+    const pad=n=>String(n).padStart(2,'0');
+    for(let i=0;i<4;i++){
+      const d=new Date(now.getFullYear(),now.getMonth()-i,1);
+      const val=`${d.getFullYear()}-${pad(d.getMonth()+1)}`;
+      selM.appendChild(new Option(moisLabelOf(val),val));
+    }
+  }
+  document.getElementById('feuilleContent').innerHTML='';
+  feuilleCurrent=null;
+}
+
+function showFeuille(){
+  const empId=+document.getElementById('fEmp').value;
+  const pin=document.getElementById('fPin').value.trim();
+  const month=document.getElementById('fMonth').value;
+  const emp=employees.find(e=>e.id===empId);
+  if(!emp){ toast('❌ Sélectionnez un salarié','t-error'); return; }
+  if(pin!==emp.pin && !adminUnlocked){ toast('❌ Code PIN incorrect','t-error'); return; }
+  document.getElementById('fPin').value='';
+  feuilleCurrent={empId,month};
+  renderFeuille();
+}
+
+function renderFeuille(){
+  if(!feuilleCurrent) return;
+  const {empId,month}=feuilleCurrent;
+  const [y,m]=month.split('-').map(Number);
+  const {rows,totalH,emp}=buildFeuilleData(empId,y,m);
+  const box=document.getElementById('feuilleContent');
+  const existing=signatures.find(s=>String(s.empId)===String(empId) && s.month===month);
+
+  const tableHtml=`<div class="table-wrap" style="margin-bottom:1rem">
+    <table><thead><tr><th>Date</th><th>Arrivée</th><th>Pause</th><th>Départ</th><th>Durée nette</th><th>Statut</th></tr></thead>
+    <tbody>${rows.map(r=>`<tr>
+      <td>${r.jourLbl}</td><td>${r.arrivee||'—'}</td><td>${r.pause||'—'}</td><td>${r.depart||'—'}</td>
+      <td>${r.duree?`<strong>${(+r.duree).toFixed(1)}h</strong>`:'—'}</td>
+      <td>${r.statut==='Travaillé'?'<span class="badge b-green">Travaillé</span>':r.statut==='—'?'—':`<span class="badge b-gold">${r.statut}</span>`}</td>
+    </tr>`).join('')}
+    <tr style="background:var(--off)"><td colspan="4" style="font-weight:700;color:var(--navy)">TOTAL DU MOIS</td><td colspan="2" style="font-weight:700;color:var(--navy);font-size:.95rem">${totalH.toFixed(2)}h</td></tr>
+    </tbody></table>
+  </div>`;
+
+  let sigHtml='';
+  if(existing){
+    sigHtml=`<div class="sig-zone" style="background:#F0FDF4;border-color:var(--green)">
+      <span class="feuille-signed-badge">✅ Feuille signée le ${new Date(existing.signedAt).toLocaleDateString('fr-FR')} à ${new Date(existing.signedAt).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}</span>
+      <div style="margin-top:.7rem"><img src="${existing.signature}" class="sig-thumb" alt="Signature"/></div>
+      <p class="sig-hint" style="margin-bottom:0">Cette feuille a déjà été validée. En cas d'erreur, rapprochez-vous du gérant.</p>
+    </div>`;
+  } else {
+    sigHtml=`<div class="sig-zone">
+      <h3 style="font-size:.87rem;font-weight:700;color:var(--navy);margin-bottom:.3rem">✍ Signature du salarié</h3>
+      <p class="sig-hint">En signant, je certifie l'exactitude des heures ci-dessus pour le mois de ${moisLabelOf(month)}. Signez dans le cadre avec le doigt ou la souris :</p>
+      <canvas id="sigCanvas" class="sig-canvas" width="420" height="140"></canvas>
+      <div style="display:flex;gap:.5rem;margin-top:.7rem;flex-wrap:wrap">
+        <button class="btn-sm btn-navy" onclick="clearSignature()">🧹 Effacer</button>
+        <button class="btn-sm btn-green" onclick="signFeuille()">✍ Signer et valider ma feuille d'heures</button>
+      </div>
+    </div>`;
+  }
+
+  box.innerHTML=`<div class="admin-card">
+    <h3>📄 Feuille d'heures — ${emp?emp.name:'?'} — ${moisLabelOf(month)}</h3>
+    ${tableHtml}${sigHtml}
+  </div>`;
+
+  if(!existing) initSignaturePad();
+  box.scrollIntoView({behavior:'smooth'});
+}
+
+// ── Pad de signature (souris + tactile) ──
+let sigHasDrawn=false;
+function initSignaturePad(){
+  const canvas=document.getElementById('sigCanvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  ctx.lineWidth=2.2; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.strokeStyle='#0D1B2A';
+  sigHasDrawn=false;
+  let drawing=false;
+  const pos=e=>{
+    const r=canvas.getBoundingClientRect();
+    const sx=canvas.width/r.width, sy=canvas.height/r.height;
+    const src=e.touches?e.touches[0]:e;
+    return {x:(src.clientX-r.left)*sx, y:(src.clientY-r.top)*sy};
+  };
+  const start=e=>{ e.preventDefault(); drawing=true; const p=pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); };
+  const move=e=>{ if(!drawing) return; e.preventDefault(); const p=pos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); sigHasDrawn=true; };
+  const end=()=>{ drawing=false; };
+  canvas.addEventListener('mousedown',start); canvas.addEventListener('mousemove',move);
+  window.addEventListener('mouseup',end);
+  canvas.addEventListener('touchstart',start,{passive:false}); canvas.addEventListener('touchmove',move,{passive:false});
+  canvas.addEventListener('touchend',end);
+}
+function clearSignature(){
+  const canvas=document.getElementById('sigCanvas');
+  if(!canvas) return;
+  canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
+  sigHasDrawn=false;
+}
+
+function signFeuille(){
+  if(!feuilleCurrent) return;
+  if(!sigHasDrawn){ toast('❌ Merci de signer dans le cadre avant de valider','t-error'); return; }
+  const canvas=document.getElementById('sigCanvas');
+  const {empId,month}=feuilleCurrent;
+  if(signatures.some(s=>String(s.empId)===String(empId) && s.month===month)){
+    toast('❌ Cette feuille est déjà signée','t-error'); return;
+  }
+  const [y,m]=month.split('-').map(Number);
+  const {totalH,emp}=buildFeuilleData(empId,y,m);
+  const sig={
+    id:Date.now(),
+    empId, month,
+    signedAt:new Date().toISOString(),
+    signature:canvas.toDataURL('image/png'),
+    totalH:+totalH.toFixed(2)
+  };
+  signatures.push(sig);
+  saveSignatures();
+  toast(`✅ Feuille d'heures signée — ${moisLabelOf(month)} (${totalH.toFixed(1)}h)`,'t-success');
+  sendFeuilleEmailToManager(emp, month);
+  renderFeuille();
+}
+
+// Email automatique au gérant à chaque signature, avec le détail jour par jour du mois
+function sendFeuilleEmailToManager(emp, month){
+  if(!emp) return;
+  const [y,m]=month.split('-').map(Number);
+  const {rows,totalH}=buildFeuilleData(emp.id,y,m);
+  let body=`Feuille d'heures signée — ${moisLabelOf(month)}\nBoulangerie des Forges\n\n`;
+  body+=`Salarié : ${emp.name} (${emp.site})\n`;
+  body+=`Signée le : ${new Date().toLocaleDateString('fr-FR')} à ${new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}\n\n`;
+  body+=`Détail du mois :\n`;
+  rows.forEach(r=>{
+    if(r.statut==='Travaillé'){
+      body+=`${r.jourLbl} : ${r.arrivee} → ${r.depart}${r.pause?` (pause ${r.pause})`:''} = ${(+r.duree).toFixed(2)}h\n`;
+    } else if(r.statut!=='—'){
+      body+=`${r.jourLbl} : ${r.statut}\n`;
+    }
+  });
+  body+=`\nTOTAL DU MOIS : ${totalH.toFixed(2)}h\n\n`;
+  body+=`La feuille signée (avec la signature du salarié) est archivée dans l'onglet "🖊 Feuilles signées" de la pointeuse, où vous pouvez la télécharger en PDF.`;
+
+  const email=settings.email||'gerant@boulangerie-desforges.fr';
+  emailjs.send('service_i0lfwfg','template_s58kq34',{
+    to_email: email,
+    subject: `✍ Feuille d'heures signée — ${emp.name} — ${moisLabelOf(month)}`,
+    message: body
+  }).then(()=>{
+    console.log('Feuille d\'heures signée envoyée au gérant');
+  }).catch(err=>{
+    console.error('Erreur envoi email feuille signée :', err);
+    toast('⚠️ Feuille signée, mais l\'email au gérant n\'a pas pu partir','t-error');
+  });
+}
+
+// ── Côté gérant : archives des feuilles signées ──
+function renderFeuillesSignees(){
+  if(!adminUnlocked) return;
+  const list=document.getElementById('feuillesList');
+  const filterSel=document.getElementById('feuillesMonthFilter');
+
+  // Alimente le filtre des mois (uniquement les mois présents dans les signatures)
+  const months=[...new Set(signatures.map(s=>s.month))].sort().reverse();
+  const prev=filterSel.value;
+  filterSel.innerHTML='<option value="all">Tous les mois</option>';
+  months.forEach(mo=>filterSel.appendChild(new Option(moisLabelOf(mo),mo)));
+  if([...filterSel.options].some(o=>o.value===prev)) filterSel.value=prev;
+
+  const filter=filterSel.value;
+  const items=signatures
+    .filter(s=>filter==='all'||s.month===filter)
+    .sort((a,b)=>b.month.localeCompare(a.month) || (b.signedAt||'').localeCompare(a.signedAt||''));
+
+  if(!items.length){
+    list.innerHTML='<p style="color:var(--gray);font-size:.85rem">Aucune feuille d\'heures signée pour le moment.</p>';
+    return;
+  }
+
+  list.innerHTML=items.map(s=>{
+    const emp=employees.find(e=>String(e.id)===String(s.empId));
+    const name=emp?emp.name:'Salarié supprimé';
+    const site=emp?emp.site:'';
+    const initials=name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+    const color=emp?emp.color:'#6B7280';
+    const dt=new Date(s.signedAt);
+    return `<div class="pending-item" style="background:#F0FDF4;border-color:var(--green)">
+      <div class="pending-info" style="display:flex;align-items:center;gap:.7rem;flex-wrap:wrap">
+        <div style="width:28px;height:28px;border-radius:50%;background:${color};display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>
+        <div>
+          <b>${name}</b> <span style="color:var(--gray);font-size:.73rem">${site}</span><br>
+          <span style="font-size:.76rem">📅 ${moisLabelOf(s.month)} — <b>${(s.totalH||0).toFixed(1)}h</b> — signée le ${dt.toLocaleDateString('fr-FR')} à ${dt.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}</span>
+        </div>
+        <img src="${s.signature}" class="sig-thumb" alt="Signature"/>
+      </div>
+      <div class="pending-actions">
+        <button class="btn-sm btn-green" onclick="downloadFeuillePDF(${s.id})">⬇ Télécharger PDF</button>
+        <button class="btn-reject" onclick="deleteSignature(${s.id})">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function deleteSignature(id){
+  if(!adminUnlocked){ toast('🔒 Seul le gérant peut supprimer une feuille signée','t-error'); return; }
+  if(!confirm('Supprimer cette feuille signée ? Le salarié pourra la signer à nouveau.')) return;
+  signatures=signatures.filter(s=>s.id!==id);
+  saveSignatures();
+  renderFeuillesSignees();
+  toast('🗑 Feuille signée supprimée','t-info');
+}
+
+// Génère et télécharge le PDF complet : feuille jour par jour + total + signature
+function downloadFeuillePDF(sigId){
+  const s=signatures.find(x=>x.id===sigId);
+  if(!s) return;
+  const emp=employees.find(e=>String(e.id)===String(s.empId));
+  const name=emp?emp.name:'Salarié supprimé';
+  const site=emp?emp.site:'';
+  const [y,m]=s.month.split('-').map(Number);
+  const {rows,totalH}=buildFeuilleData(s.empId,y,m);
+
+  const { jsPDF } = window.jspdf;
+  const doc=new jsPDF();
+  const pageW=210;
+
+  // En-tête
+  doc.setFont('helvetica','bold'); doc.setFontSize(15);
+  doc.text('FEUILLE D\'HEURES',pageW/2,16,{align:'center'});
+  doc.setFontSize(10); doc.setFont('helvetica','normal');
+  doc.text('Boulangerie des Forges',pageW/2,22,{align:'center'});
+  doc.setFont('helvetica','bold'); doc.setFontSize(12);
+  doc.text(`${name}${site?' — '+site:''}`,pageW/2,31,{align:'center'});
+  doc.text(moisLabelOf(s.month),pageW/2,38,{align:'center'});
+  doc.setDrawColor(200,168,75); doc.setLineWidth(.6);
+  doc.line(14,42,196,42);
+
+  // Tableau
+  const cols=[{x:14,l:'Date'},{x:44,l:'Arrivée'},{x:72,l:'Pause'},{x:108,l:'Départ'},{x:136,l:'Durée'},{x:156,l:'Statut'}];
+  let yy=50;
+  const header=()=>{
+    doc.setFillColor(13,27,42);
+    doc.rect(14,yy-4.5,182,6.5,'F');
+    doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(8);
+    cols.forEach(c=>doc.text(c.l,c.x+1,yy));
+    doc.setTextColor(31,41,55); doc.setFont('helvetica','normal');
+    yy+=6;
+  };
+  header();
+  rows.forEach((r,i)=>{
+    if(yy>272){ doc.addPage(); yy=20; header(); }
+    if(i%2===0){ doc.setFillColor(245,243,238); doc.rect(14,yy-4,182,5.6,'F'); }
+    doc.setFontSize(7.5);
+    doc.text(r.jourLbl,cols[0].x+1,yy);
+    doc.text(r.arrivee||'-',cols[1].x+1,yy);
+    doc.text(r.pause||'-',cols[2].x+1,yy);
+    doc.text(r.depart||'-',cols[3].x+1,yy);
+    doc.text(r.duree?(+r.duree).toFixed(2)+' h':'-',cols[4].x+1,yy);
+    doc.text(r.statut,cols[5].x+1,yy);
+    yy+=5.6;
+  });
+
+  // Total
+  if(yy>262){ doc.addPage(); yy=20; }
+  yy+=3;
+  doc.setDrawColor(13,27,42); doc.setLineWidth(.5); doc.line(14,yy-4,196,yy-4);
+  doc.setFont('helvetica','bold'); doc.setFontSize(10);
+  doc.text('TOTAL DU MOIS :',14,yy+2);
+  doc.text(`${totalH.toFixed(2)} h`,196,yy+2,{align:'right'});
+  yy+=12;
+
+  // Bloc signature
+  if(yy>235){ doc.addPage(); yy=20; }
+  doc.setFontSize(9); doc.setFont('helvetica','normal');
+  const dt=new Date(s.signedAt);
+  doc.text(`Je soussigné(e) ${name} certifie l'exactitude des heures figurant sur la présente feuille.`,14,yy);
+  yy+=6;
+  doc.text(`Signé le ${dt.toLocaleDateString('fr-FR')} à ${dt.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`,14,yy);
+  yy+=4;
+  try{ doc.addImage(s.signature,'PNG',14,yy,60,20); }catch(e){ console.error('Erreur ajout signature au PDF :',e); }
+  doc.setDrawColor(160,160,160); doc.rect(13,yy-1,62,22);
+
+  const safeName=name.replace(/\s+/g,'_');
+  doc.save(`feuille_heures_${safeName}_${s.month}.pdf`);
+  toast('✅ PDF téléchargé','t-success');
+}
+
+// ══════════════════════════════════════════
+//  ALERTE AUTOMATIQUE HEURES SUPPLÉMENTAIRES
+// ══════════════════════════════════════════
+function checkOvertimeAndAlert(entry){
+  if(!entry || !entry.duree) return;
+  const seuil=settings.seuilHeureSup||10;
+  if(entry.duree<=seuil) return;
+
+  const emp=employees.find(e=>e.id===entry.empId);
+  if(!emp) return;
+  const dateLbl=new Date(entry.date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const subject=`⚠️ Heures supplémentaires — ${emp.name} — ${dateLbl}`;
+  const message=`${emp.name} (${emp.site}) a réalisé ${entry.duree.toFixed(1)}h de travail le ${dateLbl}.\n\nArrivée : ${entry.arrivee}\nDépart : ${entry.depart}\nSeuil configuré : ${seuil}h/jour\n\nCeci constitue potentiellement des heures supplémentaires à vérifier.`;
+  const email=settings.email||'gerant@boulangerie-desforges.fr';
+
+  emailjs.send('service_i0lfwfg','template_s58kq34',{
+    to_email: email,
+    subject: subject,
+    message: message
+  }).then(()=>{
+    console.log('Alerte heures supplémentaires envoyée à', email);
+  }).catch(err=>{
+    console.error('Erreur envoi alerte heures sup :', err);
+  });
+}
+
+// ══════════════════════════════════════════
+//  ADMIN
+// ══════════════════════════════════════════
+const DAY_LABELS=[{v:1,l:'Lun'},{v:2,l:'Mar'},{v:3,l:'Mer'},{v:4,l:'Jeu'},{v:5,l:'Ven'},{v:6,l:'Sam'},{v:0,l:'Dim'}];
+
+function renderDayChips(containerId, selected){
+  const box=document.getElementById(containerId);
+  box.innerHTML=DAY_LABELS.map(d=>
+    `<label class="day-chip ${selected.includes(d.v)?'checked':''}">
+      <input type="checkbox" value="${d.v}" onchange="this.closest('.day-chip').classList.toggle('checked',this.checked)" ${selected.includes(d.v)?'checked':''}/>${d.l}
+    </label>`
+  ).join('');
+}
+
+function getCheckedDays(containerId){
+  return [...document.querySelectorAll('#'+containerId+' input:checked')].map(i=>+i.value);
+}
+
+function renderAdmin(){
+  const list=document.getElementById('adminList');
+  list.innerHTML='';
+  if(!employees.length){list.innerHTML='<p style="color:var(--gray);font-size:.82rem">Aucun salarié</p>';}
+  employees.forEach(emp=>{
+    const ini=emp.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+    const reposLbl=(emp.repos&&emp.repos.length)?DAY_LABELS.filter(d=>emp.repos.includes(d.v)).map(d=>d.l).join(', '):'Aucun';
+    const emailLbl=emp.email?emp.email:'<span style="color:#C0710A">non renseigné</span>';
+    const pauseLbl=(emp.pause!==false)?'Pause 30 min min.':'Coupure (durée réelle)';
+    list.innerHTML+=`<div class="emp-list-item">
+      <div class="emp-info">
+        <div class="mini-av" style="background:${emp.color}">${ini}</div>
+        <div>
+          <div style="font-weight:700;font-size:.82rem">${emp.name}</div>
+          <div style="font-size:.7rem;color:var(--gray)">${emp.site} · PIN : •••• · Repos : ${reposLbl}</div>
+          <div style="font-size:.7rem;color:var(--gray)">✉ ${emailLbl} · Pause : ${pauseLbl}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:.35rem">
+        <button class="btn-edit" onclick="openEmpModal(${emp.id})">✏️</button>
+        <button class="btn-del" onclick="delEmp(${emp.id})">✕ Supprimer</button>
+      </div>
+    </div>`;
+  });
+  renderDayChips('nRepos',[]);
+  document.getElementById('sEmail').value=settings.email||'';
+  document.getElementById('sHours').value=settings.heures||35;
+  document.getElementById('sAdminPin').value=settings.adminPin||'0000';
+  document.getElementById('sSeuilSup').value=settings.seuilHeureSup||10;
+  document.getElementById('sPauseMin').value=(settings.pauseMin!=null)?settings.pauseMin:30;
+  document.getElementById('sHoraireMin').value=settings.horaireMin||'06:45';
+  document.getElementById('sHoraireMax').value=settings.horaireMax||'19:45';
+}
+
+function addEmp(){
+  const name=document.getElementById('nName').value.trim();
+  const pin=document.getElementById('nPin').value.trim();
+  const site=document.getElementById('nSite').value;
+  const email=document.getElementById('nEmail').value.trim();
+  const pause=document.getElementById('nPause').checked;
+  const repos=getCheckedDays('nRepos');
+  if(!name){toast('❌ Nom requis','t-error');return;}
+  if(!/^\d{4}$/.test(pin)){toast('❌ PIN : 4 chiffres exactement','t-error');return;}
+  if(employees.some(e=>e.pin===pin)){toast('❌ Ce PIN est déjà utilisé','t-error');return;}
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){toast('❌ Adresse email invalide','t-error');return;}
+  const emp={id:Date.now(),name,pin,site,email,pause,repos,color:COLORS[employees.length%COLORS.length]};
+  employees.push(emp);
+  saveEmployees();
+  document.getElementById('nName').value='';
+  document.getElementById('nPin').value='';
+  document.getElementById('nEmail').value='';
+  document.getElementById('nPause').checked=true;
+  renderAdmin(); renderEmpGrid();
+  toast(`✅ ${name} ajouté(e)`,'t-success');
+}
+
+function delEmp(id){
+  if(!confirm('Supprimer ce salarié ?')) return;
+  employees=employees.filter(e=>e.id!==id);
+  delete sessions[id];
+  saveEmployees();
+  saveSessions();
+  renderAdmin(); renderEmpGrid();
+  toast('Salarié supprimé','t-info');
+}
+
+// ── Édition d'un salarié (nom, PIN, site, pause, jours de repos) ──
+let empModalTarget=null;
+
+function openEmpModal(id){
+  const emp=employees.find(e=>e.id===id);
+  if(!emp) return;
+  empModalTarget=id;
+  document.getElementById('eName').value=emp.name;
+  document.getElementById('ePin').value=emp.pin;
+  document.getElementById('eSite').value=emp.site;
+  document.getElementById('eEmail').value=emp.email||'';
+  document.getElementById('ePause').checked=emp.pause!==false;
+  renderDayChips('eRepos', emp.repos||[]);
+  document.getElementById('empModalOverlay').style.display='flex';
+}
+
+function closeEmpModal(){
+  document.getElementById('empModalOverlay').style.display='none';
+  empModalTarget=null;
+}
+
+function saveEmpModal(){
+  const emp=employees.find(e=>e.id===empModalTarget);
+  if(!emp) return;
+  const name=document.getElementById('eName').value.trim();
+  const pin=document.getElementById('ePin').value.trim();
+  const site=document.getElementById('eSite').value;
+  const email=document.getElementById('eEmail').value.trim();
+  const pause=document.getElementById('ePause').checked;
+  const repos=getCheckedDays('eRepos');
+  if(!name){toast('❌ Nom requis','t-error');return;}
+  if(!/^\d{4}$/.test(pin)){toast('❌ PIN : 4 chiffres exactement','t-error');return;}
+  if(employees.some(e=>e.pin===pin && e.id!==emp.id)){toast('❌ Ce PIN est déjà utilisé','t-error');return;}
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){toast('❌ Adresse email invalide','t-error');return;}
+  emp.name=name; emp.pin=pin; emp.site=site; emp.email=email; emp.pause=pause; emp.repos=repos;
+  saveEmployees();
+  closeEmpModal();
+  renderAdmin(); renderEmpGrid();
+  toast('✅ Salarié modifié','t-success');
+}
+
+function saveSettings(){
+  settings.email=document.getElementById('sEmail').value.trim();
+  settings.heures=+document.getElementById('sHours').value||35;
+  settings.seuilHeureSup=+document.getElementById('sSeuilSup').value||10;
+  settings.pauseMin=+document.getElementById('sPauseMin').value;
+  if(isNaN(settings.pauseMin)) settings.pauseMin=30;
+  const hMin=document.getElementById('sHoraireMin').value;
+  const hMax=document.getElementById('sHoraireMax').value;
+  settings.horaireMin = hMin || '06:45';
+  settings.horaireMax = hMax || '19:45';
+  const newPin=document.getElementById('sAdminPin').value.trim();
+  if(/^\d{4}$/.test(newPin)) settings.adminPin=newPin;
+  else { toast('❌ Code gérant : 4 chiffres exactement','t-error'); return; }
+  saveSettingsData();
+  toast('✅ Paramètres enregistrés','t-success');
+}
+</script>
+</body>
+</html>

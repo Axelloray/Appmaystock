@@ -1,20 +1,22 @@
 <style>
   :root{
-    --flour:#FAF6EF;
-    --flour-deep:#F0E8D8;
-    --crust:#3A2A1D;
-    --crust-soft:#6B5643;
-    --wheat:#C89B3C;
-    --wheat-soft:#E4CD91;
-    --sage:#4A7C59;
+    --flour:#FAF9F6;
+    --flour-deep:#F0ECE3;
+    --crust:#2E2A24;
+    --crust-soft:#6B6558;
+    --wheat:#C4832F;
+    --wheat-soft:#EFDCB4;
+    --sage:#3E7D4A;
     --sage-soft:#DCEBE0;
     --sienna:#B5451B;
     --sienna-soft:#F3DFD5;
     --danger:#B3261E;
     --danger-soft:#F6DEDC;
-    --line:#E3D8C5;
+    --line:#E6E1D6;
+    --badge-bg:#6B4423;
+    --badge-text:#F4E3C8;
     --radius:14px;
-    --shadow:0 2px 10px rgba(58,42,29,0.08);
+    --shadow:0 2px 10px rgba(46,42,36,0.08);
   }
   *{box-sizing:border-box;}
   #sb-root{
@@ -174,9 +176,11 @@
   .sb-history-time{font-size:11px;color:var(--crust-soft);}
 
   .sb-review-row{
-    display:flex;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);
   }
   .sb-review-row select{flex:1.3;font-size:13px;padding:8px;border-radius:8px;border:1.5px solid var(--line);}
+  .sb-review-row .sb-review-price{width:88px;flex:0 0 auto;}
+  .sb-review-row input.sb-review-supplier{width:auto;flex:1 1 140px;text-align:left;}
   .sb-review-row input{width:64px;font-size:13px;padding:8px;border-radius:8px;border:1.5px solid var(--line);text-align:center;}
   .sb-review-row .rm{border:none;background:none;color:var(--sienna);font-size:18px;cursor:pointer;flex:0 0 auto;}
 
@@ -281,13 +285,21 @@
     border:none;background:var(--crust);color:var(--flour);border-radius:999px;
     padding:5px 11px;font-size:11.5px;font-weight:700;cursor:pointer;
   }
+
+  .sb-logo-badge{
+    display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+    width:26px;height:26px;border-radius:50%;background:var(--badge-bg);color:var(--badge-text);
+    font-family:Georgia,'Iowan Old Style','Palatino Linotype',serif;font-weight:700;font-size:14px;
+    vertical-align:middle;
+  }
+  .sb-logo-badge.lg{width:52px;height:52px;font-size:26px;}
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <div id="sb-root" class="sb-paywall-mode">
   <div class="sb-header">
     <div>
-      <h1>🌾 May'Stock</h1>
+      <h1><span class="sb-logo-badge">M</span> May'Stock</h1>
       <div class="sb-sub" id="sb-header-sub">Chargement…</div>
     </div>
     <div id="sb-account-zone"></div>
@@ -295,9 +307,9 @@
 
   <div class="sb-paywall-screen">
     <div class="sb-paywall-hero">
-      <div class="emoji">🌾</div>
+      <div class="sb-logo-badge lg" style="margin:0 auto">M</div>
       <h2>May'Stock</h2>
-      <p>Gérez le stock de votre boulangerie en temps réel — entrées, sorties, recettes, comptabilité, le tout en un coup d'œil.</p>
+      <p>Gérez le stock de votre commerce en temps réel — entrées, sorties, compositions, comptabilité, le tout en un coup d'œil.</p>
     </div>
 
     <div class="sb-plan-toggle">
@@ -313,7 +325,7 @@
     <ul class="sb-feature-list">
       <li><span class="check">✓</span> Stock en temps réel, entrées / sorties en un clic</li>
       <li><span class="check">✓</span> Scan de bons de livraison par IA</li>
-      <li><span class="check">✓</span> Fiches recettes avec sortie automatique des ingrédients</li>
+      <li><span class="check">✓</span> Compositions avec sortie automatique des composants</li>
       <li><span class="check">✓</span> Export Excel et envoi au comptable / gérant</li>
       <li><span class="check">✓</span> Liste de commande automatique par fournisseur</li>
       <li><span class="check">✓</span> Comptes illimités, données séparées par compte</li>
@@ -326,9 +338,9 @@
 
   <div class="sb-auth-screen">
     <div class="sb-auth-logo">
-      <div class="emoji">🌾</div>
+      <div class="sb-logo-badge lg" style="margin:0 auto">M</div>
       <h2>May'Stock</h2>
-      <p>Gestion de stock en temps réel</p>
+      <p>Gestion de stock en temps réel, pour tout commerce</p>
     </div>
     <div class="sb-auth-card">
       <div class="sb-auth-tabs">
@@ -338,7 +350,7 @@
       <div class="sb-auth-error" id="sb-auth-error"></div>
 
       <div id="sb-auth-login">
-        <div class="sb-field"><label>Identifiant</label><input type="text" id="sb-login-username" autocomplete="username" placeholder="ex : boulangerie-dupont"></div>
+        <div class="sb-field"><label>Identifiant</label><input type="text" id="sb-login-username" autocomplete="username" placeholder="ex : mon-commerce"></div>
         <div class="sb-field"><label>Mot de passe</label><input type="password" id="sb-login-password" autocomplete="current-password" placeholder="••••••••"></div>
         <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--crust-soft);margin:-2px 0 10px 2px;cursor:pointer">
           <input type="checkbox" id="sb-login-remember" checked style="width:16px;height:16px"> Rester connecté sur cet appareil
@@ -348,7 +360,7 @@
       </div>
 
       <div id="sb-auth-signup" class="sb-hide">
-        <div class="sb-field"><label>Identifiant (nom de la boulangerie ou du compte)</label><input type="text" id="sb-signup-username" autocomplete="username" placeholder="ex : boulangerie-dupont"></div>
+        <div class="sb-field"><label>Identifiant (nom du commerce ou du compte)</label><input type="text" id="sb-signup-username" autocomplete="username" placeholder="ex : mon-commerce"></div>
         <div class="sb-field"><label>Mot de passe</label><input type="password" id="sb-signup-password" autocomplete="new-password" placeholder="8 caractères minimum"></div>
         <div class="sb-field"><label>Confirmer le mot de passe</label><input type="password" id="sb-signup-password2" autocomplete="new-password" placeholder="••••••••"></div>
         <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--crust-soft);margin:-2px 0 14px 2px;cursor:pointer">
@@ -359,7 +371,7 @@
 
       <div id="sb-auth-recover" class="sb-hide">
         <div class="sb-modal-sub" style="margin-top:0">Réinitialisez votre mot de passe à l'aide du code de récupération reçu lors de la création du compte.</div>
-        <div class="sb-field"><label>Identifiant</label><input type="text" id="sb-recover-username" placeholder="ex : boulangerie-dupont"></div>
+        <div class="sb-field"><label>Identifiant</label><input type="text" id="sb-recover-username" placeholder="ex : mon-commerce"></div>
         <div class="sb-field"><label>Code de récupération</label><input type="text" id="sb-recover-code" placeholder="XXXX-XXXX-XXXX" style="text-transform:uppercase"></div>
         <div class="sb-field"><label>Nouveau mot de passe</label><input type="password" id="sb-recover-password" placeholder="8 caractères minimum"></div>
         <div class="sb-field"><label>Confirmer le nouveau mot de passe</label><input type="password" id="sb-recover-password2" placeholder="••••••••"></div>
@@ -376,7 +388,7 @@
     <button class="sb-tab" data-tab="sortie">📤 Sortie</button>
     <button class="sb-tab" data-tab="entree">📥 Entrée</button>
     <button class="sb-tab" data-tab="produits">🧺 Produits</button>
-    <button class="sb-tab" data-tab="recettes">🧾 Recettes</button>
+    <button class="sb-tab" data-tab="recettes">🧾 Compositions</button>
     <button class="sb-tab" data-tab="comptable">💶 Comptable</button>
     <button class="sb-tab" data-tab="historique">🕒 Historique</button>
   </div>
@@ -498,6 +510,26 @@
     const fi = UNIT_INFO[fromUnit], ti = UNIT_INFO[toUnit];
     if(!fi || !ti || fi.group !== ti.group || fi.group === 'quantite') return null;
     return qty * fi.factor / ti.factor;
+  }
+  // Convert a quantity between two units for a specific product, using its
+  // optional alt-unit equivalence (e.g. "1 paquet = 6 litre") when the two
+  // units aren't in the same measurable group.
+  function convertForProduct(value, fromUnit, toUnit, p){
+    if(fromUnit === toUnit) return value;
+    const std = convertQty(value, fromUnit, toUnit);
+    if(std !== null) return std;
+    const base = unitLabel(p);
+    if(p && p.altUnit && p.altUnitQty){
+      if(fromUnit === base && toUnit === p.altUnit) return value * p.altUnitQty;
+      if(fromUnit === p.altUnit && toUnit === base) return value / p.altUnitQty;
+    }
+    return null;
+  }
+  function ingredientUnitOptions(p){
+    const base = unitLabel(p);
+    const opts = [base];
+    if(p.altUnit && p.altUnitQty) opts.push(p.altUnit);
+    return opts;
   }
   function unitLabel(p){
     return (p.baseUnit || p.unit || 'unité');
@@ -643,7 +675,7 @@
   async function saveRecipes(){
     try{
       await window.storage.set(scopedKey('recipes'), JSON.stringify(RECIPES), true);
-    }catch(e){ toast('⚠️ Erreur de sauvegarde des recettes'); }
+    }catch(e){ toast('⚠️ Erreur de sauvegarde des compositions'); }
   }
 
   // ---------- Settings (recipient emails) ----------
@@ -910,7 +942,7 @@
         role: 'user',
         content: [
           { type:'image', source:{ type:'base64', media_type:'image/jpeg', data: base64 } },
-          { type:'text', text: 'Voici une photo d\'un bon de livraison (BL) pour une boulangerie. Extrait la liste des produits/articles livrés avec leur quantité et leur unité si visible. Réponds UNIQUEMENT avec un tableau JSON valide, sans aucun texte avant ou après, sans balises markdown, au format exact : [{"produit":"nom","quantite":number,"unite":"kg|unite|litre|sac|carton|..."}]. Si l\'unité n\'est pas claire, utilise "unité". Ignore les lignes de totaux, TVA, ou informations qui ne sont pas des produits.' }
+          { type:'text', text: 'Voici une photo d\'un bon de livraison (BL) pour un commerce. Extrait la liste des produits/articles livrés avec leur quantité, leur unité si visible, et leur prix unitaire HT si un prix est indiqué sur la ligne. Réponds UNIQUEMENT avec un tableau JSON valide, sans aucun texte avant ou après, sans balises markdown, au format exact : [{"produit":"nom","quantite":number,"unite":"kg|unite|litre|sac|carton|...","prix":number|null}]. Si l\'unité n\'est pas claire, utilise "unité". Le champ prix doit etre le prix unitaire hors taxes (HT) de la ligne, un nombre sans symbole monetaire (ex : 2.35), ou null si aucun prix n\'est visible ou lisible pour cette ligne. Ignore les lignes de totaux, TVA, ou informations qui ne sont pas des produits.' }
         ]
       }]
     };
@@ -926,9 +958,184 @@
     const firstBracket = clean.indexOf('[');
     const lastBracket = clean.lastIndexOf(']');
     if(firstBracket !== -1 && lastBracket !== -1) clean = clean.slice(firstBracket, lastBracket+1);
-    const parsed = JSON.parse(clean);
+    const parsed = safeParseJSONArray(clean).items;
     if(!Array.isArray(parsed)) throw new Error('format inattendu');
     return parsed;
+  }
+
+  async function extractCatalogueFromPhoto(base64DataUrl){
+    const base64 = base64DataUrl.split(',')[1];
+    const body = {
+      model: 'claude-sonnet-4-6',
+      max_tokens: 8192,
+      messages: [{
+        role: 'user',
+        content: [
+          { type:'image', source:{ type:'base64', media_type:'image/jpeg', data: base64 } },
+          { type:'text', text: 'Voici une photo d\'un cadencier ou catalogue listant les produits utilisés par un commerce, avec pour chacun le nom du produit, le fournisseur et le prix. Extrait chaque ligne du document. Réponds UNIQUEMENT avec un tableau JSON valide, sans aucun texte avant ou après, sans balises markdown, au format exact : [{"produit":"nom","prix":number|null,"fournisseur":"nom"|null,"unite":"kg|unite|litre|sac|carton|..."|null}]. Le prix doit être le prix unitaire hors taxes (HT), un nombre sans symbole monetaire (ex : 2.35), ou null si absent ou illisible. Le fournisseur est le nom de l\'entreprise ou de la personne qui fournit ce produit ; si un même fournisseur s\'applique à plusieurs lignes regroupées sous son nom (ex : un en-tête de section), applique-le à toutes les lignes concernées ; mets null si vraiment aucun fournisseur n\'est identifiable. Si l\'unité n\'est pas précisée, mets "unité". Ignore les titres de colonnes, totaux, et toute ligne qui n\'est pas un produit.' }
+        ]
+      }]
+    };
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    });
+    if(!resp.ok) throw new Error('Erreur API ' + resp.status);
+    const data = await resp.json();
+    const textBlocks = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    let clean = textBlocks.replace(/```json/gi,'').replace(/```/g,'').trim();
+    const firstBracket = clean.indexOf('[');
+    const lastBracket = clean.lastIndexOf(']');
+    if(firstBracket !== -1 && lastBracket !== -1) clean = clean.slice(firstBracket, lastBracket+1);
+    const result = safeParseJSONArray(clean);
+    if(!Array.isArray(result.items)) throw new Error('format inattendu');
+    return { items: result.items, truncated: result.truncated || data.stop_reason==='max_tokens' };
+  }
+
+  async function extractCatalogueFromPDF(base64DataUrl){
+    const base64 = base64DataUrl.split(',')[1];
+    const body = {
+      model: 'claude-sonnet-4-6',
+      max_tokens: 8192,
+      messages: [{
+        role: 'user',
+        content: [
+          { type:'document', source:{ type:'base64', media_type:'application/pdf', data: base64 } },
+          { type:'text', text: 'Voici un cadencier ou catalogue au format PDF listant les produits utilisés par un commerce, avec pour chacun le nom du produit, le fournisseur et le prix. Extrait chaque ligne du document. Réponds UNIQUEMENT avec un tableau JSON valide, sans aucun texte avant ou après, sans balises markdown, sans indentation ni espaces superflus (JSON compact), au format exact : [{"produit":"nom","prix":number|null,"fournisseur":"nom"|null,"unite":"kg|unite|litre|sac|carton|..."|null}]. Le prix doit être le prix unitaire hors taxes (HT), un nombre sans symbole monetaire (ex : 2.35), ou null si absent ou illisible. Le fournisseur est le nom de l\'entreprise ou de la personne qui fournit ce produit ; si un même fournisseur s\'applique à plusieurs lignes regroupées sous son nom (ex : un en-tête de section), applique-le à toutes les lignes concernées ; mets null si vraiment aucun fournisseur n\'est identifiable. Si l\'unité n\'est pas précisée, mets "unité". Ignore les titres de colonnes, totaux, et toute ligne qui n\'est pas un produit.' }
+        ]
+      }]
+    };
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    });
+    if(!resp.ok) throw new Error('Erreur API ' + resp.status);
+    const data = await resp.json();
+    const textBlocks = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    let clean = textBlocks.replace(/```json/gi,'').replace(/```/g,'').trim();
+    const firstBracket = clean.indexOf('[');
+    const lastBracket = clean.lastIndexOf(']');
+    if(firstBracket !== -1 && lastBracket !== -1) clean = clean.slice(firstBracket, lastBracket+1);
+    const result = safeParseJSONArray(clean);
+    if(!Array.isArray(result.items)) throw new Error('format inattendu');
+    return { items: result.items, truncated: result.truncated || data.stop_reason==='max_tokens' };
+  }
+
+  async function handleCataloguePhoto(e){
+    const file = e.target.files[0];
+    e.target.value = '';
+    if(!file) return;
+    const resultZone = document.getElementById('sb-catalog-result');
+    const isPDF = file.type === 'application/pdf' || /\.pdf$/i.test(file.name||'');
+    const isImage = file.type.startsWith('image/');
+    if(!isPDF && !isImage){
+      resultZone.innerHTML = '<div class="sb-empty"><div class="emoji">⚠️</div>Ce format de fichier n\'est pas pris en charge (Word/Excel notamment). Envoyez une photo ou un PDF de votre cadencier — si votre fichier est un Excel/Word, exportez-le en PDF ou imprimez-le puis prenez-le en photo.</div>';
+      return;
+    }
+    resultZone.innerHTML = loadingHTML('Lecture du cadencier…');
+    try{
+      let result;
+      if(isPDF){
+        const raw = await readFileAsDataURL(file);
+        result = await extractCatalogueFromPDF(raw);
+      } else {
+        const raw = await readFileAsDataURL(file);
+        const compressed = await compressImage(raw, 1400, 0.7);
+        result = await extractCatalogueFromPhoto(compressed);
+      }
+      const items = result.items;
+      if(!items || items.length===0){
+        resultZone.innerHTML = '<div class="sb-empty"><div class="emoji">🤔</div>Aucun produit détecté. Réessayez avec un fichier plus net et bien lisible, si besoin en plusieurs envois pour un long cadencier.</div>';
+        return;
+      }
+      showCatalogueReview(items, resultZone, result.truncated);
+    }catch(err){
+      resultZone.innerHTML = '<div class="sb-empty"><div class="emoji">⚠️</div>Impossible de lire ce document. Réessayez avec un fichier plus net.</div>';
+    }
+  }
+
+  function showCatalogueReview(items, container, truncated){
+    const rows = items.map(it=>{
+      const match = bestMatch(it.produit);
+      return {
+        name: it.produit || '',
+        matchId: match ? match.id : '__new__',
+        price: (it.prix!=null && it.prix!=='' && !isNaN(Number(it.prix))) ? Number(it.prix) : null,
+        supplierName: it.fournisseur ? String(it.fournisseur).trim() : '',
+        unit: guessUnitKey(it.unite)
+      };
+    });
+    let html = '<div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-top:12px;box-shadow:var(--shadow)">'+
+      '<h3 style="font-size:15px;margin-bottom:4px">Vérifiez avant d\'importer</h3>'+
+      '<div style="font-size:12.5px;color:var(--crust-soft);margin-bottom:8px">'+rows.length+' produit(s) détecté(s). Associez chaque ligne à un produit existant si besoin, ajustez le fournisseur et le prix. Les nouveaux produits seront créés avec un stock à 0.</div>'+
+      (truncated ? '<div style="background:var(--wheat-soft);color:#7a5518;font-size:12.5px;padding:9px 12px;border-radius:8px;margin-bottom:12px">⚠️ Document très long : la liste ci-dessous est probablement incomplète. Importez cette première partie, puis renvoyez le reste du cadencier (par exemple les pages suivantes) dans un second fichier pour compléter.</div>' : '')+
+      '<datalist id="sb-suppliers-datalist-cat">'+knownSuppliers().map(s=>'<option value="'+esc(s.name)+'">').join('')+'</datalist>'+
+      '<div id="sb-catalog-review-rows"></div>'+
+      '<button class="sb-btn primary block" id="sb-catalog-confirm" style="margin-top:12px">✅ Importer ces produits</button>'+
+      '</div>';
+    container.innerHTML = html;
+    const rowsZone = document.getElementById('sb-catalog-review-rows');
+
+    rows.forEach((row, idx)=>{
+      const div = document.createElement('div');
+      div.className = 'sb-review-row';
+      const options = ['<option value="__new__">➕ Nouveau : '+esc(row.name)+'</option>']
+        .concat(PRODUCTS.map(p=>'<option value="'+p.id+'"'+(p.id===row.matchId?' selected':'')+'>'+esc(p.name)+'</option>'));
+      div.innerHTML =
+        '<select data-idx="'+idx+'" class="sb-review-select" style="flex:1 1 100%">'+options.join('')+'</select>'+
+        '<input type="text" placeholder="Fournisseur" value="'+esc(row.supplierName||'')+'" class="sb-review-supplier" data-idx="'+idx+'" list="sb-suppliers-datalist-cat">'+
+        '<input type="number" min="0" step="0.01" value="'+(row.price!=null?row.price:'')+'" placeholder="Prix HT €" class="sb-review-price" data-idx="'+idx+'">'+
+        '<button class="rm" data-idx="'+idx+'" title="Retirer cette ligne">✕</button>';
+      rowsZone.appendChild(div);
+
+      div.querySelector('.sb-review-select').onchange = (ev)=>{ row.matchId = ev.target.value; };
+      div.querySelector('.sb-review-supplier').oninput = (ev)=>{ row.supplierName = ev.target.value; };
+      div.querySelector('.sb-review-price').oninput = (ev)=>{ row.price = ev.target.value==='' ? null : Number(ev.target.value); };
+      div.querySelector('.rm').onclick = ()=>{ row.removed = true; div.style.display='none'; };
+    });
+
+    document.getElementById('sb-catalog-confirm').onclick = async ()=>{
+      const active = rows.filter(r=>!r.removed && r.name.trim());
+      if(active.length===0){ toast('Aucune ligne à importer'); return; }
+      let created = 0, updated = 0;
+      active.forEach(r=>{
+        if(r.matchId === '__new__'){
+          const np = { id: uid(), name: r.name.trim(), baseUnit: r.unit, unit: r.unit, stock: 0, threshold: 5, photo:null, emoji:'🥖', priceHT: r.price, vatRate: 20, supplierName: r.supplierName||'', supplierEmail:'', createdAt: new Date().toISOString() };
+          PRODUCTS.push(np);
+          created++;
+        } else {
+          const p = PRODUCTS.find(pp=>pp.id===r.matchId);
+          if(p){
+            if(r.price!=null) p.priceHT = r.price;
+            if(r.supplierName) p.supplierName = r.supplierName;
+            updated++;
+          }
+        }
+      });
+      await saveProducts();
+      toast('✅ '+created+' produit(s) créé(s), '+updated+' mis à jour');
+      container.innerHTML = '';
+      renderProduits();
+    };
+  }
+
+  // Parse a JSON array from an LLM response, salvaging as many complete items
+  // as possible if the response was cut off (e.g. very long document).
+  function safeParseJSONArray(text){
+    try{ return { items: JSON.parse(text), truncated:false }; }catch(e){}
+    let idx = text.lastIndexOf('},');
+    while(idx > 0){
+      try{ return { items: JSON.parse(text.slice(0, idx+1) + ']'), truncated:true }; }catch(e){}
+      idx = text.lastIndexOf('},', idx-1);
+    }
+    idx = text.lastIndexOf('}');
+    while(idx > 0){
+      try{ return { items: JSON.parse(text.slice(0, idx+1) + ']'), truncated:true }; }catch(e){}
+      idx = text.lastIndexOf('}', idx-1);
+    }
+    throw new Error('JSON invalide');
   }
 
   function bestMatch(name){
@@ -1054,7 +1261,7 @@
       '<div class="sb-section-title"><h2>Sortie de stock</h2></div>'+
       '<div class="sb-auth-tabs" style="max-width:320px;margin-bottom:14px">'+
         '<button class="sb-auth-tab'+(sortieMode==='produit'?' active':'')+'" id="sb-sortie-mode-produit">Par produit</button>'+
-        '<button class="sb-auth-tab'+(sortieMode==='recette'?' active':'')+'" id="sb-sortie-mode-recette">Par recette</button>'+
+        '<button class="sb-auth-tab'+(sortieMode==='recette'?' active':'')+'" id="sb-sortie-mode-recette">Par composition</button>'+
       '</div>'+
       '<div id="sb-sortie-mode-zone"></div>';
 
@@ -1076,7 +1283,7 @@
   function renderSortieRecettes(){
     const zone = document.getElementById('sb-sortie-mode-zone');
     if(RECIPES.length===0){
-      zone.innerHTML = emptyStateHTML('🧾','Aucune recette','Créez une recette dans l\'onglet « Recettes » pour sortir plusieurs ingrédients en un clic.');
+      zone.innerHTML = emptyStateHTML('🧾','Aucune composition','Créez une composition dans l\'onglet « Compositions » pour sortir plusieurs composants en un clic.');
       return;
     }
     zone.innerHTML = '<div class="sb-grid" id="sb-sortie-recettes-grid"></div>';
@@ -1085,10 +1292,10 @@
       const card = document.createElement('div');
       card.className = 'sb-card';
       card.innerHTML =
-        '<div class="sb-card-photo">🧾</div>'+
+        '<div class="sb-card-photo">'+(r.photo?'<img src="'+r.photo+'" style="width:100%;height:100%;object-fit:cover">':'🧾')+'</div>'+
         '<div class="sb-card-body">'+
           '<div class="sb-card-name">'+esc(r.name)+'</div>'+
-          '<div class="sb-card-qty">'+(r.ingredients?r.ingredients.length:0)+' ingrédient(s)</div>'+
+          '<div class="sb-card-qty">'+(r.ingredients?r.ingredients.length:0)+' composant(s)</div>'+
         '</div>';
       card.onclick = ()=>runRecipeNow(r.id);
       grid.appendChild(card);
@@ -1096,7 +1303,7 @@
   }
   function runRecipeNow(recipeId){
     const r = RECIPES.find(rr=>rr.id===recipeId);
-    if(!r || !r.ingredients || r.ingredients.length===0){ toast('Cette recette n\'a pas d\'ingrédients'); return; }
+    if(!r || !r.ingredients || r.ingredients.length===0){ toast('Cette composition n\'a pas de composants'); return; }
     const missing = [];
     const lines = r.ingredients.map(ing=>{
       const p = PRODUCTS.find(pp=>pp.id===ing.productId);
@@ -1109,12 +1316,12 @@
       toast('⚠️ Stock insuffisant pour : '+missing.join(', '));
       return;
     }
-    showConfirmModal('Réaliser « '+r.name+' » ?', lines.join('\n')+'\n\nCes quantités vont être retirées du stock.', '📤 Sortir ces ingrédients', false, async ()=>{
+    showConfirmModal('Réaliser « '+r.name+' » ?', lines.join('\n')+'\n\nCes quantités vont être retirées du stock.', '📤 Sortir ces composants', false, async ()=>{
       r.ingredients.forEach(ing=>{
         const p = PRODUCTS.find(pp=>pp.id===ing.productId);
         if(!p) return;
         p.stock = Math.round((p.stock - ing.qty)*1000)/1000;
-        pushHistory({type:'sortie', productId:p.id, productName:p.name, qty:ing.qty, unit:unitLabel(p), note:'Recette : '+r.name});
+        pushHistory({type:'sortie', productId:p.id, productName:p.name, qty:ing.qty, unit:unitLabel(p), note:'Composition : '+r.name});
       });
       await saveProducts();
       toast('✅ « '+r.name+' » réalisée, stock mis à jour');
@@ -1158,15 +1365,46 @@
       '</div>'+
       '<input type="file" accept="image/*" capture="environment" id="sb-bl-input" style="display:none">'+
       '<div id="sb-bl-result"></div>'+
-      '<div class="sb-section-title" style="margin-top:26px"><h2>Ou entrée manuelle</h2></div>'+
-      '<div class="sb-grid" id="sb-entree-manual-grid"></div>';
+      '<div class="sb-section-title" style="margin-top:26px"><h2>Ou entrée manuelle</h2>'+
+        '<button class="sb-btn primary" id="sb-entree-add-product" style="padding:9px 14px;font-size:13px">➕ Nouveau produit</button>'+
+      '</div>'+
+      (PRODUCTS.length===0
+        ? emptyStateHTML('🧺','Pas encore de produits','Ajoutez des produits dans l\'onglet « Produits », ou avec le bouton ci-dessus, pour pouvoir enregistrer des entrées manuelles.')
+        : '<div class="sb-search"><input type="text" id="sb-entree-search" placeholder="🔎 Rechercher un produit…"></div>'+
+          '<div class="sb-grid" id="sb-entree-manual-grid"></div>');
 
     document.getElementById('sb-bl-cta').onclick = ()=>document.getElementById('sb-bl-input').click();
     document.getElementById('sb-bl-input').onchange = handleBLPhoto;
+    document.getElementById('sb-entree-add-product').onclick = ()=>openProductModal(null);
 
+    if(PRODUCTS.length>0){
+      const searchInput = document.getElementById('sb-entree-search');
+      searchInput.oninput = ()=>renderEntreeManualGrid(searchInput.value);
+      renderEntreeManualGrid('');
+    }
+  }
+  function productLastActivity(p){
+    let last = p.createdAt ? Date.parse(p.createdAt) : 0;
+    for(const h of HISTORY){
+      if(h.productId===p.id){
+        const t = Date.parse(h.date);
+        if(t>last) last = t;
+      }
+    }
+    return last || 0;
+  }
+  function renderEntreeManualGrid(query){
     const grid = document.getElementById('sb-entree-manual-grid');
+    const q = normalize(query);
+    const list = [...PRODUCTS]
+      .filter(p=>!q || normalize(p.name).includes(q))
+      .sort((a,b)=>productLastActivity(b) - productLastActivity(a) || a.name.localeCompare(b.name,'fr'));
     grid.innerHTML = '';
-    [...PRODUCTS].sort((a,b)=>a.name.localeCompare(b.name,'fr')).forEach(p=>{
+    if(list.length===0){
+      grid.innerHTML = '<div class="sb-empty" style="grid-column:1/-1"><div class="emoji">🔍</div>Aucun produit trouvé</div>';
+      return;
+    }
+    list.forEach(p=>{
       const card = document.createElement('div');
       card.className = 'sb-card';
       card.innerHTML =
@@ -1203,11 +1441,12 @@
   function showBLReview(items, container){
     const rows = items.map(it=>{
       const match = bestMatch(it.produit);
-      return { name: it.produit || '', qty: Number(it.quantite)||0, unit: guessUnitKey(it.unite), matchId: match ? match.id : '__new__' };
+      return { name: it.produit || '', qty: Number(it.quantite)||0, unit: guessUnitKey(it.unite), matchId: match ? match.id : '__new__', price: (it.prix!=null && it.prix!=='' && !isNaN(Number(it.prix))) ? Number(it.prix) : null };
     });
+    const problemPhotos = {};
     let html = '<div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-top:12px;box-shadow:var(--shadow)">'+
       '<h3 style="font-size:15px;margin-bottom:4px">Vérifiez avant de valider</h3>'+
-      '<div style="font-size:12.5px;color:var(--crust-soft);margin-bottom:8px">Associez chaque ligne à un produit existant, ajustez la quantité et l\'unité.</div>'+
+      '<div style="font-size:12.5px;color:var(--crust-soft);margin-bottom:8px">Associez chaque ligne à un produit existant, ajustez la quantité, l\'unité et le prix. Utilisez ⚠️ pour refuser un article et prévenir le fournisseur.</div>'+
       '<div id="sb-review-rows"></div>'+
       '<button class="sb-btn entree block" id="sb-bl-confirm" style="margin-top:12px">✅ Valider l\'entrée en stock</button>'+
       '</div>';
@@ -1219,30 +1458,98 @@
       div.className = 'sb-review-row';
       const options = ['<option value="__new__">➕ Nouveau : '+esc(row.name)+'</option>']
         .concat(PRODUCTS.map(p=>'<option value="'+p.id+'"'+(p.id===row.matchId?' selected':'')+'>'+esc(p.name)+'</option>'));
+      const matchedProduct = row.matchId!=='__new__' ? PRODUCTS.find(p=>p.id===row.matchId) : null;
+      const initialEmail = matchedProduct ? (matchedProduct.supplierEmail||'') : '';
       div.innerHTML =
-        '<select data-idx="'+idx+'" class="sb-review-select">'+options.join('')+'</select>'+
+        '<select data-idx="'+idx+'" class="sb-review-select" style="flex:1 1 100%">'+options.join('')+'</select>'+
         '<input type="number" min="0" step="any" value="'+row.qty+'" class="sb-review-qty" data-idx="'+idx+'">'+
         '<select class="sb-review-unit" data-idx="'+idx+'" style="width:76px">'+unitSelectOptions(row.unit)+'</select>'+
-        '<button class="rm" data-idx="'+idx+'" title="Retirer cette ligne">✕</button>';
+        '<input type="number" min="0" step="0.01" value="'+(row.price!=null?row.price:'')+'" placeholder="Prix HT €" class="sb-review-price" data-idx="'+idx+'">'+
+        '<button type="button" class="sb-btn ghost sb-review-flag" data-idx="'+idx+'" title="Signaler un problème / refuser cet article" style="padding:6px 9px;font-size:13px">⚠️</button>'+
+        '<button class="rm" data-idx="'+idx+'" title="Retirer cette ligne">✕</button>'+
+        '<div class="sb-review-problem" id="sb-review-problem-'+idx+'" style="flex:1 1 100%;display:none;background:var(--sienna-soft);border-radius:10px;padding:10px;margin-top:6px">'+
+          '<div style="font-size:12px;font-weight:700;color:var(--sienna);margin-bottom:6px">Signaler un problème sur « '+esc(row.name)+' »</div>'+
+          '<textarea id="sb-review-problem-reason-'+idx+'" placeholder="Expliquez le problème (ex : fraises abîmées, non conformes…)" style="width:100%;min-height:60px;padding:8px;border-radius:8px;border:1.5px solid var(--line);font-size:13px;font-family:inherit;margin-bottom:8px;background:#fff"></textarea>'+
+          '<div class="sb-photo-picker" style="margin-bottom:8px">'+
+            '<div class="sb-photo-preview" id="sb-review-problem-photo-preview-'+idx+'">📷</div>'+
+            '<button class="sb-btn ghost" type="button" id="sb-review-problem-photo-btn-'+idx+'" style="background:#fff">Ajouter une photo</button>'+
+            '<input type="file" accept="image/*" capture="environment" id="sb-review-problem-photo-input-'+idx+'" style="display:none">'+
+          '</div>'+
+          '<div class="sb-field" style="margin-bottom:8px"><label>Email du fournisseur</label><input type="email" id="sb-review-problem-email-'+idx+'" placeholder="fournisseur@exemple.com" value="'+esc(initialEmail)+'" style="background:#fff"></div>'+
+          '<button type="button" class="sb-btn danger block" id="sb-review-problem-send-'+idx+'">✉️ Refuser cet article et préparer l\'email au fournisseur</button>'+
+          '<div style="font-size:11px;color:var(--crust-soft);margin-top:6px">Ceci ouvre votre application de messagerie avec un brouillon prérempli — vérifiez-le puis envoyez-le vous-même. Pensez à joindre la photo manuellement si votre messagerie ne le fait pas automatiquement.</div>'+
+        '</div>';
       rowsZone.appendChild(div);
 
-      div.querySelector('.sb-review-select').onchange = (ev)=>{ row.matchId = ev.target.value; };
+      div.querySelector('.sb-review-select').onchange = (ev)=>{
+        row.matchId = ev.target.value;
+        const mp = row.matchId!=='__new__' ? PRODUCTS.find(p=>p.id===row.matchId) : null;
+        const emailInput = document.getElementById('sb-review-problem-email-'+idx);
+        if(emailInput && mp && mp.supplierEmail) emailInput.value = mp.supplierEmail;
+      };
       div.querySelector('.sb-review-qty').oninput = (ev)=>{ row.qty = Number(ev.target.value)||0; };
       div.querySelector('.sb-review-unit').onchange = (ev)=>{ row.unit = ev.target.value; };
+      div.querySelector('.sb-review-price').oninput = (ev)=>{ row.price = ev.target.value==='' ? null : Number(ev.target.value); };
       div.querySelector('.rm').onclick = ()=>{ row.removed = true; div.style.display='none'; };
+
+      div.querySelector('.sb-review-flag').onclick = ()=>{
+        const panel = document.getElementById('sb-review-problem-'+idx);
+        panel.style.display = panel.style.display==='none' ? 'block' : 'none';
+      };
+      document.getElementById('sb-review-problem-photo-btn-'+idx).onclick = ()=>document.getElementById('sb-review-problem-photo-input-'+idx).click();
+      document.getElementById('sb-review-problem-photo-input-'+idx).onchange = async (e)=>{
+        const file = e.target.files[0];
+        if(!file) return;
+        try{
+          const raw = await readFileAsDataURL(file);
+          const compressed = await compressImage(raw, 700, 0.6);
+          problemPhotos[idx] = compressed;
+          document.getElementById('sb-review-problem-photo-preview-'+idx).innerHTML = '<img src="'+compressed+'">';
+        }catch(err){ toast('⚠️ Impossible de charger la photo'); }
+      };
+      document.getElementById('sb-review-problem-send-'+idx).onclick = ()=>{
+        const reason = document.getElementById('sb-review-problem-reason-'+idx).value.trim();
+        const email = document.getElementById('sb-review-problem-email-'+idx).value.trim();
+        if(!reason){ toast('Décrivez le problème avant d\'envoyer'); return; }
+        if(!email){ toast('Indiquez l\'email du fournisseur'); return; }
+        const subject = 'Problème avec un article livré : ' + row.name;
+        const bodyLines = [
+          'Bonjour,',
+          '',
+          'Nous rencontrons un problème avec l\'article suivant reçu sur notre dernière livraison :',
+          '',
+          '- Produit : ' + row.name,
+          '- Quantité concernée : ' + row.qty + ' ' + row.unit,
+          '',
+          'Motif du refus : ' + reason,
+          ''
+        ];
+        if(problemPhotos[idx]) bodyLines.push('Une photo du problème a été prise depuis May\'Stock — merci de nous demander de vous la transmettre si elle ne s\'est pas jointe automatiquement.', '');
+        bodyLines.push('Merci de revenir vers nous à ce sujet.', '', 'Cordialement.');
+        const mailtoUrl = 'mailto:'+encodeURIComponent(email)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(bodyLines.join('\n'));
+        window.location.href = mailtoUrl;
+        row.refused = true;
+        row.refusalReason = reason;
+        pushHistory({ type:'probleme', productId: matchedProduct ? matchedProduct.id : null, productName: row.name, qty: row.qty, unit: row.unit, note: 'Article refusé à la livraison : '+reason });
+        div.style.opacity = '0.55';
+        div.querySelectorAll('input,select,textarea,button').forEach(elx=>{ if(elx.id!=='sb-review-problem-send-'+idx) elx.disabled = true; });
+        document.getElementById('sb-review-problem-send-'+idx).textContent = '🚫 Article refusé — email préparé';
+        toast('✉️ Email préparé dans votre messagerie, cet article ne sera pas ajouté au stock');
+      };
     });
 
     document.getElementById('sb-bl-confirm').onclick = async ()=>{
-      const active = rows.filter(r=>!r.removed && r.qty>0);
+      const active = rows.filter(r=>!r.removed && !r.refused && r.qty>0);
       if(active.length===0){ toast('Aucune ligne à valider'); return; }
       active.forEach(r=>{
         if(r.matchId === '__new__'){
-          const np = { id: uid(), name: r.name.trim() || 'Nouveau produit', baseUnit: r.unit, unit: r.unit, stock: r.qty, threshold: 5, photo:null, emoji:'🥖' };
+          const np = { id: uid(), name: r.name.trim() || 'Nouveau produit', baseUnit: r.unit, unit: r.unit, stock: r.qty, threshold: 5, photo:null, emoji:'🥖', priceHT: r.price, vatRate: 20, createdAt: new Date().toISOString() };
           PRODUCTS.push(np);
           pushHistory({type:'entree', productId:np.id, productName:np.name, qty:r.qty, unit:r.unit, note:'Nouveau produit via BL'});
         } else {
           const p = PRODUCTS.find(pp=>pp.id===r.matchId);
           if(p){
+            if(r.price!=null) p.priceHT = r.price;
             const base = unitLabel(p);
             const converted = convertQty(r.qty, r.unit, base);
             if(converted === null){
@@ -1257,7 +1564,8 @@
         }
       });
       await saveProducts();
-      toast('✅ Entrée enregistrée');
+      const refusedCount = rows.filter(r=>r.refused).length;
+      toast('✅ Entrée enregistrée'+(refusedCount>0?' ('+refusedCount+' article(s) refusé(s) exclu(s))':''));
       container.innerHTML = '';
       renderEntree();
       if(currentTab==='dashboard') renderDashboard();
@@ -1271,9 +1579,18 @@
       '<div class="sb-section-title"><h2>Produits</h2>'+
         '<button class="sb-btn primary" id="sb-add-product">➕ Ajouter</button>'+
       '</div>'+
+      '<div class="sb-camera-cta" id="sb-catalog-cta" style="margin-bottom:16px">'+
+        '<div class="emoji">📄</div>'+
+        '<div class="t1">Importer un cadencier ou catalogue</div>'+
+        '<div class="t2">Photo ou PDF de votre liste de produits (fournisseur, prix) : May\'Stock crée ou met à jour les fiches produits automatiquement</div>'+
+      '</div>'+
+      '<input type="file" accept="image/*,application/pdf,.pdf" id="sb-catalog-input" style="display:none">'+
+      '<div id="sb-catalog-result"></div>'+
       (PRODUCTS.length===0 ? emptyStateHTML('🧺','Aucun produit','Ajoutez votre premier produit avec sa photo pour commencer à suivre le stock.') : '<div class="sb-grid" id="sb-produits-grid"></div>');
 
     document.getElementById('sb-add-product').onclick = ()=>openProductModal(null);
+    document.getElementById('sb-catalog-cta').onclick = ()=>document.getElementById('sb-catalog-input').click();
+    document.getElementById('sb-catalog-input').onchange = handleCataloguePhoto;
     if(PRODUCTS.length>0){
       const grid = document.getElementById('sb-produits-grid');
       [...PRODUCTS].sort((a,b)=>a.name.localeCompare(b.name,'fr')).forEach(p=>{
@@ -1296,32 +1613,48 @@
 
   // ---------- Recettes ----------
   function recipeIngredientsSummary(r){
-    if(!r.ingredients || r.ingredients.length===0) return 'Aucun ingrédient';
+    if(!r.ingredients || r.ingredients.length===0) return 'Aucun composant';
     return r.ingredients.map(ing=>{
       const p = PRODUCTS.find(pp=>pp.id===ing.productId);
       return (p ? p.name : '?') + ' · ' + ing.qty + ' ' + (p ? unitLabel(p) : '');
     }).join(', ');
+  }
+  function recipeCostHT(r){
+    if(!r.ingredients || r.ingredients.length===0) return { total: 0, missing: false, hasAny: false };
+    let total = 0, missing = false, hasAny = false;
+    r.ingredients.forEach(ing=>{
+      const p = PRODUCTS.find(pp=>pp.id===ing.productId);
+      if(p && p.priceHT!=null){ total += p.priceHT * ing.qty; hasAny = true; }
+      else missing = true;
+    });
+    return { total: Math.round(total*100)/100, missing, hasAny };
   }
 
   function renderRecettes(){
     const el = document.getElementById('sb-panel-recettes');
     if(!dataReady){ el.innerHTML = loadingHTML(); return; }
     el.innerHTML =
-      '<div class="sb-section-title"><h2>Fiches recettes</h2>'+
-        '<button class="sb-btn primary" id="sb-add-recipe">➕ Nouvelle recette</button>'+
+      '<div class="sb-section-title"><h2>Fiches compositions</h2>'+
+        '<button class="sb-btn primary" id="sb-add-recipe">➕ Nouvelle composition</button>'+
       '</div>'+
-      '<div class="sb-modal-sub" style="margin:-6px 0 16px 0">Créez une recette pour sortir plusieurs ingrédients d\'un coup depuis l\'onglet Sortie (ex : 1 baguette = farine + eau + levure + sel).</div>'+
-      (RECIPES.length===0 ? emptyStateHTML('🧾','Aucune recette','Créez votre première recette pour accélérer vos sorties de stock.') : '<div id="sb-recettes-list"></div>');
+      '<div class="sb-modal-sub" style="margin:-6px 0 16px 0">Créez une composition pour sortir plusieurs composants d\'un coup depuis l\'onglet Sortie (ex : 1 kit = composant A + composant B + composant C).</div>'+
+      (RECIPES.length===0 ? emptyStateHTML('🧾','Aucune composition','Créez votre première composition pour accélérer vos sorties de stock.') : '<div id="sb-recettes-list"></div>');
 
     document.getElementById('sb-add-recipe').onclick = ()=>openRecipeModal(null);
     if(RECIPES.length>0){
       const list = document.getElementById('sb-recettes-list');
       [...RECIPES].sort((a,b)=>a.name.localeCompare(b.name,'fr')).forEach(r=>{
         const card = document.createElement('div');
-        card.style.cssText = 'background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:10px;box-shadow:var(--shadow);cursor:pointer';
+        card.style.cssText = 'background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:10px;box-shadow:var(--shadow);cursor:pointer;display:flex;gap:12px;align-items:center';
+        const cost = recipeCostHT(r);
+        const costLine = cost.hasAny ? '<div style="font-size:12px;color:var(--sage);margin-top:3px">Coût de revient : '+cost.total.toFixed(2)+' € HT'+(cost.missing?' (partiel, prix manquant sur certains composants)':'')+'</div>' : '';
         card.innerHTML =
-          '<div style="font-weight:700;font-size:14.5px;margin-bottom:4px">🧾 '+esc(r.name)+'</div>'+
-          '<div style="font-size:12.5px;color:var(--crust-soft)">'+esc(recipeIngredientsSummary(r))+'</div>';
+          '<div style="width:44px;height:44px;border-radius:10px;background:var(--flour-deep);flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden">'+(r.photo?'<img src="'+r.photo+'" style="width:100%;height:100%;object-fit:cover">':'🧾')+'</div>'+
+          '<div style="min-width:0">'+
+            '<div style="font-weight:700;font-size:14.5px;margin-bottom:2px">'+esc(r.name)+'</div>'+
+            '<div style="font-size:12.5px;color:var(--crust-soft)">'+esc(recipeIngredientsSummary(r))+'</div>'+
+            costLine+
+          '</div>';
         card.onclick = ()=>openRecipeModal(r.id);
         list.appendChild(card);
       });
@@ -1331,81 +1664,161 @@
   function openRecipeModal(recipeId){
     const existing = recipeId ? RECIPES.find(r=>r.id===recipeId) : null;
     let ingredients = existing ? JSON.parse(JSON.stringify(existing.ingredients||[])) : [];
+    let pendingPhoto = existing ? existing.photo : null;
     const zone = document.getElementById('sb-modal-zone');
     zone.innerHTML =
       '<div class="sb-overlay" id="sb-recipe-overlay">'+
         '<div class="sb-modal">'+
           '<button class="sb-modal-close" id="sb-recipe-close">✕</button>'+
-          '<h3>'+(existing?'Modifier la recette':'Nouvelle recette')+'</h3>'+
-          '<div class="sb-modal-sub">Indiquez la quantité de chaque ingrédient nécessaire pour réaliser cette recette. Un clic sur la recette dans l\'onglet Sortie retirera directement ces quantités du stock.</div>'+
-          '<div class="sb-field"><label>Nom de la recette</label><input type="text" id="sb-recipe-name" value="'+(existing?esc(existing.name):'')+'" placeholder="Ex : Baguette tradition"></div>'+
-          '<div class="sb-field"><label>Ingrédients</label><div id="sb-recipe-ing-rows"></div>'+
-            '<button type="button" class="sb-btn ghost" id="sb-recipe-add-ing" style="margin-top:8px;font-size:12.5px;padding:8px 14px">➕ Ajouter un ingrédient</button>'+
+          '<h3>'+(existing?'Modifier la composition':'Nouvelle composition')+'</h3>'+
+          '<div class="sb-modal-sub">Indiquez la quantité de chaque composant nécessaire pour réaliser cette composition. Un clic sur la composition dans l\'onglet Sortie retirera directement ces quantités du stock.</div>'+
+          '<div class="sb-photo-picker">'+
+            '<div class="sb-photo-preview" id="sb-recipe-photo-preview">'+(pendingPhoto?'<img src="'+pendingPhoto+'">':'🧾')+'</div>'+
+            '<button class="sb-btn ghost" id="sb-recipe-photo-btn" type="button">'+(pendingPhoto?'Changer la photo':'Ajouter une photo')+'</button>'+
+            '<input type="file" accept="image/*" capture="environment" id="sb-recipe-photo-input" style="display:none">'+
           '</div>'+
-          '<button class="sb-btn primary block" id="sb-recipe-save">'+(existing?'💾 Enregistrer':'➕ Créer la recette')+'</button>'+
-          (existing ? '<button class="sb-btn danger block" id="sb-recipe-delete" style="margin-top:10px">🗑️ Supprimer cette recette</button>' : '')+
+          '<div class="sb-field"><label>Nom de la composition</label><input type="text" id="sb-recipe-name" value="'+(existing?esc(existing.name):'')+'" placeholder="Ex : Kit cadeau"></div>'+
+          '<div class="sb-field"><label>Composants</label><div id="sb-recipe-ing-rows"></div>'+
+            '<div id="sb-recipe-cost" style="font-size:12.5px;margin:2px 0 10px 0"></div>'+
+            '<input type="text" id="sb-recipe-ing-search" placeholder="🔎 Rechercher un produit à ajouter…" style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:14px;background:#fff;margin-bottom:8px">'+
+            '<div id="sb-recipe-ing-suggestions"></div>'+
+          '</div>'+
+          '<button class="sb-btn primary block" id="sb-recipe-save">'+(existing?'💾 Enregistrer':'➕ Créer la composition')+'</button>'+
+          (existing ? '<button class="sb-btn danger block" id="sb-recipe-delete" style="margin-top:10px">🗑️ Supprimer cette composition</button>' : '')+
         '</div>'+
       '</div>';
+
+    document.getElementById('sb-recipe-photo-btn').onclick = ()=>document.getElementById('sb-recipe-photo-input').click();
+    document.getElementById('sb-recipe-photo-input').onchange = async (e)=>{
+      const file = e.target.files[0];
+      if(!file) return;
+      try{
+        const raw = await readFileAsDataURL(file);
+        const compressed = await compressImage(raw, 220, 0.6);
+        pendingPhoto = compressed;
+        document.getElementById('sb-recipe-photo-preview').innerHTML = '<img src="'+compressed+'">';
+        document.getElementById('sb-recipe-photo-btn').textContent = 'Changer la photo';
+      }catch(err){ toast('⚠️ Impossible de charger la photo'); }
+    };
+
+    function renderCost(){
+      const el = document.getElementById('sb-recipe-cost');
+      if(!el) return;
+      const cost = recipeCostHT({ ingredients });
+      if(cost.hasAny){
+        el.style.color = 'var(--sage)';
+        el.innerHTML = 'Coût de revient estimé : <strong>'+cost.total.toFixed(2)+' € HT</strong>'+(cost.missing?' <span style="color:var(--crust-soft);font-weight:400">(incomplet — prix manquant sur certains composants)</span>':'');
+      } else {
+        el.style.color = 'var(--crust-soft)';
+        el.textContent = ingredients.length>0 ? 'Aucun prix renseigné sur ces composants — renseignez-les dans l\'onglet Produits pour voir le coût.' : '';
+      }
+    }
 
     function renderIngRows(){
       const zoneRows = document.getElementById('sb-recipe-ing-rows');
       if(PRODUCTS.length===0){
         zoneRows.innerHTML = '<div style="font-size:12.5px;color:var(--crust-soft)">Ajoutez d\'abord des produits dans l\'onglet Produits.</div>';
+        renderCost();
         return;
       }
       zoneRows.innerHTML = '';
       ingredients.forEach((ing, idx)=>{
+        const p = PRODUCTS.find(pp=>pp.id===ing.productId);
+        const base = p ? unitLabel(p) : '';
+        if(!ing.enteredUnit) ing.enteredUnit = base;
+        const displayQty = p ? convertForProduct(ing.qty, base, ing.enteredUnit, p) : ing.qty;
+        const unitOpts = p ? ingredientUnitOptions(p) : [];
         const row = document.createElement('div');
         row.className = 'sb-review-row';
-        const options = PRODUCTS.map(p=>'<option value="'+p.id+'"'+(p.id===ing.productId?' selected':'')+'>'+esc(p.name)+'</option>').join('');
         row.innerHTML =
-          '<select class="sb-ing-product" data-idx="'+idx+'">'+options+'</select>'+
-          '<input type="number" min="0" step="any" value="'+ing.qty+'" class="sb-ing-qty" data-idx="'+idx+'">'+
-          '<span style="font-size:11.5px;color:var(--crust-soft);width:44px" id="sb-ing-unit-'+idx+'"></span>'+
+          '<div style="flex:1 1 100%;display:flex;align-items:center;gap:8px;font-size:13.5px">'+
+            '<div style="width:26px;height:26px;border-radius:6px;overflow:hidden;flex:0 0 auto;background:var(--flour-deep);display:flex;align-items:center;justify-content:center;font-size:13px">'+(p?productPhoto(p):'?')+'</div>'+
+            '<span style="flex:1;min-width:0">'+(p?esc(p.name):'Produit introuvable')+'</span>'+
+          '</div>'+
+          '<input type="number" min="0" step="any" value="'+(Math.round((displayQty||0)*1000)/1000)+'" class="sb-ing-qty" data-idx="'+idx+'">'+
+          (unitOpts.length>1
+            ? '<select class="sb-ing-unit" data-idx="'+idx+'" style="width:76px">'+unitOpts.map(u=>'<option value="'+esc(u)+'"'+(u===ing.enteredUnit?' selected':'')+'>'+esc(u)+'</option>').join('')+'</select>'
+            : '<span style="font-size:11.5px;color:var(--crust-soft);width:44px">'+esc(base)+'</span>')+
           '<button type="button" class="rm" data-idx="'+idx+'">✕</button>';
         zoneRows.appendChild(row);
-        const unitSpan = row.querySelector('#sb-ing-unit-'+idx);
-        function refreshUnit(){
-          const p = PRODUCTS.find(pp=>pp.id===ingredients[idx].productId);
-          unitSpan.textContent = p ? unitLabel(p) : '';
+        row.querySelector('.sb-ing-qty').oninput = (ev)=>{
+          const entered = Number(ev.target.value)||0;
+          const converted = p ? convertForProduct(entered, ing.enteredUnit, base, p) : entered;
+          ingredients[idx].qty = converted!=null ? converted : entered;
+          renderCost();
+        };
+        const unitSel = row.querySelector('.sb-ing-unit');
+        if(unitSel){
+          unitSel.onchange = (ev)=>{
+            ingredients[idx].enteredUnit = ev.target.value;
+            renderIngRows();
+          };
         }
-        refreshUnit();
-        row.querySelector('.sb-ing-product').onchange = (ev)=>{ ingredients[idx].productId = ev.target.value; refreshUnit(); };
-        row.querySelector('.sb-ing-qty').oninput = (ev)=>{ ingredients[idx].qty = Number(ev.target.value)||0; };
-        row.querySelector('.rm').onclick = ()=>{ ingredients.splice(idx,1); renderIngRows(); };
+        row.querySelector('.rm').onclick = ()=>{ ingredients.splice(idx,1); renderIngRows(); renderSuggestions(document.getElementById('sb-recipe-ing-search').value); };
+      });
+      renderCost();
+    }
+
+    function renderSuggestions(query){
+      const box = document.getElementById('sb-recipe-ing-suggestions');
+      if(!box) return;
+      const q = normalize(query||'');
+      const addedIds = new Set(ingredients.map(i=>i.productId));
+      const list = PRODUCTS.filter(p=>!addedIds.has(p.id) && (!q || normalize(p.name).includes(q)))
+        .sort((a,b)=>a.name.localeCompare(b.name,'fr'))
+        .slice(0,6);
+      if(PRODUCTS.length===0){ box.innerHTML = ''; return; }
+      if(list.length===0){
+        box.innerHTML = '<div style="font-size:12px;color:var(--crust-soft);padding:6px 2px">Aucun produit trouvé</div>';
+        return;
+      }
+      box.innerHTML = list.map(p=>
+        '<div class="sb-ing-suggest" data-id="'+p.id+'" style="display:flex;align-items:center;gap:8px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;cursor:pointer;background:#fff">'+
+          '<div style="width:30px;height:30px;border-radius:6px;overflow:hidden;flex:0 0 auto;background:var(--flour-deep);display:flex;align-items:center;justify-content:center;font-size:14px">'+productPhoto(p)+'</div>'+
+          '<div style="font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(p.name)+'</div>'+
+          '<div style="font-size:11px;color:var(--crust-soft);flex:0 0 auto">'+(priceLine(p)||'')+'</div>'+
+        '</div>'
+      ).join('');
+      box.querySelectorAll('.sb-ing-suggest').forEach(elx=>{
+        elx.onclick = ()=>{
+          const p = PRODUCTS.find(pp=>pp.id===elx.dataset.id);
+          ingredients.push({ productId: elx.dataset.id, qty: 1, enteredUnit: p ? unitLabel(p) : undefined });
+          const search = document.getElementById('sb-recipe-ing-search');
+          search.value = '';
+          renderIngRows();
+          renderSuggestions('');
+          search.focus();
+        };
       });
     }
-    renderIngRows();
 
-    document.getElementById('sb-recipe-add-ing').onclick = ()=>{
-      if(PRODUCTS.length===0){ toast('Ajoutez d\'abord des produits'); return; }
-      ingredients.push({ productId: PRODUCTS[0].id, qty: 1 });
-      renderIngRows();
-    };
+    renderIngRows();
+    renderSuggestions('');
+    document.getElementById('sb-recipe-ing-search').oninput = (ev)=>renderSuggestions(ev.target.value);
     document.getElementById('sb-recipe-close').onclick = closeModal;
     document.getElementById('sb-recipe-overlay').onclick = (e)=>{ if(e.target.id==='sb-recipe-overlay') closeModal(); };
 
     document.getElementById('sb-recipe-save').onclick = async ()=>{
       const name = document.getElementById('sb-recipe-name').value.trim();
-      if(!name){ toast('Indiquez un nom de recette'); return; }
+      if(!name){ toast('Indiquez un nom de composition'); return; }
       const cleaned = ingredients.filter(i=>i.productId && i.qty>0);
-      if(cleaned.length===0){ toast('Ajoutez au moins un ingrédient'); return; }
+      if(cleaned.length===0){ toast('Ajoutez au moins un composant'); return; }
       if(existing){
-        existing.name = name; existing.ingredients = cleaned;
+        existing.name = name; existing.ingredients = cleaned; existing.photo = pendingPhoto;
       } else {
-        RECIPES.push({ id: uid(), name, ingredients: cleaned });
+        RECIPES.push({ id: uid(), name, ingredients: cleaned, photo: pendingPhoto });
       }
       await saveRecipes();
       closeModal();
-      toast(existing ? '✅ Recette mise à jour' : '✅ Recette créée');
+      toast(existing ? '✅ Composition mise à jour' : '✅ Composition créée');
       renderRecettes();
     };
     if(existing){
       document.getElementById('sb-recipe-delete').onclick = ()=>{
-        showConfirmModal('Supprimer cette recette ?', 'Supprimer la recette « '+existing.name+' » ? Cette action est définitive.', '🗑️ Supprimer', true, async ()=>{
+        showConfirmModal('Supprimer cette composition ?', 'Supprimer la composition « '+existing.name+' » ? Cette action est définitive.', '🗑️ Supprimer', true, async ()=>{
           RECIPES = RECIPES.filter(r=>r.id!==existing.id);
           await saveRecipes();
-          toast('🗑️ Recette supprimée');
+          toast('🗑️ Composition supprimée');
           renderRecettes();
         });
       };
@@ -1668,6 +2081,14 @@
     }
     let html = '<div class="sb-section-title"><h2>Historique</h2></div><div>';
     HISTORY.slice(0,150).forEach(h=>{
+      if(h.type==='probleme'){
+        html += '<div class="sb-history-item">'+
+          '<div class="sb-history-icon out" style="background:var(--danger-soft);color:var(--danger)">⚠️</div>'+
+          '<div class="sb-history-text"><strong>'+esc(h.productName)+'</strong> — article refusé ('+esc(h.qty)+' '+esc(h.unit||'')+')'+
+            '<div class="sb-history-time">'+fmtDate(h.date)+(h.note?' · '+esc(h.note):'')+'</div></div>'+
+          '</div>';
+        return;
+      }
       const isIn = h.type==='entree';
       html += '<div class="sb-history-item">'+
         '<div class="sb-history-icon '+(isIn?'in':'out')+'">'+(isIn?'📥':'📤')+'</div>'+
@@ -1815,6 +2236,15 @@
               return '<option value="'+u+'"'+(sel?' selected':'')+'>'+u+'</option>';
             }).join('')+
           '</select></div>'+
+          '<div class="sb-field">'+
+            '<label>Unité alternative pour les compositions (optionnel)</label>'+
+            '<div style="font-size:11.5px;color:var(--crust-soft);margin-bottom:6px">Utile si ce produit est suivi dans une unité (ex : paquet, kg) mais utilisé dans une autre dans vos compositions (ex : litre, pièce). Ex : 1 paquet = 6 litre(s), ou 1 kg = 7 pièce(s).</div>'+
+            '<div style="display:flex;align-items:center;gap:6px;font-size:13px">'+
+              '<span style="color:var(--crust-soft);white-space:nowrap">1 <span id="sb-prod-altbase-label">'+esc(existing?unitLabel(existing):groupOfUnits(currentGroup)[0])+'</span> =</span>'+
+              '<input type="number" min="0" step="any" id="sb-prod-alt-qty" placeholder="ex : 6" value="'+(existing && existing.altUnitQty!=null ? existing.altUnitQty : '')+'" style="width:80px">'+
+              '<input type="text" id="sb-prod-alt-unit" placeholder="ex : litre, pièce" value="'+(existing?esc(existing.altUnit||''):'')+'" style="flex:1">'+
+            '</div>'+
+          '</div>'+
           '<div class="sb-field"><label>Stock actuel</label><input type="number" step="any" id="sb-prod-stock" value="'+(existing?existing.stock:0)+'"></div>'+
           '<div class="sb-field"><label>Seuil d\'alerte (stock bas)</label><input type="number" step="any" id="sb-prod-threshold" value="'+(existing?existing.threshold:5)+'"></div>'+
           '<div class="sb-field">'+
@@ -1846,7 +2276,14 @@
     function refreshUnitSelect(){
       const sel = document.getElementById('sb-prod-unit');
       sel.innerHTML = groupOfUnits(currentGroup).map(u=>'<option value="'+u+'">'+u+'</option>').join('');
+      refreshAltLabel();
     }
+    function refreshAltLabel(){
+      const lbl = document.getElementById('sb-prod-altbase-label');
+      const sel = document.getElementById('sb-prod-unit');
+      if(lbl && sel) lbl.textContent = sel.value;
+    }
+    document.getElementById('sb-prod-unit').onchange = refreshAltLabel;
     document.querySelectorAll('.sb-prod-group-btn').forEach(btn=>{
       btn.onclick = ()=>{
         currentGroup = btn.dataset.group;
@@ -1909,12 +2346,17 @@
       const priceHT = priceHTraw === '' ? null : Number(priceHTraw);
       const priceTTC = priceTTCraw === '' ? null : Number(priceTTCraw);
       const vatRate = Number(document.getElementById('sb-prod-vat').value) || 0;
+      const altQtyRaw = document.getElementById('sb-prod-alt-qty').value;
+      const altUnitRaw = document.getElementById('sb-prod-alt-unit').value.trim();
+      const altUnitQty = (altQtyRaw!=='' && altUnitRaw) ? Number(altQtyRaw) : null;
+      const altUnit = (altQtyRaw!=='' && altUnitRaw) ? altUnitRaw : null;
       if(existing){
         existing.name = name; existing.baseUnit = unit; existing.unit = unit; existing.stock = stock; existing.threshold = threshold; existing.photo = pendingPhoto;
         existing.priceHT = priceHT; existing.priceTTC = priceTTC; existing.vatRate = vatRate;
         existing.supplierName = supplierName; existing.supplierEmail = supplierEmail;
+        existing.altUnit = altUnit; existing.altUnitQty = altUnitQty;
       } else {
-        PRODUCTS.push({ id: uid(), name, baseUnit: unit, unit, stock, threshold, photo: pendingPhoto, emoji:'🥖', priceHT, priceTTC, vatRate, supplierName, supplierEmail });
+        PRODUCTS.push({ id: uid(), name, baseUnit: unit, unit, stock, threshold, photo: pendingPhoto, emoji:'🥖', priceHT, priceTTC, vatRate, supplierName, supplierEmail, createdAt: new Date().toISOString(), altUnit, altUnitQty });
       }
       await saveProducts();
       closeModal();

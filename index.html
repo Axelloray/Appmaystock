@@ -388,8 +388,10 @@
     <button class="sb-tab" data-tab="sortie">📤 Sortie</button>
     <button class="sb-tab" data-tab="entree">📥 Entrée</button>
     <button class="sb-tab" data-tab="produits">🧺 Produits</button>
-    <button class="sb-tab" data-tab="recettes">🧾 Compositions</button>
-    <button class="sb-tab" data-tab="comptable">💶 Comptable</button>
+    <button class="sb-tab" data-tab="recettes">🧾 Recette</button>
+    <button class="sb-tab" data-tab="comptable">💶 Gestion</button>
+    <button class="sb-tab" data-tab="commande">📝 Commande</button>
+    <button class="sb-tab" data-tab="fournisseurs">🚚 Fournisseurs</button>
     <button class="sb-tab" data-tab="historique">🕒 Historique</button>
   </div>
 
@@ -399,6 +401,8 @@
   <div class="sb-panel sb-hide" id="sb-panel-produits"></div>
   <div class="sb-panel sb-hide" id="sb-panel-recettes"></div>
   <div class="sb-panel sb-hide" id="sb-panel-comptable"></div>
+  <div class="sb-panel sb-hide" id="sb-panel-commande"></div>
+  <div class="sb-panel sb-hide" id="sb-panel-fournisseurs"></div>
   <div class="sb-panel sb-hide" id="sb-panel-historique"></div>
 
   <div id="sb-modal-zone"></div>
@@ -470,6 +474,7 @@
   let HISTORY = [];
   let currentTab = 'dashboard';
   let dataReady = false;
+  let gestionUnlocked = false;
 
   // ---------- Utils ----------
   function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
@@ -547,6 +552,9 @@
   }
   function knownSuppliers(){
     const map = new Map();
+    SUPPLIERS.forEach(s=>{
+      if(s.name && s.name.trim()) map.set(normalize(s.name), { name: s.name.trim(), email: s.email||'' });
+    });
     PRODUCTS.forEach(p=>{
       if(p.supplierName && p.supplierName.trim()){
         const key = normalize(p.supplierName);
@@ -616,7 +624,7 @@
     return PRODUCTS.filter(p=>status(p)!=='ok').length;
   }
   function updateTabBadge(){
-    const tabBtn = document.querySelector('.sb-tab[data-tab="comptable"]');
+    const tabBtn = document.querySelector('.sb-tab[data-tab="commande"]');
     if(!tabBtn) return;
     const n = orderAlertCount();
     let badge = tabBtn.querySelector('.sb-tab-badge');
@@ -678,10 +686,24 @@
     }catch(e){ toast('⚠️ Erreur de sauvegarde des compositions'); }
   }
 
+  // ---------- Fournisseurs ----------
+  let SUPPLIERS = [];
+  async function loadSuppliers(){
+    try{
+      const s = await window.storage.get(scopedKey('suppliers'), true);
+      SUPPLIERS = s && s.value ? JSON.parse(s.value) : [];
+    }catch(e){ SUPPLIERS = []; }
+  }
+  async function saveSuppliers(){
+    try{
+      await window.storage.set(scopedKey('suppliers'), JSON.stringify(SUPPLIERS), true);
+    }catch(e){ toast('⚠️ Erreur de sauvegarde des fournisseurs'); }
+  }
+
   // ---------- Settings (recipient emails) ----------
-  let SETTINGS = { gerantEmail:'', comptableEmail:'', fournisseurEmail:'' };
+  let SETTINGS = { gerantEmail:'', comptableEmail:'', fournisseurEmail:'', gerantCodeHash:null, gerantCodeSalt:null };
   async function loadSettings(){
-    SETTINGS = { gerantEmail:'', comptableEmail:'', fournisseurEmail:'' };
+    SETTINGS = { gerantEmail:'', comptableEmail:'', fournisseurEmail:'', gerantCodeHash:null, gerantCodeSalt:null };
     try{
       const s = await window.storage.get(scopedKey('settings'), true);
       if(s && s.value) SETTINGS = Object.assign(SETTINGS, JSON.parse(s.value));
@@ -806,6 +828,8 @@
     await loadAll();
     await loadSettings();
     await loadRecipes();
+    await loadSuppliers();
+    await loadMiscOrder();
     document.getElementById('sb-header-sub').textContent = 'Suivi de stock en temps réel · ' + PRODUCTS.length + ' produit(s)';
     switchTab('dashboard');
   }
@@ -828,7 +852,7 @@
   async function logout(){
     await forgetSession();
     CURRENT_USER = null;
-    PRODUCTS = []; HISTORY = []; RECIPES = []; ORDER_LIST = null; SETTINGS = { gerantEmail:'', comptableEmail:'', fournisseurEmail:'' }; dataReady = false;
+    PRODUCTS = []; HISTORY = []; RECIPES = []; SUPPLIERS = []; ORDER_LIST = null; MISC_ORDER = []; SETTINGS = { gerantEmail:'', comptableEmail:'', fournisseurEmail:'', gerantCodeHash:null, gerantCodeSalt:null }; dataReady = false; gestionUnlocked = false;
     document.getElementById('sb-account-zone').innerHTML = '';
     document.getElementById('sb-header-sub').textContent = 'Chargement…';
     root.classList.add('sb-auth-mode');
@@ -1158,6 +1182,7 @@
 
   // ---------- Rendering ----------
   function switchTab(tab){
+    if(tab!=='comptable') gestionUnlocked = false;
     currentTab = tab;
     document.querySelectorAll('.sb-tab').forEach(b=>{
       b.classList.toggle('active', b.dataset.tab === tab);
@@ -1175,6 +1200,8 @@
     else if(tab==='produits') renderProduits();
     else if(tab==='recettes') renderRecettes();
     else if(tab==='comptable') renderComptable();
+    else if(tab==='commande') renderCommande();
+    else if(tab==='fournisseurs') renderFournisseurs();
     else if(tab==='historique') renderHistorique();
   }
 
@@ -1229,7 +1256,7 @@
       '<div class="sb-grid" id="sb-dash-grid"></div>';
 
     if(document.getElementById('sb-dash-goto-order')){
-      document.getElementById('sb-dash-goto-order').onclick = ()=>switchTab('comptable');
+      document.getElementById('sb-dash-goto-order').onclick = ()=>switchTab('commande');
     }
 
     const grid = document.getElementById('sb-dash-grid');
@@ -1825,6 +1852,106 @@
     }
   }
 
+  // ---------- Fournisseurs : fiches et gestion ----------
+  function productsCountForSupplier(name){
+    return PRODUCTS.filter(p=>p.supplierName && normalize(p.supplierName)===normalize(name)).length;
+  }
+  function renderFournisseurs(){
+    const el = document.getElementById('sb-panel-fournisseurs');
+    if(!dataReady){ el.innerHTML = loadingHTML(); return; }
+    el.innerHTML =
+      '<div class="sb-section-title"><h2>Fournisseurs</h2>'+
+        '<button class="sb-btn primary" id="sb-add-supplier">➕ Nouveau fournisseur</button>'+
+      '</div>'+
+      '<div class="sb-modal-sub" style="margin:-6px 0 16px 0">Retrouvez ici les coordonnées de vos fournisseurs (email, téléphone, adresse). Elles sont proposées automatiquement lors de la création d\'un produit ou de l\'envoi d\'une commande.</div>'+
+      (SUPPLIERS.length===0 ? emptyStateHTML('🚚','Aucun fournisseur','Ajoutez votre premier fournisseur pour retrouver ses coordonnées partout dans l\'application.') : '<div id="sb-suppliers-list"></div>');
+
+    document.getElementById('sb-add-supplier').onclick = ()=>openSupplierModal(null);
+    if(SUPPLIERS.length>0){
+      const list = document.getElementById('sb-suppliers-list');
+      [...SUPPLIERS].sort((a,b)=>a.name.localeCompare(b.name,'fr')).forEach(s=>{
+        const nb = productsCountForSupplier(s.name);
+        const card = document.createElement('div');
+        card.style.cssText = 'background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:10px;box-shadow:var(--shadow);cursor:pointer;display:flex;gap:12px;align-items:center';
+        card.innerHTML =
+          '<div style="width:44px;height:44px;border-radius:10px;background:var(--flour-deep);flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:20px">🚚</div>'+
+          '<div style="min-width:0;flex:1">'+
+            '<div style="font-weight:700;font-size:14.5px;margin-bottom:2px">'+esc(s.name)+'</div>'+
+            '<div style="font-size:12.5px;color:var(--crust-soft)">'+
+              (s.email?esc(s.email):'<span style="font-style:italic">Pas d\'email</span>')+
+              (s.phone?' · '+esc(s.phone):'')+
+            '</div>'+
+            (nb>0?'<div style="font-size:11.5px;color:var(--crust-soft);margin-top:3px">'+nb+' produit(s) associé(s)</div>':'')+
+          '</div>';
+        card.onclick = ()=>openSupplierModal(s.id);
+        list.appendChild(card);
+      });
+    }
+  }
+
+  function openSupplierModal(supplierId){
+    const existing = supplierId ? SUPPLIERS.find(s=>s.id===supplierId) : null;
+    const zone = document.getElementById('sb-modal-zone');
+    zone.innerHTML =
+      '<div class="sb-overlay" id="sb-supplier-overlay">'+
+        '<div class="sb-modal">'+
+          '<button class="sb-modal-close" id="sb-supplier-close">✕</button>'+
+          '<h3>'+(existing?'Modifier le fournisseur':'Nouveau fournisseur')+'</h3>'+
+          '<div class="sb-modal-sub">Ces informations sont proposées automatiquement lors de la création d\'un produit et lors de l\'envoi d\'une commande.</div>'+
+          '<div class="sb-field"><label>Nom du fournisseur</label><input type="text" id="sb-supplier-name" value="'+(existing?esc(existing.name):'')+'" placeholder="Ex : Moulin Dupont"></div>'+
+          '<div class="sb-field"><label>Email</label><input type="email" id="sb-supplier-email" value="'+(existing?esc(existing.email||''):'')+'" placeholder="contact@fournisseur.fr"></div>'+
+          '<div class="sb-field"><label>Téléphone</label><input type="tel" id="sb-supplier-phone" value="'+(existing?esc(existing.phone||''):'')+'" placeholder="06 12 34 56 78"></div>'+
+          '<div class="sb-field"><label>Adresse</label><input type="text" id="sb-supplier-address" value="'+(existing?esc(existing.address||''):'')+'" placeholder="Adresse postale (optionnel)"></div>'+
+          '<div class="sb-field"><label>Notes</label><input type="text" id="sb-supplier-notes" value="'+(existing?esc(existing.notes||''):'')+'" placeholder="Jours de livraison, conditions, etc. (optionnel)"></div>'+
+          (existing && productsCountForSupplier(existing.name)>0 ? '<div style="font-size:11.5px;color:var(--crust-soft);margin:-6px 0 14px 0">'+productsCountForSupplier(existing.name)+' produit(s) lié(s) à ce fournisseur.</div>' : '')+
+          '<button class="sb-btn primary block" id="sb-supplier-save">'+(existing?'💾 Enregistrer':'➕ Créer le fournisseur')+'</button>'+
+          (existing ? '<button class="sb-btn danger block" id="sb-supplier-delete" style="margin-top:10px">🗑️ Supprimer ce fournisseur</button>' : '')+
+        '</div>'+
+      '</div>';
+
+    document.getElementById('sb-supplier-close').onclick = closeModal;
+    document.getElementById('sb-supplier-overlay').onclick = (e)=>{ if(e.target.id==='sb-supplier-overlay') closeModal(); };
+
+    document.getElementById('sb-supplier-save').onclick = async ()=>{
+      const name = document.getElementById('sb-supplier-name').value.trim();
+      if(!name){ toast('Indiquez un nom de fournisseur'); return; }
+      const email = document.getElementById('sb-supplier-email').value.trim();
+      const phone = document.getElementById('sb-supplier-phone').value.trim();
+      const address = document.getElementById('sb-supplier-address').value.trim();
+      const notes = document.getElementById('sb-supplier-notes').value.trim();
+      const dup = SUPPLIERS.find(s=>normalize(s.name)===normalize(name) && (!existing || s.id!==existing.id));
+      if(dup){ toast('⚠️ Un fournisseur avec ce nom existe déjà'); return; }
+      if(existing){
+        const oldName = existing.name;
+        existing.name = name; existing.email = email; existing.phone = phone; existing.address = address; existing.notes = notes;
+        if(normalize(oldName)!==normalize(name)){
+          PRODUCTS.forEach(p=>{ if(p.supplierName && normalize(p.supplierName)===normalize(oldName)) p.supplierName = name; });
+          await saveProducts();
+        } else if(email){
+          PRODUCTS.forEach(p=>{ if(p.supplierName && normalize(p.supplierName)===normalize(name) && !p.supplierEmail) p.supplierEmail = email; });
+          await saveProducts();
+        }
+      } else {
+        SUPPLIERS.push({ id: uid(), name, email, phone, address, notes, createdAt: new Date().toISOString() });
+      }
+      await saveSuppliers();
+      closeModal();
+      toast(existing ? '✅ Fournisseur mis à jour' : '✅ Fournisseur créé');
+      renderFournisseurs();
+    };
+
+    if(existing){
+      document.getElementById('sb-supplier-delete').onclick = ()=>{
+        showConfirmModal('Supprimer ce fournisseur ?', 'Supprimer « '+existing.name+' » ? Les produits associés conserveront son nom mais la fiche fournisseur sera effacée.', '🗑️ Supprimer', true, async ()=>{
+          SUPPLIERS = SUPPLIERS.filter(s=>s.id!==existing.id);
+          await saveSuppliers();
+          toast('🗑️ Fournisseur supprimé');
+          renderFournisseurs();
+        });
+      };
+    }
+  }
+
   // ---------- Comptable : export Excel & envoi ----------
   function buildStockRows(){
     return [...PRODUCTS].sort((a,b)=>a.name.localeCompare(b.name,'fr')).map(p=>{
@@ -1896,6 +2023,18 @@
 
   // ---------- Liste de commande fournisseur ----------
   let ORDER_LIST = null;
+  let MISC_ORDER = [];
+  async function loadMiscOrder(){
+    try{
+      const m = await window.storage.get(scopedKey('misc-order'), true);
+      MISC_ORDER = m && m.value ? JSON.parse(m.value) : [];
+    }catch(e){ MISC_ORDER = []; }
+  }
+  async function saveMiscOrder(){
+    try{
+      await window.storage.set(scopedKey('misc-order'), JSON.stringify(MISC_ORDER), true);
+    }catch(e){ toast('⚠️ Erreur de sauvegarde de la commande divers'); }
+  }
   function suggestedOrderQty(p){
     if(p.threshold>0) return Math.max(1, Math.round((p.threshold*2 - p.stock)*1000)/1000);
     return 5;
@@ -2024,25 +2163,245 @@
     if(addBtn){
       addBtn.onclick = ()=>{
         ORDER_LIST.push({ productId: addSelect.value, qty: 1 });
-        renderComptable();
+        renderCommande();
       };
     }
-    document.getElementById('sb-order-reset').onclick = ()=>{ ORDER_LIST = buildDefaultOrderList(); renderComptable(); };
+    document.getElementById('sb-order-reset').onclick = ()=>{ ORDER_LIST = buildDefaultOrderList(); renderCommande(); };
+  }
+
+  function renderCommande(){
+    const el = document.getElementById('sb-panel-commande');
+    if(!dataReady){ el.innerHTML = loadingHTML(); return; }
+    el.innerHTML =
+      '<div class="sb-section-title"><h2>Commande</h2></div>'+
+      renderOrderSection()+
+      renderMiscOrderSection();
+    wireOrderSection();
+    wireMiscOrderSection();
+  }
+
+  // ---------- Commande divers (produits non créés dans l'application) ----------
+  function supplierKeyOfMisc(item){ return (item.supplierName && item.supplierName.trim()) ? item.supplierName.trim() : 'Sans fournisseur'; }
+  function groupMiscOrder(){
+    const groups = {};
+    const order = [];
+    MISC_ORDER.forEach((item, idx)=>{
+      const key = supplierKeyOfMisc(item);
+      if(!groups[key]){
+        groups[key] = { name:key, email: item.supplierEmail || supplierEmailFor(key) || '', items: [] };
+        order.push(key);
+      }
+      groups[key].items.push({ item, idx });
+    });
+    return order.map(k=>groups[k]);
+  }
+  function buildMiscOrderRows(items){
+    return items.map(({item})=>({
+      'Fournisseur': supplierKeyOfMisc(item),
+      'Article': item.name,
+      'Quantité à commander': item.qty,
+      'Unité': item.unit || 'unité'
+    }));
+  }
+  function miscOrderSummaryText(groupName, items){
+    const lines = ['Commande divers - ' + groupName + ' - May\'Stock - ' + new Date().toLocaleDateString('fr-FR'), ''];
+    items.forEach(({item})=>{ lines.push('- ' + item.name + ' : ' + item.qty + ' ' + (item.unit||'unité')); });
+    lines.push('', 'Le detail est aussi disponible dans le fichier Excel joint (a joindre manuellement, telecharge automatiquement).');
+    return lines.join('\n');
+  }
+  function exportMiscOrderExcel(groupName, items){
+    if(typeof XLSX === 'undefined'){ toast('⚠️ Le module Excel n\'a pas pu se charger'); return null; }
+    if(!items || items.length===0){ toast('La liste est vide'); return null; }
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(buildMiscOrderRows(items));
+    XLSX.utils.book_append_sheet(wb, ws, 'Commande divers');
+    const safeName = (groupName||'divers').replace(/[^a-z0-9]+/gi,'_').slice(0,30);
+    const filename = "May'Stock_commande_divers_"+safeName+"_"+new Date().toISOString().slice(0,10)+'.xlsx';
+    XLSX.writeFile(wb, filename);
+    return filename;
+  }
+  function sendMiscOrderToSupplierGroup(groupName, items, email){
+    if(!email){ toast('⚠️ Renseignez d\'abord l\'email de ce fournisseur'); return; }
+    const filename = exportMiscOrderExcel(groupName, items);
+    if(!filename) return;
+    const subject = "Commande divers - " + groupName + " - " + new Date().toLocaleDateString('fr-FR');
+    const mailto = 'mailto:'+encodeURIComponent(email)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(miscOrderSummaryText(groupName, items));
+    window.location.href = mailto;
+    toast('📎 Fichier "'+filename+'" téléchargé — pensez à le joindre à l\'email');
+  }
+  function renderMiscOrderRows(){
+    const zone = document.getElementById('sb-misc-order-rows');
+    if(!zone) return;
+    if(MISC_ORDER.length===0){
+      zone.innerHTML = '<div style="font-size:12.5px;color:var(--crust-soft);padding:6px 0">Aucun article divers pour le moment — ajoutez-en un ci-dessous.</div>';
+      return;
+    }
+    zone.innerHTML = '';
+    const groups = groupMiscOrder();
+    groups.forEach(group=>{
+      const box = document.createElement('div');
+      box.style.cssText = 'border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px;background:var(--flour)';
+      box.innerHTML = '<div style="font-weight:700;font-size:13.5px;margin-bottom:6px">🚚 '+esc(group.name)+'</div>'+
+        '<div class="sb-group-rows"></div>'+
+        '<div style="display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap">'+
+          '<input type="email" class="sb-group-email" placeholder="Email de ce fournisseur" value="'+esc(group.email)+'" style="flex:1;min-width:180px;padding:9px 10px;border-radius:8px;border:1.5px solid var(--line);font-size:13px">'+
+          '<button type="button" class="sb-btn ghost sb-group-export" style="font-size:12px;padding:8px 12px">⬇️ Excel</button>'+
+          '<button type="button" class="sb-btn entree sb-group-send" style="font-size:12px;padding:8px 12px">📤 Envoyer</button>'+
+        '</div>';
+      zone.appendChild(box);
+      const rowsZone = box.querySelector('.sb-group-rows');
+      group.items.forEach(({item,idx})=>{
+        const row = document.createElement('div');
+        row.className = 'sb-review-row';
+        row.innerHTML =
+          '<span style="flex:1.3;font-size:13px">'+esc(item.name)+'</span>'+
+          '<input type="number" min="0" step="any" value="'+item.qty+'" class="sb-misc-qty">'+
+          '<input type="text" value="'+esc(item.unit||'unité')+'" class="sb-misc-unit" style="width:70px;flex:0 0 auto;padding:8px;border-radius:8px;border:1.5px solid var(--line);font-size:12.5px">'+
+          '<button type="button" class="rm">✕</button>';
+        rowsZone.appendChild(row);
+        row.querySelector('.sb-misc-qty').oninput = (ev)=>{ MISC_ORDER[idx].qty = Number(ev.target.value)||0; saveMiscOrder(); };
+        row.querySelector('.sb-misc-unit').onchange = (ev)=>{ MISC_ORDER[idx].unit = ev.target.value.trim()||'unité'; saveMiscOrder(); };
+        row.querySelector('.rm').onclick = ()=>{ MISC_ORDER.splice(idx,1); saveMiscOrder(); renderMiscOrderRows(); };
+      });
+      box.querySelector('.sb-group-export').onclick = ()=>{
+        const f = exportMiscOrderExcel(group.name, group.items);
+        if(f) toast('✅ Fichier "'+f+'" téléchargé');
+      };
+      box.querySelector('.sb-group-send').onclick = ()=>{
+        const email = box.querySelector('.sb-group-email').value.trim();
+        group.items.forEach(({item})=>{ if(supplierKeyOfMisc(item)===group.name) item.supplierEmail = email; });
+        saveMiscOrder();
+        sendMiscOrderToSupplierGroup(group.name, group.items, email);
+      };
+    });
+  }
+  function renderMiscOrderSection(){
+    return '<div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:16px">'+
+        '<h3 style="font-size:15px;margin-bottom:4px">🧾 Commande divers</h3>'+
+        '<div style="font-size:12.5px;color:var(--crust-soft);margin-bottom:10px">Pour commander des articles qui n\'ont pas de fiche produit dans May\'Stock (fournitures, matériel, articles ponctuels…), regroupés par fournisseur.</div>'+
+        '<div id="sb-misc-order-rows"></div>'+
+        '<div style="border-top:1px dashed var(--line);margin-top:12px;padding-top:12px">'+
+          '<div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">'+
+            '<input type="text" id="sb-misc-name" placeholder="Nom de l\'article" style="flex:1.4;min-width:140px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:14px">'+
+            '<input type="number" id="sb-misc-qty" min="0" step="any" value="1" placeholder="Qté" style="width:70px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:14px">'+
+            '<input type="text" id="sb-misc-unit" placeholder="Unité" value="unité" style="width:80px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:14px">'+
+          '</div>'+
+          '<div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">'+
+            '<input type="text" id="sb-misc-supplier-name" list="sb-suppliers-datalist-misc" placeholder="Fournisseur (optionnel)" style="flex:1;min-width:140px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:14px">'+
+            '<datalist id="sb-suppliers-datalist-misc">'+knownSuppliers().map(s=>'<option value="'+esc(s.name)+'">').join('')+'</datalist>'+
+            '<input type="email" id="sb-misc-supplier-email" placeholder="Email du fournisseur (optionnel)" style="flex:1;min-width:140px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:14px">'+
+          '</div>'+
+          '<button class="sb-btn ghost block" id="sb-misc-add-btn">➕ Ajouter à la commande divers</button>'+
+        '</div>'+
+      '</div>';
+  }
+  function wireMiscOrderSection(){
+    renderMiscOrderRows();
+    document.getElementById('sb-misc-supplier-name').addEventListener('change', (e)=>{
+      const emailInput = document.getElementById('sb-misc-supplier-email');
+      if(!emailInput.value){
+        const known = supplierEmailFor(e.target.value);
+        if(known) emailInput.value = known;
+      }
+    });
+    document.getElementById('sb-misc-add-btn').onclick = async ()=>{
+      const name = document.getElementById('sb-misc-name').value.trim();
+      if(!name){ toast('Indiquez un nom d\'article'); return; }
+      const qty = Number(document.getElementById('sb-misc-qty').value) || 1;
+      const unit = document.getElementById('sb-misc-unit').value.trim() || 'unité';
+      const supplierName = document.getElementById('sb-misc-supplier-name').value.trim();
+      const supplierEmail = document.getElementById('sb-misc-supplier-email').value.trim();
+      MISC_ORDER.push({ id: uid(), name, qty, unit, supplierName, supplierEmail });
+      await saveMiscOrder();
+      toast('✅ Article ajouté à la commande divers');
+      renderCommande();
+    };
+  }
+
+  // ---------- Verrouillage de l'onglet Gestion (code gérant) ----------
+  function renderGestionLock(){
+    const el = document.getElementById('sb-panel-comptable');
+    const hasCode = !!(SETTINGS.gerantCodeHash);
+    if(!hasCode){
+      el.innerHTML =
+        '<div class="sb-section-title"><h2>Gestion</h2></div>'+
+        '<div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);max-width:380px;margin:0 auto">'+
+          '<div style="text-align:center;font-size:32px;margin-bottom:8px">🔒</div>'+
+          '<h3 style="font-size:16px;text-align:center;margin-bottom:6px">Protéger cet onglet</h3>'+
+          '<div style="font-size:12.5px;color:var(--crust-soft);text-align:center;margin-bottom:16px">Définissez un code gérant pour restreindre l\'accès à la gestion (export, envoi du stock, emails). Ce code sera redemandé à chaque ouverture de l\'onglet.</div>'+
+          '<div class="sb-field"><label>Code gérant</label><input type="password" inputmode="numeric" id="sb-gestion-code-new" placeholder="4 chiffres minimum"></div>'+
+          '<div class="sb-field"><label>Confirmer le code</label><input type="password" inputmode="numeric" id="sb-gestion-code-new2" placeholder="4 chiffres minimum"></div>'+
+          '<div id="sb-gestion-code-error" style="color:var(--danger);font-size:12.5px;margin-bottom:10px;display:none"></div>'+
+          '<button class="sb-btn primary block" id="sb-gestion-code-set">🔒 Définir le code et continuer</button>'+
+        '</div>';
+      const err = document.getElementById('sb-gestion-code-error');
+      document.getElementById('sb-gestion-code-set').onclick = async ()=>{
+        const c1 = document.getElementById('sb-gestion-code-new').value.trim();
+        const c2 = document.getElementById('sb-gestion-code-new2').value.trim();
+        if(c1.length<4){ err.textContent = 'Le code doit faire au moins 4 caractères.'; err.style.display='block'; return; }
+        if(c1!==c2){ err.textContent = 'Les deux codes ne correspondent pas.'; err.style.display='block'; return; }
+        const salt = randomSalt();
+        SETTINGS.gerantCodeSalt = salt;
+        SETTINGS.gerantCodeHash = await sha256Hex(c1 + salt);
+        await saveSettings();
+        gestionUnlocked = true;
+        toast('🔒 Code gérant défini');
+        renderComptable();
+      };
+      return;
+    }
+    el.innerHTML =
+      '<div class="sb-section-title"><h2>Gestion</h2></div>'+
+      '<div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);max-width:380px;margin:0 auto">'+
+        '<div style="text-align:center;font-size:32px;margin-bottom:8px">🔒</div>'+
+        '<h3 style="font-size:16px;text-align:center;margin-bottom:6px">Onglet protégé</h3>'+
+        '<div style="font-size:12.5px;color:var(--crust-soft);text-align:center;margin-bottom:16px">Saisissez le code gérant pour accéder à la gestion.</div>'+
+        '<div class="sb-field"><label>Code gérant</label><input type="password" inputmode="numeric" id="sb-gestion-code-enter" placeholder="••••"></div>'+
+        '<div id="sb-gestion-code-error" style="color:var(--danger);font-size:12.5px;margin-bottom:10px;display:none"></div>'+
+        '<button class="sb-btn primary block" id="sb-gestion-code-check">🔓 Déverrouiller</button>'+
+        '<button class="sb-btn ghost block" id="sb-gestion-code-forgot" style="margin-top:10px">Code oublié ?</button>'+
+      '</div>';
+    const err = document.getElementById('sb-gestion-code-error');
+    const input = document.getElementById('sb-gestion-code-enter');
+    async function tryUnlock(){
+      const code = input.value.trim();
+      if(!code){ return; }
+      const hash = await sha256Hex(code + SETTINGS.gerantCodeSalt);
+      if(hash === SETTINGS.gerantCodeHash){
+        gestionUnlocked = true;
+        renderComptable();
+      } else {
+        err.textContent = 'Code incorrect.'; err.style.display='block';
+        input.value = ''; input.focus();
+      }
+    }
+    document.getElementById('sb-gestion-code-check').onclick = tryUnlock;
+    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter') tryUnlock(); });
+    document.getElementById('sb-gestion-code-forgot').onclick = ()=>{
+      showConfirmModal('Réinitialiser le code gérant ?', 'Le code actuel sera effacé et vous pourrez en définir un nouveau immédiatement. Cette action ne peut pas être annulée.', '🔄 Réinitialiser', true, async ()=>{
+        SETTINGS.gerantCodeHash = null;
+        SETTINGS.gerantCodeSalt = null;
+        await saveSettings();
+        renderComptable();
+      });
+    };
   }
 
   function renderComptable(){
     const el = document.getElementById('sb-panel-comptable');
     if(!dataReady){ el.innerHTML = loadingHTML(); return; }
+    if(!gestionUnlocked){ renderGestionLock(); return; }
     const totalHT = PRODUCTS.reduce((s,p)=> s + (p.priceHT!=null ? p.priceHT*p.stock : 0), 0);
     const totalTTC = PRODUCTS.reduce((s,p)=> s + (p.priceTTC!=null ? p.priceTTC*p.stock : 0), 0);
     el.innerHTML =
-      '<div class="sb-section-title"><h2>Comptable & fournisseurs</h2></div>'+
+      '<div class="sb-section-title"><h2>Gestion</h2>'+
+        '<button class="sb-btn ghost" id="sb-gestion-lock-btn" style="font-size:12px;padding:8px 12px">🔒 Verrouiller</button>'+
+      '</div>'+
       '<div class="sb-stats-row">'+
         '<div class="sb-stat-card"><div class="n">'+PRODUCTS.length+'</div><div class="l">Produits suivis</div></div>'+
         '<div class="sb-stat-card"><div class="n" style="font-size:19px">'+totalHT.toFixed(2)+' €</div><div class="l">Valeur stock HT</div></div>'+
         '<div class="sb-stat-card"><div class="n" style="font-size:19px">'+totalTTC.toFixed(2)+' €</div><div class="l">Valeur stock TTC</div></div>'+
       '</div>'+
-      renderOrderSection()+
       '<div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:16px">'+
         '<h3 style="font-size:15px;margin-bottom:10px">📊 Export Excel du stock</h3>'+
         '<div style="font-size:12.5px;color:var(--crust-soft);margin-bottom:12px">Génère un fichier Excel avec le stock complet (quantités, prix, valeurs) et l\'historique des mouvements.</div>'+
@@ -2059,7 +2418,7 @@
         '<div style="font-size:11.5px;color:var(--crust-soft);margin-top:10px">Le fichier Excel est téléchargé automatiquement et votre application mail s\'ouvre avec un résumé pré-rempli. Il faudra joindre le fichier téléchargé manuellement (les navigateurs ne permettent pas la pièce jointe automatique).</div>'+
       '</div>';
 
-    wireOrderSection();
+    document.getElementById('sb-gestion-lock-btn').onclick = ()=>{ gestionUnlocked = false; renderComptable(); };
     document.getElementById('sb-export-excel').onclick = ()=>{
       const f = exportExcel();
       if(f) toast('✅ Fichier "'+f+'" téléchargé');
